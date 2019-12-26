@@ -2,8 +2,8 @@ NODE_ENV=development
 
 APP_DB_HOST=localhost
 APP_DB_PORT=3306
-APP_DB_NAME=projeto-final
+APP_DB_NAME=bugz
 APP_DB_USER=root
-APP_DB_PASSWORD=
+APP_DB_PASSWORD=1234567
 
-APP_AUTH_SECRET=escolher um segredo!
+APP_AUTH_SECRET=abcde

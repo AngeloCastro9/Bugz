@@ -1,7 +1,5 @@
-const usuario = require('./usuario')
-const perfil = require('./perfil')
+const restaurante = require('./restaurante')
 
  module.exports = {
-    ...usuario,
-    ...perfil,
+    ...restaurante,
  }

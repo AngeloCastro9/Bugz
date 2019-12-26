@@ -7,7 +7,7 @@ module.exports = async ({ req }) => {
     const auth = req.headers.authorization
     const token = auth && auth.substring(7)
 
-    let usuario = null
+    let restaurante = null
     let admin = false
     
     if(token) {
@@ -15,38 +15,38 @@ module.exports = async ({ req }) => {
             let conteudoToken = jwt.decode(token,
                 process.env.APP_AUTH_SECRET)
             if(new Date(conteudoToken.exp * 1000) > new Date()) {
-                usuario = conteudoToken
+                restaurante = conteudoToken
             }
         } catch(e) {
             // token inválido
         }
     }
     
-    if(usuario && usuario.perfis) {
-        admin = usuario.perfis.includes('admin')
+    if(restaurante && restaurante.perfis) {
+        admin = restaurante.perfis.includes('admin')
     }
 
     const err = new Error('Acesso negado!')
     
     return {
-        usuario,
+        restaurante,
         admin,
-        validarUsuario() {
-            if(!usuario) throw err
+        validarrestaurante() {
+            if(!restaurante) throw err
         },
         validarAdmin() {
             if(!admin) throw err
         },
-        validarUsuarioFiltro(filtro) {
+        validarRestauranteFiltro(filtro) {
             if(admin) return
 
-            if(!usuario) throw err
+            if(!restaurante) throw err
             if(!filtro) throw err
 
             const { id, email } = filtro
             if(!id && !email) throw err
-            if(id && id !== usuario.id) throw err
-            if(email && email !== usuario.email) throw err
+            if(id && id !== restaurante.id) throw err
+            if(email && email !== restaurante.email) throw err
         }
     }
 }

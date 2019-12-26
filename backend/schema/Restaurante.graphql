@@ -1,0 +1,28 @@
+type Restaurante {
+    id: Int
+    nome: String!
+    email: String!
+    token: String
+}
+
+input RestauranteInput {
+    nome: String
+    email: String
+    senha: String
+}
+
+input RestauranteRegistrarInput {
+    nome: String!
+    email: String!
+    senha: String!
+}
+
+input RestauranteLoginInput {
+    email: String!
+    senha: String!
+}
+
+input RestauranteFiltro {
+    id: Int
+    email: String
+}

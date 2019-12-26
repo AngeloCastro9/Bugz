@@ -1,41 +1,41 @@
 const db = require('../../config/db')
 const bcrypt = require('bcrypt-nodejs')
-const { getUsuarioLogado } = require('../comum/usuario')
+const { getRestauranteLogado } = require('../comum/restaurante')
 
 module.exports = {
     async login(_, { dados }) {
-        const usuario = await db('usuarios')
+        const restaurante = await db('restaurantes')
             .where({ email: dados.email })
             .first()
 
-        if(!usuario) {
-            throw new Error('Usuário/Senha inválido')
+        if(!restaurante) {
+            throw new Error('Restaurante/Senha inválido')
         }
 
         const saoIguais = bcrypt.compareSync(dados.senha,
-            usuario.senha)
+            restaurante.senha)
 
         if(!saoIguais) {
-            throw new Error('Usuário/Senha inválido')
+            throw new Error('Restaurante/Senha inválido')
         }
 
-        return getUsuarioLogado(usuario)
+        return getRestauranteLogado(restaurante)
     },
-    usuarios(parent, args, ctx) {
+    restaurantes(parent, args, ctx) {
         ctx && ctx.validarAdmin()
-        return db('usuarios')
+        return db('restaurantes')
     },
-    usuario(_, { filtro }, ctx) {
-        ctx && ctx.validarUsuarioFiltro(filtro)
+    restaurante(_, { filtro }, ctx) {
+        ctx && ctx.validarRestauranteFiltro(filtro)
         
         if(!filtro) return null
         const { id, email } = filtro
         if(id) {
-            return db('usuarios')
+            return db('restaurantes')
                 .where({ id })
                 .first()
         } else if(email) {
-            return db('usuarios')
+            return db('restaurantes')
                 .where({ email })
                 .first()
         } else {

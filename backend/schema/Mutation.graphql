@@ -1,34 +1,20 @@
 type Mutation {
     # Virgula opcional
-    # Mutations de Usuario
-    registrarUsuario(
-        dados: UsuarioRegistrarInput!
-    ): Usuario!
+    # Mutations de Restaurante
+    registrarRestaurante(
+        dados: RestauranteRegistrarInput!
+    ): Restaurante!
 
-    novoUsuario(
-        dados: UsuarioInput!
-    ): Usuario!
+    novoRestaurante(
+        dados: RestauranteInput!
+    ): Restaurante!
 
-    excluirUsuario(
-        filtro: UsuarioFiltro!
-    ): Usuario
+    excluirRestaurante(
+        filtro: RestauranteFiltro!
+    ): Restaurante
 
-    alterarUsuario(
-        filtro: UsuarioFiltro!
-        dados: UsuarioInput!
-    ): Usuario
-
-    # Mutations de Perfil
-    novoPerfil(
-        dados: PerfilInput!
-    ): Perfil!
-
-    excluirPerfil(
-        filtro: PerfilFiltro!
-    ): Perfil
-
-    alterarPerfil(
-        filtro: PerfilFiltro!
-        dados: PerfilInput!
-    ): Perfil
+    alterarRestaurante(
+        filtro: RestauranteFiltro!
+        dados: RestauranteInput!
+    ): Restaurante
 }
