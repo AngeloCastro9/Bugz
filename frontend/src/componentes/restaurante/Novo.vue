@@ -9,13 +9,13 @@
                             <Erros :erros="erros" />
                         </div>
                         <v-text-field label="Nome"
-                            v-model="usuario.nome" />
+                            v-model="restaurante.nome" />
                         <v-text-field label="E-mail"
-                            v-model="usuario.email" />
+                            v-model="restaurante.email" />
                         <v-text-field label="Senha"
-                            v-model="usuario.senha" type="password" />
+                            v-model="restaurante.senha" type="password" />
                         <v-select label="Perfis"
-                            v-model="usuario.perfis"
+                            v-model="restaurante.perfis"
                             :items="perfis"
                             item-value="id"
                             item-text="rotulo"
@@ -26,7 +26,7 @@
                             Obter Perfis
                         </v-btn>
                         <v-btn color="primary" class="ml-0 mt-3"
-                            @click="novoUsuario">
+                            @click="novoRestaurante">
                             Novo Usuário
                         </v-btn>
                 </v-layout>
@@ -42,6 +42,8 @@
                             v-model="dados.nome" />
                         <v-text-field label="Email" readonly
                             v-model="dados.email" />
+                            <v-text-field label="Email" readonly
+                            v-model="dados.endereco" />
                         <v-text-field label="Perfis" readonly
                             :value="perfisRotulos" />
                     </template>
@@ -59,7 +61,7 @@ export default {
     components: { Erros },
     data() {
         return {
-            usuario: {},
+            restaurante: {},
             perfis: [],
             dados: null,
             erros: null
@@ -71,8 +73,8 @@ export default {
                 this.dados.perfis.map(p => p.rotulo).join(', ')
         },
         perfisSelecionados() {
-            if(this.usuario.perfis) {
-                return this.usuario.perfis.map(id => {
+            if(this.restaurante.perfis) {
+                return this.restaurante.perfis.map(id => {
                     return { id }
                 })
             } else {
@@ -81,7 +83,7 @@ export default {
         }
     },
     methods: {
-        novoUsuario() {
+        novorestaurante() {
             this.$api.mutate({
                 mutation: gql`
                     mutation (
@@ -90,27 +92,29 @@ export default {
                         $senha: String!
                         $perfis: [PerfilFiltro]
                     ) {
-                        novoUsuario (
+                        novoRestaurante (
                             dados: {
                                 nome: $nome
                                 email: $email
+                                endereco: $endereco
                                 senha: $senha
                                 perfis: $perfis
                             }
                         ) {
-                            id nome email perfis { rotulo }
+                            id nome email endereco perfis { rotulo }
                         }
                     }
                 `,
                 variables: {
-                    nome: this.usuario.nome,
-                    email: this.usuario.email,
-                    senha: this.usuario.senha,
+                    nome: this.restaurante.nome,
+                    email: this.restaurante.email,
+                    senha: this.restaurante.senha,
+                    endereco: this.restaurante.endereco,
                     perfis: this.perfisSelecionados
                 }
             }).then(resultado => {
-                this.dados = resultado.data.novoUsuario
-                this.usuario = {}
+                this.dados = resultado.data.novoRestaurante
+                this.restaurante = {}
                 this.erros = null
             }).catch(e => {
                 this.erros = e

@@ -2,8 +2,7 @@
   <v-app>
     <v-toolbar app color="blue" dark>
       <v-toolbar-title class="headline text-uppercase">
-        <span>GraphQL</span>
-        <span class="font-weight-light">Client</span>
+        <span>BUGZ</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>

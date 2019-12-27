@@ -16,13 +16,13 @@
                     <h1 class="mt-4 headline">Alterar Usuário</h1>
                     <v-divider class="mb-3" />
                     <v-text-field label="Nome"
-                        v-model="usuario.nome" />
+                        v-model="restaurante.nome" />
                     <v-text-field label="E-mail"
-                        v-model="usuario.email" />
+                        v-model="restaurante.email" />
                     <v-text-field label="Senha"
-                        v-model="usuario.senha" type="password" />
+                        v-model="restaurante.senha" type="password" />
                     <v-select label="Perfis"
-                        v-model="usuario.perfis"
+                        v-model="restaurante.perfis"
                         :items="perfis"
                         item-value="id"
                         item-text="rotulo"
@@ -33,7 +33,7 @@
                         Obter Perfis
                     </v-btn>
                     <v-btn color="primary" class="ml-0 mt-3"
-                        @click="alterarUsuario">
+                        @click="alterarrestaurante">
                         Alterar Usuário
                     </v-btn>
                 </v-layout>
@@ -67,7 +67,7 @@ export default {
     data() {
         return {
             filtro: {},
-            usuario: {},
+            restaurante: {},
             perfis: [],
             dados: null,
             erros: null
@@ -79,15 +79,15 @@ export default {
                 this.dados.perfis.map(p => p.rotulo).join(', ')
         },
         perfisSelecionados() {
-            if(this.usuario.perfis) {
-                return this.usuario.perfis.map(id => ({ id }))
+            if(this.restaurante.perfis) {
+                return this.restaurante.perfis.map(id => ({ id }))
             } else {
                 return null
             }
         }
     },
     methods: {
-        alterarUsuario() {
+        alterarrestaurante() {
             this.$api.mutate({
                 mutation: gql`
                     mutation (
@@ -98,7 +98,7 @@ export default {
                         $senha: String
                         $perfis: [PerfilFiltro]
                     ) {
-                        alterarUsuario (
+                        alterarrestaurante (
                             filtro: {
                                 id: $idFiltro
                                 email: $emailFiltro
@@ -117,15 +117,15 @@ export default {
                 variables: {
                     idFiltro: this.filtro.id,
                     emailFiltro: this.filtro.email,
-                    nome: this.usuario.nome,
-                    email: this.usuario.email,
-                    senha: this.usuario.senha,
+                    nome: this.restaurante.nome,
+                    email: this.restaurante.email,
+                    senha: this.restaurante.senha,
                     perfis: this.perfisSelecionados
                 }
             }).then(resultado => {
-                this.dados = resultado.data.alterarUsuario
+                this.dados = resultado.data.alterarrestaurante
                 this.filtro = {}
-                this.usuario = {}
+                this.restaurante = {}
                 this.erros = null
             }).catch(e => {
                 this.erros = e

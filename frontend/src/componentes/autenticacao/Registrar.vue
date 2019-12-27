@@ -9,11 +9,13 @@
                             <Erros :erros="erros" />
                         </div>
                         <v-text-field label="Nome"
-                            v-model="usuario.nome" />
+                            v-model="restaurante.nome" />
                         <v-text-field label="E-mail"
-                            v-model="usuario.email" />
+                            v-model="restaurante.email" />
+                        <v-text-field label="Endereço"
+                        v-model="restaurante.endereco" />
                         <v-text-field label="Senha"
-                            v-model="usuario.senha" type="password" />
+                            v-model="restaurante.senha" type="password" />
                         <v-btn color="primary" class="ml-0 mt-3"
                             @click="registrar">
                             Registrar   
@@ -32,7 +34,7 @@ export default {
     components: { Erros },
     data() {
         return {
-            usuario: {},
+            restaurante: {},
             dados: null,
             erros: null
         }
@@ -51,26 +53,29 @@ export default {
                         $nome: String!
                         $email: String!
                         $senha: String!
+                        $endereco: String!
                     ) {
-                        registrarUsuario(
+                        registrarrestaurante(
                             dados: {
                                 nome: $nome
                                 email: $email
                                 senha: $senha
+                                endereco: $endereco
                             }
                         ) {
-                            id nome email perfis { rotulo }
+                            id nome email endereco
                         }
                     }
                 `,
                 variables: {
-                    nome: this.usuario.nome,
-                    email: this.usuario.email,
-                    senha: this.usuario.senha,
+                    nome: this.restaurante.nome,
+                    email: this.restaurante.email,
+                    senha: this.restaurante.senha,
+                    endereco: this.restaurante.endereco,
                 }
             }).then(resultado => {
-                this.dados = resultado.data.registrarUsuario
-                this.usuario = {}
+                this.dados = resultado.data.registrarrestaurante
+                this.restaurante = {}
                 this.erros = null
             }).catch(e => {
                 this.erros = e

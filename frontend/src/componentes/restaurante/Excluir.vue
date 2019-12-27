@@ -3,19 +3,20 @@
         <v-layout>
             <v-flex>
                 <v-layout column class="ma-3">
-                    <h1 class="headline">Consultar Usuário</h1>
+                    <h1 class="headline">Excluir Restaurante</h1>
                     <v-divider class="mb-3" />
-                        <div v-if="erros">
-                            <Erros :erros="erros" />
-                        </div>
-                        <v-text-field label="ID"
-                            v-model.number="filtro.id" />
-                        <v-text-field label="E-mail"
-                            v-model="filtro.email" />
-                        <v-btn color="primary" class="ml-0 mt-3"
-                            @click="consultar">
-                            Consultar
-                        </v-btn>
+                    <div v-if="erros">
+                        <Erros :erros="erros" />
+                    </div>
+                    <v-text-field label="ID"
+                        v-model.number="filtro.id" />
+                    <v-text-field label="E-mail"
+                        v-model="filtro.email" />
+
+                    <v-btn color="error" class="ml-0 mt-3"
+                        @click="excluirRestaurante">
+                        Excluir Usuário
+                    </v-btn>
                 </v-layout>
             </v-flex>
             <v-flex>
@@ -29,8 +30,8 @@
                             v-model="dados.nome" />
                         <v-text-field label="E-mail" readonly
                             v-model="dados.email" />
-                        <v-text-field label="Perfis" readonly
-                            :value="perfisRotulos" />
+                            <v-text-field label="E-mail" readonly
+                            v-model="dados.endereco" />
                     </template>
                 </v-layout>
             </v-flex>
@@ -47,42 +48,34 @@ export default {
     data() {
         return {
             filtro: {},
-            perfis: [],
             dados: null,
             erros: null
         }
     },
-    computed: {
-        perfisRotulos() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.rotulo).join(', ')
-        }
-    },
     methods: {
-        consultar() {
-            this.$api.query({
-                query: gql`
-                    query (
+        excluirrestaurante() {
+            this.$api.mutate({
+                mutation: gql`
+                    mutation (
                         $id: Int
                         $email: String
                     ) {
-                        usuario (
+                        excluirrestaurante (
                             filtro: {
                                 id: $id
                                 email: $email
                             }
                         ) {
-                            id nome email perfis { rotulo }
+                            id nome email endereco
                         }
                     }
                 `,
                 variables: {
                     id: this.filtro.id,
-                    email: this.filtro.email
-                },
-                fetchPolicy: 'network-only'
+                    email: this.filtro.email,
+                }
             }).then(resultado => {
-                this.dados = resultado.data.usuario
+                this.dados = resultado.data.excluirrestaurante
                 this.filtro = {}
                 this.erros = null
             }).catch(e => {

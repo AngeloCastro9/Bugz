@@ -11,6 +11,10 @@
             </v-tab>
 
             <v-tab ripple>
+                Produto
+            </v-tab>
+
+            <v-tab ripple>
                 Novo
             </v-tab>
 

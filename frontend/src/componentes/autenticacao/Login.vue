@@ -9,9 +9,9 @@
                             <Erros :erros="erros" />
                         </div>
                         <v-text-field label="E-mail"
-                            v-model="usuario.email" />
+                            v-model="restaurante.email" />
                         <v-text-field label="Senha"
-                            v-model="usuario.senha" type="password" />
+                            v-model="restaurante.senha" type="password" />
                         <v-btn color="primary" class="ml-0 mt-3"
                             @click="login">
                             Logar
@@ -31,7 +31,7 @@ export default {
     components: { Erros },
     data() {
         return {
-            usuario: {},
+            restaurante: {},
             dados: null,
             erros: null
         }
@@ -43,7 +43,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['setUsuario']),
+        ...mapActions(['setrestaurante']),
         login() {
             this.$api.query({
                 query: gql`
@@ -62,14 +62,14 @@ export default {
                     }
                 `,
                 variables: {
-                    email: this.usuario.email,
-                    senha: this.usuario.senha,
+                    email: this.restaurante.email,
+                    senha: this.restaurante.senha,
                 }
             }).then(resultado => {
                 this.dados = resultado.data.login
-                this.usuario = {}
+                this.restaurante = {}
                 this.erros = null
-                this.setUsuario(this.dados)
+                this.setrestaurante(this.dados)
             }).catch(e => {
                 this.erros = e
             })

@@ -1,18 +1,18 @@
 <template>
-    <v-card v-if="usuario" class="ma-3 pa-2">
+    <v-card v-if="restaurante" class="ma-3 pa-2">
         <v-layout fill-height align-center>
             <v-flex>
                 <span class="ml-3 headline"><strong>ID: </strong></span>
                 <span class="headline blue--text text--darken-2">
-                    {{ usuario.id }}</span>
+                    {{ restaurante.id }}</span>
 
                 <span class="ml-3 headline"><strong>Nome: </strong></span>
                 <span class="headline blue--text text--darken-2">
-                    {{ usuario.nome }}</span>
+                    {{ restaurante.nome }}</span>
 
                 <span class="ml-3 headline"><strong>Email: </strong></span>
                 <span class="headline blue--text text--darken-2">
-                    {{ usuario.email }}</span>
+                    {{ restaurante.email }}</span>
 
                 <span class="ml-3 headline"><strong>Perfis: </strong></span>
                 <span class="headline red--text text--darken-2">
@@ -22,7 +22,7 @@
             </v-flex>
             <v-flex shrink>
                 <v-btn color="error"
-                    @click="setUsuario(null)">
+                    @click="setrestaurante(null)">
                     Sair
                 </v-btn>
             </v-flex>
@@ -35,13 +35,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters(['usuario']),
+        ...mapGetters(['restaurante']),
         perfis() {
-            if(!this.usuario && !this.usuario.perfis) return null
-            return this.usuario.perfis.map(p => p.rotulo).join(', ')
+            if(!this.restaurante && !this.restaurante.perfis) return null
+            return this.restaurante.perfis.map(p => p.rotulo).join(', ')
         }
     },
-    methods: mapActions(['setUsuario'])
+    methods: mapActions(['setRestaurante'])
 }
 </script>
 

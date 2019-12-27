@@ -3,7 +3,7 @@
         <v-layout column>
             <v-flex>
                 <v-btn color="primary" class="ml-0 mb-4"
-                    @click="obterUsuarios">
+                    @click="obterRestaurantes">
                     Obter Usuários
                 </v-btn>
             </v-flex>
@@ -13,7 +13,7 @@
                 </div>
             </v-flex>
             <v-flex>
-                <v-data-table :headers="headers" :items="usuarios" 
+                <v-data-table :headers="headers" :items="restaurantes" 
                     hide-actions class="elevation-1">
                     <template slot="items" slot-scope="props">
                         <td>{{ props.item.id }}</td>
@@ -38,31 +38,32 @@ export default {
     data() {
         return {
             erros: null,
-            usuarios: [],
+            restaurantes: [],
             headers: [
                 { text: 'ID', value: 'id' },
                 { text: 'Nome', value: 'name' },
                 { text: 'E-mail', value: 'email' },
+                { text: 'Endereço', value: 'endereco' },
                 { text: 'Perfis', value: 'perfis' },
             ],
         }
     },
     methods: {
-        obterUsuarios() {
+        obterrestaurantes() {
             this.$api.query({
                 query: gql`
                     query {
-                        usuarios {
+                        restaurantes {
                             id nome email perfis { rotulo }
                         }
                     }
                 `,
                 fetchPolicy: 'network-only'
             }).then(resultado => {
-                this.usuarios = resultado.data.usuarios
+                this.restaurantes = resultado.data.restaurantes
                 this.erros = null
             }).catch(e => {
-                this.usuarios = []
+                this.restaurantes = []
                 this.erros = e
             })
         }

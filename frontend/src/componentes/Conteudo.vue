@@ -8,26 +8,21 @@
 				<v-tabs-slider color="white"></v-tabs-slider>
 
 				<v-tab>
-					Autenticação
-					<v-icon>fingerprint</v-icon>
+					Restaurante
+					<v-icon>R</v-icon>
 				</v-tab>
 
 				<v-tab>
-					Usuários
-					<v-icon>people</v-icon>
-				</v-tab>
-
-				<v-tab>
-					Perfis
-					<v-icon>how_to_reg</v-icon>
+					Cliente
+					<v-icon>C</v-icon>
 				</v-tab>
 
 				<v-tab-item>
-					<AutenticacaoAbas />
+					<AutenticacaoAbas /> 
 				</v-tab-item>
 
 				<v-tab-item>
-					<UsuarioAbas />
+					<RestauranteAbas />
 				</v-tab-item>
 
 				<v-tab-item>
@@ -41,14 +36,14 @@
 <script>
 import AutenticacaoAbas from './autenticacao/Abas'
 import UsuarioLogado from './autenticacao/UsuarioLogado'
-import UsuarioAbas from './usuario/Abas'
+import RestauranteAbas from './restaurante/Abas'
 import PerfilAbas from './perfil/Abas'
 
 export default {
 	components: {
 		AutenticacaoAbas,
 		UsuarioLogado,
-		UsuarioAbas,
+		RestauranteAbas,
 		PerfilAbas,
 	},
 }
