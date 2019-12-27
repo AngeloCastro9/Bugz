@@ -1,4 +1,4 @@
-type Restaurante {
+type Cliente {
     id: Int
     nome: String!
     email: String!
@@ -6,26 +6,26 @@ type Restaurante {
     token: String
 }
 
-input RestauranteInput {
+input ClienteInput {
     nome: String
     email: String
     senha: String
     endereco: String
 }
 
-input RestauranteRegistrarInput {
+input ClienteRegistrarInput {
     nome: String!
     email: String!
     senha: String!
     endereco: String!
 }
 
-input RestauranteLoginInput {
+input ClienteLoginInput {
     email: String!
     senha: String!
 }
 
-input RestauranteFiltro {
+input ClienteFiltro {
     id: Int
     email: String
 }

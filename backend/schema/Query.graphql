@@ -3,4 +3,8 @@ type Query {
     login(dados: RestauranteLoginInput!): Restaurante
     restaurantes: [Restaurante]
     restaurante(filtro: RestauranteFiltro!): Restaurante
+
+    login(dados: ClienteLoginInput!): Cliente
+    clientes: [cliente]
+    cliente(filtro: ClienteFiltro!): Cliente
 }

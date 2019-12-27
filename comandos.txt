@@ -1,0 +1,5 @@
+1 - criar migrations:
+npx knex migrate:make nome
+
+2 - subir o banco:
+npx knex migrate:latest

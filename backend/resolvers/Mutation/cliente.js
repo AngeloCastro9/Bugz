@@ -1,54 +1,55 @@
 const bcrypt = require('bcrypt-nodejs')
 const db = require('../../config/db')
-const { restaurante: obterRestaurante } = require('../Query/restaurante')
+const { cliente: obterCliente } = require('../Query/cliente')
 
 const mutations = {
-    registrarRestaurante(_, { dados }) {
-        return mutations.novoRestaurante(_, {
+    registrarCliente(_, { dados }) {
+        return mutations.novoCliente(_, {
             dados: {
                 nome: dados.nome,
                 email: dados.email,
                 senha: dados.senha,
+                pagamento: dados.pagamento,
                 endereco: dados.endereco,
             }
         })
     },
-    async novoRestaurante(_, { dados }, ctx) {
+    async novoCliente(_, { dados }, ctx) {
         ctx && ctx.validarAdmin()
 
         // criptografar a senha
         const salt = bcrypt.genSaltSync()
         dados.senha = bcrypt.hashSync(dados.senha, salt)
 
-        const [ id ] = await db('restaurantes')
+        const [ id ] = await db('clientes')
             .insert(dados)
 
-        return db('restaurantes')
+        return db('clientes')
             .where({ id }).first()
 
     },
-    async excluirRestaurante(_, args, ctx) {
+    async excluirCliente(_, args, ctx) {
         ctx && ctx.validarAdmin()
         try {
-            const restaurante = await obterRestaurante(_, args)
-            if(restaurante) {
-                const { id } = restaurante
+            const cliente = await obterCliente(_, args)
+            if(cliente) {
+                const { id } = cliente
 
-                await db('restaurantes')
+                await db('clientes')
                     .where({ id }).delete()
             }
-            return restaurante
+            return cliente
         } catch(e) {
             throw new Error(e.sqlMessage)
         }
 
     },
-    async alterarRestaurante(_, { filtro, dados }, ctx) {
-        ctx && ctx.validarRestauranteFiltro(filtro)
+    async alterarCliente(_, { filtro, dados }, ctx) {
+        ctx && ctx.validarClienteFiltro(filtro)
         try {
-            const restaurante = await obterRestaurante(_, { filtro })
-            if(restaurante) {
-                const { id } = restaurante
+            const cliente = await obterCliente(_, { filtro })
+            if(cliente) {
+                const { id } = cliente
 
                 if(dados.senha) {
                     // criptografar a senha
@@ -57,11 +58,11 @@ const mutations = {
                 }
 
                 delete dados.perfis
-                await db('restaurantes')
+                await db('clientes')
                     .where({ id })
                     .update(dados)
             }
-            return !restaurante ? null : { ...restaurante, ...dados }
+            return !cliente ? null : { ...cliente, ...dados }
         } catch(e) {
             throw new Error(e)
         }

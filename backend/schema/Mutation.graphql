@@ -17,4 +17,21 @@ type Mutation {
         filtro: RestauranteFiltro!
         dados: RestauranteInput!
     ): Restaurante
+
+    registrarCliente(
+        dados: ClienteRegistrarIpunt!
+    ): Cliente!
+
+    novoCliente(
+        dados: ClienteInput!
+    ): Cliente!
+
+    excluirCliente(
+        filtro: ClienteFiltro!
+    ): Cliente
+
+    alterarCliente(
+        filtro:ClienteFiltro!
+        dados: ClienteInput!
+    ): Cliente!
 }
