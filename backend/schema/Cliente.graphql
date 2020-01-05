@@ -20,11 +20,6 @@ input ClienteRegistrarInput {
     endereco: String!
 }
 
-input ClienteLoginInput {
-    email: String!
-    senha: String!
-}
-
 input ClienteFiltro {
     id: Int
     email: String

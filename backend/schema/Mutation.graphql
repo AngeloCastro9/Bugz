@@ -1,5 +1,4 @@
 type Mutation {
-    # Virgula opcional
     # Mutations de Restaurante
     registrarRestaurante(
         dados: RestauranteRegistrarInput!
@@ -18,8 +17,9 @@ type Mutation {
         dados: RestauranteInput!
     ): Restaurante
 
+    # Mutations de Cliente
     registrarCliente(
-        dados: ClienteRegistrarIpunt!
+        dados: ClienteRegistrarInput!
     ): Cliente!
 
     novoCliente(

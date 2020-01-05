@@ -3,5 +3,18 @@ const Mutation = require('./Mutation')
 
 module.exports = {
     Query,
-    Mutation
+    Mutation,
+    RestauranteOrCliente: {
+        __resolveType(obj, context, info){
+            if(obj.name){
+            return 'Restaurante';
+            }
+
+            if(obj.title){
+            return 'Cliente';
+            }
+
+            return null;
+        },
+    }
 }
