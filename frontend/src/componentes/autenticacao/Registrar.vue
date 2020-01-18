@@ -12,7 +12,7 @@
                             v-model="restaurante.nome" />
                         <v-text-field label="E-mail"
                             v-model="restaurante.email" />
-                        <v-text-field label="Endereço"
+                        <v-text-field label="Endereco"
                         v-model="restaurante.endereco" />
                         <v-text-field label="Senha"
                             v-model="restaurante.senha" type="password" />
@@ -55,7 +55,7 @@ export default {
                         $senha: String!
                         $endereco: String!
                     ) {
-                        registrarrestaurante(
+                        registrarRestaurante(
                             dados: {
                                 nome: $nome
                                 email: $email
@@ -74,7 +74,7 @@ export default {
                     endereco: this.restaurante.endereco,
                 }
             }).then(resultado => {
-                this.dados = resultado.data.registrarrestaurante
+                this.dados = resultado.data.registrarRestaurante
                 this.restaurante = {}
                 this.erros = null
             }).catch(e => {

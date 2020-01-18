@@ -43,7 +43,7 @@ export default {
                 { text: 'ID', value: 'id' },
                 { text: 'Nome', value: 'name' },
                 { text: 'E-mail', value: 'email' },
-                { text: 'Endereço', value: 'endereco' },
+                { text: 'Endereco', value: 'endereco' },
                 { text: 'Perfis', value: 'perfis' },
             ],
         }
