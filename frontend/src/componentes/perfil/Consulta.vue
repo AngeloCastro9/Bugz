@@ -50,10 +50,6 @@ export default {
         }
     },
     computed: {
-        perfisRotulos() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.rotulo).join(', ')
-        }
     },
     methods: {
         consultar() {
@@ -69,7 +65,7 @@ export default {
                                 nome: $nome
                             }
                         ) {
-                            id nome rotulo
+                            id nome 
                         }
                     }
                 `,

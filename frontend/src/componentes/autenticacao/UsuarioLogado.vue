@@ -13,10 +13,6 @@
                 <span class="ml-3 headline"><strong>Email: </strong></span>
                 <span class="headline blue--text text--darken-2">
                     {{ restaurante.email }}</span>
-
-                <span class="ml-3 headline"><strong>Perfis: </strong></span>
-                <span class="headline red--text text--darken-2">
-                    {{ perfis }}</span>
             </v-flex>
             <v-flex>
             </v-flex>
@@ -36,10 +32,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     computed: {
         ...mapGetters(['restaurante']),
-        perfis() {
-            if(!this.restaurante && !this.restaurante.perfis) return null
-            return this.restaurante.perfis.map(p => p.rotulo).join(', ')
-        }
     },
     methods: mapActions(['setRestaurante'])
 }

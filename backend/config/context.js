@@ -21,10 +21,6 @@ module.exports = async ({ req }) => {
             // token inválido
         }
     }
-    
-    if(restaurante && restaurante.perfis) {
-        admin = restaurante.perfis.includes('admin')
-    }
 
     const err = new Error('Acesso negado!')
     

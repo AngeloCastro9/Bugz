@@ -56,7 +56,6 @@ const mutations = {
                     dados.senha = bcrypt.hashSync(dados.senha, salt)
                 }
 
-                delete dados.perfis
                 await db('restaurantes')
                     .where({ id })
                     .update(dados)

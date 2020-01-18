@@ -1,17 +1,10 @@
 # Pontos de entrada da sua API!
-
-union RestauranteOrCliente = Restaurante | Cliente
-
-input LoginInput {
-    email: String!
-    senha: String!
-}
-
 type Query {
-    login(dados: LoginInput!): RestauranteOrCliente
+    login(dados: RestauranteLoginInput!): Restaurante
     restaurantes: [Restaurante]
     restaurante(filtro: RestauranteFiltro!): Restaurante
 
+    loginCliente(dados: ClienteLoginInput!): Cliente
     clientes: [Cliente]
     cliente(filtro: ClienteFiltro!): Cliente
 }

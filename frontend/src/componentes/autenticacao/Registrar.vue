@@ -40,10 +40,6 @@ export default {
         }
     },
     computed: {
-        perfis() {
-            return this.dados && this.dados.perfis &&
-                this.dados.perfis.map(p => p.rotulo).join(',')
-        }
     },
     methods: {
         registrar() {
@@ -77,6 +73,7 @@ export default {
                 this.dados = resultado.data.registrarRestaurante
                 this.restaurante = {}
                 this.erros = null
+                console.log(this.dados)
             }).catch(e => {
                 this.erros = e
             })

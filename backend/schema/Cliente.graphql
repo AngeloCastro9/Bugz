@@ -13,6 +13,11 @@ input ClienteInput {
     endereco: String
 }
 
+input ClienteLoginInput {
+    email: String!
+    senha: String!
+}
+
 input ClienteRegistrarInput {
     nome: String!
     email: String!
