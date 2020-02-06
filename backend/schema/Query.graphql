@@ -1,6 +1,6 @@
 # Pontos de entrada da sua API!
 type Query {
-    login(dados: RestauranteLoginInput!): Restaurante
+    loginRest(dados: RestauranteLoginInput!): Restaurante
     restaurantes: [Restaurante]
     restaurante(filtro: RestauranteFiltro!): Restaurante
 

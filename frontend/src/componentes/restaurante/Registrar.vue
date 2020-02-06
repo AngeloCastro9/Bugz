@@ -3,7 +3,7 @@
         <v-layout>
             <v-flex>
                 <v-layout column class="ma-3">
-                    <h1 class="headline">Registrar</h1>
+                    <h1 class="headline">Registrar Restaurante</h1>
                     <v-divider class="mb-3" />
                         <div v-if="erros">
                             <Erros :erros="erros" />

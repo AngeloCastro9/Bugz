@@ -3,12 +3,12 @@ const bcrypt = require('bcrypt-nodejs')
 const { getClienteLogado } = require('../comum/clientes')
 
 module.exports = {
-    async login(_, { dados }) {
+    async loginRest(_, { dados }) {
         const cliente = await db('clientes')
             .where({ email: dados.email })
             .first()
 
-        if(!cliente) {
+        if (!cliente) {
             console.log("ihu")
             throw new Error('Cliente/Senha inválido')
         }
@@ -16,7 +16,7 @@ module.exports = {
         const saoIguais = bcrypt.compareSync(dados.senha,
             cliente.senha)
 
-        if(!saoIguais) {
+        if (!saoIguais) {
             throw new Error('Cliente/Senha inválido')
         }
 
@@ -28,14 +28,14 @@ module.exports = {
     },
     cliente(_, { filtro }, ctx) {
         ctx && ctx.validarClienteFiltro(filtro)
-        
-        if(!filtro) return null
+
+        if (!filtro) return null
         const { id, email } = filtro
-        if(id) {
+        if (id) {
             return db('cliente')
                 .where({ id })
                 .first()
-        } else if(email) {
+        } else if (email) {
             return db('cliente')
                 .where({ email })
                 .first()

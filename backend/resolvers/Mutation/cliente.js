@@ -9,19 +9,18 @@ const mutations = {
                 nome: dados.nome,
                 email: dados.email,
                 senha: dados.senha,
-                pagamento: dados.pagamento,
+                // pagamento: dados.pagamento,
                 endereco: dados.endereco,
             }
         })
     },
     async novoCliente(_, { dados }, ctx) {
         ctx && ctx.validarAdmin()
-
         // criptografar a senha
         const salt = bcrypt.genSaltSync()
         dados.senha = bcrypt.hashSync(dados.senha, salt)
 
-        const [ id ] = await db('clientes')
+        const [id] = await db('clientes')
             .insert(dados)
 
         return db('clientes')
@@ -32,14 +31,14 @@ const mutations = {
         ctx && ctx.validarAdmin()
         try {
             const cliente = await obterCliente(_, args)
-            if(cliente) {
+            if (cliente) {
                 const { id } = cliente
 
                 await db('clientes')
                     .where({ id }).delete()
             }
             return cliente
-        } catch(e) {
+        } catch (e) {
             throw new Error(e.sqlMessage)
         }
 
@@ -48,10 +47,10 @@ const mutations = {
         ctx && ctx.validarClienteFiltro(filtro)
         try {
             const cliente = await obterCliente(_, { filtro })
-            if(cliente) {
+            if (cliente) {
                 const { id } = cliente
 
-                if(dados.senha) {
+                if (dados.senha) {
                     // criptografar a senha
                     const salt = bcrypt.genSaltSync()
                     dados.senha = bcrypt.hashSync(dados.senha, salt)
@@ -62,7 +61,7 @@ const mutations = {
                     .update(dados)
             }
             return !cliente ? null : { ...cliente, ...dados }
-        } catch(e) {
+        } catch (e) {
             throw new Error(e)
         }
     }

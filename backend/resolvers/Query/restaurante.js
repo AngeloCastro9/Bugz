@@ -3,12 +3,13 @@ const bcrypt = require('bcrypt-nodejs')
 const { getRestauranteLogado } = require('../comum/restaurante')
 
 module.exports = {
-    async login(_, { dados }) {
+    async loginCliente(_, { dados }) {
         const restaurante = await db('restaurantes')
             .where({ email: dados.email })
             .first()
 
         if(!restaurante) {
+            console.log("to aqui")
             throw new Error('Restaurante/Senha inválido')
         }
 

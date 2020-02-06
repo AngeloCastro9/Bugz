@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar app color="blue" dark>
       <v-toolbar-title class="headline text-uppercase">
-        <span>BUGZ</span>
+        <span style="margin-left: 860px">BUGZ</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>

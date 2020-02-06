@@ -18,15 +18,15 @@
 				</v-tab>
 
 				<v-tab-item>
-					<AutenticacaoAbas /> 
+					<RestauranteAbas /> 
 				</v-tab-item>
 
 				<v-tab-item>
-					<RestauranteAbas />
+					<clienteAbas />
 				</v-tab-item>
 
 				<v-tab-item>
-					<PerfilAbas />
+					<clienteAbas />
 				</v-tab-item>
 			</v-tabs>
 		</v-flex>
@@ -34,17 +34,15 @@
 </template>
 
 <script>
-import AutenticacaoAbas from './autenticacao/Abas'
+import RestauranteAbas from './autenticacao/Abas'
 import UsuarioLogado from './autenticacao/UsuarioLogado'
-import RestauranteAbas from './restaurante/Abas'
-import PerfilAbas from './perfil/Abas'
+import clienteAbas from './cliente/Abas'
 
 export default {
 	components: {
-		AutenticacaoAbas,
-		UsuarioLogado,
 		RestauranteAbas,
-		PerfilAbas,
+		UsuarioLogado,
+		clienteAbas,
 	},
 }
 </script>
