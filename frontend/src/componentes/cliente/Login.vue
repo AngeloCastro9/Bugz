@@ -8,9 +8,9 @@
           <div v-if="erros">
             <Erros :erros="erros" />
           </div>
-          <v-text-field label="E-mail" v-model="restaurante.email" />
-          <v-text-field label="Senha" v-model="restaurante.senha" type="password" />
-          <v-btn color="primary" class="ml-0 mt-3" @click="loginRestaurante">Logar</v-btn>
+          <v-text-field label="E-mail" v-model="cliente.email" />
+          <v-text-field label="Senha" v-model="cliente.senha" type="password" />
+          <v-btn color="primary" class="ml-0 mt-3" @click="loginCliente">Logar</v-btn>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -26,15 +26,15 @@ export default {
   components: { Erros },
   data() {
     return {
-      restaurante: {},
+      cliente: {},
       dados: null,
       erros: null
     };
   },
   computed: {},
   methods: {
-    ...mapActions(["setrestaurante"]),
-    loginRestaurante() {
+    ...mapActions(["setcliente"]),
+    loginCliente() {
       this.$api
         .query({
           query: gql`
@@ -46,15 +46,15 @@ export default {
             }
           `,
           variables: {
-            email: this.restaurante.email,
-            senha: this.restaurante.senha
+            email: this.cliente.email,
+            senha: this.cliente.senha
           }
         })
         .then(resultado => {
-          this.dados = resultado.data.loginRestaurante;
-          this.restaurante = {};
+          this.dados = resultado.data.loginCliente;
+          this.cliente = {};
           this.erros = null;
-          this.setrestaurante(this.dados);
+          this.setcliente(this.dados);
         })
         .catch(e => {
           this.erros = e;

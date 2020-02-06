@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt-nodejs')
 const { getRestauranteLogado } = require('../comum/restaurante')
 
 module.exports = {
-    async loginCliente(_, { dados }) {
+    async loginRest(_, { dados }) {
         const restaurante = await db('restaurantes')
             .where({ email: dados.email })
             .first()

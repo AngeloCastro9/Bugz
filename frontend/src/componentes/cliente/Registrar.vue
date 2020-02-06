@@ -74,6 +74,7 @@ export default {
         })
         .catch(e => {
           this.erros = e;
+          console.log(e)
         });
     }
   }

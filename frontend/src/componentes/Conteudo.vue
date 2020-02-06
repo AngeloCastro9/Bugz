@@ -25,9 +25,6 @@
 					<clienteAbas />
 				</v-tab-item>
 
-				<v-tab-item>
-					<clienteAbas />
-				</v-tab-item>
 			</v-tabs>
 		</v-flex>
 	</v-layout>

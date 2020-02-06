@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-tabs
             color="grey lighten-3"
-            slider-color="blue">
+            slider-color="red">
             <v-tab ripple>
                 Registrar
             </v-tab>
