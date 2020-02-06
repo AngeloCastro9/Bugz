@@ -1,6 +1,7 @@
 type Restaurante {
     id: Int
     nome: String!
+    senha: String!
     email: String!
     endereco: String!
     token: String

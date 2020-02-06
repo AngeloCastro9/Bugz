@@ -9,6 +9,7 @@ module.exports = {
             .first()
 
         if(!cliente) {
+            console.log("ihu")
             throw new Error('Cliente/Senha inválido')
         }
 

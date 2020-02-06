@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid style="width: 50%">
     <v-layout>
       <v-flex>
         <v-layout column class="ma-3">
@@ -40,11 +40,8 @@ export default {
           query: gql`
             query($email: String!, $senha: String!) {
               login(dados: { email: $email, senha: $senha }) {
-                id
-                nome
                 email
-                senha
-                token
+                senha           
               }
             }
           `,
@@ -54,14 +51,13 @@ export default {
           }
         })
         .then(resultado => {
-          this.dados = resultado.data.login;
+          this.dados = resultado.data.loginRestaurante;
           this.restaurante = {};
           this.erros = null;
           this.setrestaurante(this.dados);
         })
         .catch(e => {
           this.erros = e;
-          console.log(this.restaurante.senha);
         });
     }
   }

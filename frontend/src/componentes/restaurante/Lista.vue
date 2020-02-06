@@ -49,7 +49,7 @@ export default {
         }
     },
     methods: {
-        obterrestaurantes() {
+        obterRestaurantes() {
             this.$api.query({
                 query: gql`
                     query {

@@ -83,7 +83,7 @@ export default {
         }
     },
     methods: {
-        novorestaurante() {
+        novoRestaurante() {
             this.$api.mutate({
                 mutation: gql`
                     mutation (

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import Registrar from './Registrar'
-import Login from './Login'
+import Registrar from '../restaurante/Registrar'
+import Login from '../restaurante/Login'
 export default {
     components: { Registrar, Login }
 }

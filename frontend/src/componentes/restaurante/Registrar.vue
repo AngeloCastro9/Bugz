@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid>
+    <v-container fluid style="width:50%">
         <v-layout>
             <v-flex>
                 <v-layout column class="ma-3">
@@ -37,6 +37,7 @@ export default {
             restaurante: {},
             dados: null,
             erros: null
+            
         }
     },
     computed: {
@@ -73,10 +74,10 @@ export default {
                 this.dados = resultado.data.registrarRestaurante
                 this.restaurante = {}
                 this.erros = null
-                console.log(this.dados)
             }).catch(e => {
                 this.erros = e
             })
+           
         }
     }
 }

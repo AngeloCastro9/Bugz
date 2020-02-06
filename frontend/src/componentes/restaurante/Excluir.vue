@@ -53,7 +53,7 @@ export default {
         }
     },
     methods: {
-        excluirrestaurante() {
+        excluirRestaurante() {
             this.$api.mutate({
                 mutation: gql`
                     mutation (
