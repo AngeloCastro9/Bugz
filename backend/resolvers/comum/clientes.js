@@ -1,7 +1,7 @@
 const jwt = require('jwt-simple')
 
 module.exports = {
-    async getUsuarioLogado(cliente) {
+    async getClienteLogado(cliente) {
         const agora = Math.floor(Date.now() / 1000)
 
         const clienteInfo = {

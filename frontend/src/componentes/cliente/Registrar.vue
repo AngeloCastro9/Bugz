@@ -8,11 +8,18 @@
           <div v-if="erros">
             <Erros :erros="erros" />
           </div>
-          <v-text-field label="Nome" v-model="cliente.nome" />
-          <v-text-field label="E-mail" v-model="cliente.email" />
-          <v-text-field label="Endereco" v-model="cliente.endereco" />
-          <v-text-field label="Senha" v-model="cliente.senha" type="password" />
-          <v-btn color="primary" class="ml-0 mt-3" @click="registrar">Registrar</v-btn>
+          <v-text-field label="Nome" 
+              v-model="cliente.nome" />
+          <v-text-field label="E-mail"
+              v-model="cliente.email" />
+          <v-text-field label="Endereco"
+              v-model="cliente.endereco" />
+          <v-text-field label="Senha"
+              v-model="cliente.senha" type="password" />
+          <v-btn color="primary" class="ml-0 mt-3"
+              @click="registrar">
+              Registrar
+              </v-btn>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -30,15 +37,16 @@ export default {
       cliente: {},
       dados: null,
       erros: null
-    };
+
+    }
   },
-  computed: {},
+  computed: {
+  },
   methods: {
     registrar() {
-      this.$api
-        .mutate({
+      this.$api.mutate({
           mutation: gql`
-            mutation(
+            mutation (
               $nome: String!
               $email: String!
               $senha: String!
@@ -52,11 +60,7 @@ export default {
                   endereco: $endereco
                 }
               ) {
-                id
-                nome
-                email
-                senha
-                endereco
+                id nome email endereco
               }
             }
           `,
@@ -64,21 +68,19 @@ export default {
             nome: this.cliente.nome,
             email: this.cliente.email,
             senha: this.cliente.senha,
-            endereco: this.cliente.endereco
+            endereco: this.cliente.endereco,
           }
         })
         .then(resultado => {
-          this.dados = resultado.data.registrarCliente;
-          this.cliente = {};
-          this.erros = null;
+          this.dados = resultado.data.registrarCliente
+          this.cliente = {}
+          this.erros = null
+        }).catch(e => {
+          this.erros = e
         })
-        .catch(e => {
-          this.erros = e;
-          console.log(e)
-        });
-    }
+        }
   }
-};
+}
 </script>
 
 <style>

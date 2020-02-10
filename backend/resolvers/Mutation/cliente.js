@@ -4,12 +4,13 @@ const { cliente: obterCliente } = require('../Query/cliente')
 
 const mutations = {
     registrarCliente(_, { dados }) {
+        console.log(dados)
+
         return mutations.novoCliente(_, {
             dados: {
                 nome: dados.nome,
                 email: dados.email,
                 senha: dados.senha,
-                // pagamento: dados.pagamento,
                 endereco: dados.endereco,
             }
         })
