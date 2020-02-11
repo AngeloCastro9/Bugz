@@ -20,6 +20,7 @@
                             @click="registrar">
                             Registrar   
                         </v-btn>
+                        <router-view></router-view>
                 </v-layout>
             </v-flex>          
         </v-layout>
@@ -74,6 +75,7 @@ export default {
                 this.dados = resultado.data.registrarRestaurante
                 this.restaurante = {}
                 this.erros = null
+                window.location.href = 'welcome';
             }).catch(e => {
                 this.erros = e
             })

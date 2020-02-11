@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-tabs
+        <!-- <v-tabs
             color="grey lighten-3"
             slider-color="blue">
             <v-tab ripple>
@@ -14,8 +14,9 @@
             </v-tab-item>
             <v-tab-item>
                 <Login />
-            </v-tab-item>
-        </v-tabs>
+            </v-tab-item>       
+        </v-tabs> -->
+        <router-view></router-view>
     </v-container>
 </template>
 
