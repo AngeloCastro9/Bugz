@@ -51,15 +51,15 @@ export default {
           }
         })
         .then(resultado => {
-          this.dados = resultado.data.loginCliente;
-          this.cliente = {};
-          this.erros = null;
-          this.setcliente(this.dados);
-          window.location.href = 'welcome'
+          this.dados = resultado.data.loginCliente
+          this.cliente = {}
+          this.erros = null
+          this.setcliente(this.dados)
+          window.location.href = '../Pos-login/Home.vue';
         })
         .catch(e => {
-          this.erros = e;
-        });
+          this.erros = e
+        })
     }
   }
 };
