@@ -55,6 +55,7 @@ export default {
           this.cliente = {};
           this.erros = null;
           this.setcliente(this.dados);
+          window.location.href = 'welcome'
         })
         .catch(e => {
           this.erros = e;
