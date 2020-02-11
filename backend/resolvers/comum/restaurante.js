@@ -8,11 +8,11 @@ module.exports = {
             id: restaurante.id,
             nome: restaurante.nome,
             email: restaurante.email,
+            senha: restaurante.senha,
             endereco: restaurante.endereco,
             iat: agora,
             exp: agora + (3 * 24 * 60 * 60)
         }
-
         const token = jwt.encode(restauranteInfo,
             process.env.APP_AUTH_SECRET)
         

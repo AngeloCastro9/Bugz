@@ -9,10 +9,9 @@ module.exports = {
             .first()
 
         if(!restaurante) {
-            console.log("to aqui")
             throw new Error('Restaurante/Senha inválido')
         }
-
+        console.log(dados.senha + "____" + restaurante.senha)
         const saoIguais = bcrypt.compareSync(dados.senha,
             restaurante.senha)
 
