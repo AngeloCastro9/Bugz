@@ -39,7 +39,7 @@ export default {
         .query({
           query: gql`
             query($email: String!, $senha: String!) {
-              login(dados: { email: $email, senha: $senha }) {
+              loginCliente(dados: { email: $email, senha: $senha }) {
                 email
                 senha           
               }

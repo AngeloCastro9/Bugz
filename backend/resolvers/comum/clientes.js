@@ -8,6 +8,7 @@ module.exports = {
             id: cliente.id,
             nome: cliente.nome,
             email: cliente.email,
+            senha: cliente.senha,
             endereco: cliente.endereco,
             iat: agora,
             exp: agora + (3 * 24 * 60 * 60)
