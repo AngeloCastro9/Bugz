@@ -1,4 +1,0 @@
-#import Restaurante from 'Restaurante.graphql'
-#import Cliente from 'Cliente.graphql'
-#import Query from 'Query.graphql'
-#import Mutation from 'Mutation.graphql'
