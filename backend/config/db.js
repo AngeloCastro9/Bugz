@@ -1,2 +1,5 @@
 const config = require('../knexfile.js')
-module.exports = require('knex')(config)
+const knex = require('knex')(config)
+
+knex.migrate.latest([config])
+module.exports = knex
