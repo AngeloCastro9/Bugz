@@ -19,12 +19,16 @@ module.exports = app => {
             existsOrError(user.name, 'Nome não informado')
             existsOrError(user.email, 'E-mail não informado')
             existsOrError(user.endereco, 'Endereço não informado')
-            existsOrError(user.cpf, 'CPF não informado')
             existsOrError(user.password, 'Senha não informada')
             existsOrError(user.confirmPassword, 'Confirmação de Senha inválida')
             equalsOrError(user.password, user.confirmPassword,
                 'Senhas não conferem')
-            existsOrError(user.vegan)
+
+            if(!user.isRestaurant) {
+                existsOrError(user.cpf, 'CPF não informado')
+            } else {
+                existsOrError(user.cnpj, 'CNPJ não informado')
+            }
 
             const userFromDB = await app.db('users')
                 .where({ email: user.email }).first()

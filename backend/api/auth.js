@@ -25,8 +25,10 @@ module.exports = app => {
             email: user.email,
             enderco: user.enderco,
             cpf: user.cpf,
+            cnpj: user.cnpj,
             admin: user.admin,
             vegan: user.vegan,
+            isRestaurante: user.isRestaurante,
             iat: now,
             exp: now + (60 * 60 * 24 * 3)
         }
