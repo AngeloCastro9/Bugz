@@ -7,6 +7,8 @@
       <!-- <div class="isVegan">{{ vegan ? 'true' : 'false' }}</div> -->
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
+      <input v-if="showSignup" v-model="user.endereco" type="text" placeholder="Endereço" />
+      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf" />
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input

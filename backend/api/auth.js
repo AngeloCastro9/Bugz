@@ -23,6 +23,8 @@ module.exports = app => {
             id: user.id,
             name: user.name,
             email: user.email,
+            enderco: user.enderco,
+            cpf: user.cpf,
             admin: user.admin,
             vegan: user.vegan,
             iat: now,
