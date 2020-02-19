@@ -4,7 +4,6 @@
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
       <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
-      <!-- <div class="isVegan">{{ vegan ? 'true' : 'false' }}</div> -->
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
       <input v-if="showSignup" v-model="user.endereco" type="text" placeholder="Endereço" />
@@ -26,11 +25,16 @@
           value="true"
           unchecked-value="false"
         >Você é vegano?</b-form-checkbox>
+      </div>
 
-        <!-- <div>
-          Resposta:
-          <strong>{{ user.vegan }}</strong>
-        </div> -->
+      <div v-if="showSignup">
+        <b-form-checkbox 
+          id="rest"
+          v-model="user.isRestaurant"          
+          name="rest"
+          value="true"
+          unchecked-value="false"
+        >Cadastrar como restaurante</b-form-checkbox>
       </div>
 
       <button v-if="showSignup" @click="signup">Registrar</button>
