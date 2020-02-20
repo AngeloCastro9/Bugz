@@ -7,7 +7,7 @@
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
       <input v-if="showSignup" v-model="user.endereco" type="text" placeholder="Endereço" />
-      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf" />
+      <input v-if="showSignup" v-model="user.cpfCnpj  " type="text" placeholder="cpf" />
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input
@@ -121,7 +121,7 @@ export default {
 }
 
 .auth-modal button {
-  align-self: flex-end;
+  align-self: flex;
   background-color: #2460ae;
   color: #fff;
   padding: 5px 15px;
