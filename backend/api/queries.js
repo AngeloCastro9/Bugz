@@ -7,5 +7,8 @@ module.exports = {
                 WHERE "parentId" = subcategories.id
         )
         SELECT id FROM subcategories
+    `,
+    isRestaurant: `
+    select name from users where is_restaurant = true
     `
 }

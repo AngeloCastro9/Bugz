@@ -89,5 +89,9 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getRestaurant = async (req, res ) => {
+        const restaurant = await app.db.raw(queries.isRestaurant)
+    }
+
     return { save, remove, get, getById, getByCategory }
 }
