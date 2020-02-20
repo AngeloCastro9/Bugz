@@ -24,10 +24,10 @@ module.exports = app => {
             name: user.name,
             email: user.email,
             enderco: user.enderco,
-            cpfCnpj: user.cpfCnpj,
+            cpf_cnpj: user.cpf_cnpj,
             admin: user.admin,
             vegan: user.vegan,
-            isRestaurante: user.isRestaurante,
+            is_restaurant: user.is_restaurant,
             iat: now,
             exp: now + (60 * 60 * 24 * 3)
         }

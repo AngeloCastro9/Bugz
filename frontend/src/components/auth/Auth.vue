@@ -7,7 +7,7 @@
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
       <input v-if="showSignup" v-model="user.endereco" type="text" placeholder="Endereço" />
-      <input v-if="showSignup" v-model="user.cpfCnpj  " type="text" placeholder="cpf" />
+      <input v-if="showSignup" v-model="user.cpf_cnpj  " type="text" placeholder="cpf" />
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input
@@ -30,7 +30,7 @@
       <div v-if="showSignup">
         <b-form-checkbox 
           id="rest"
-          v-model="user.isRestaurant"          
+          v-model="user.is_restaurant"          
           name="rest"
           value="true"
           unchecked-value="false"

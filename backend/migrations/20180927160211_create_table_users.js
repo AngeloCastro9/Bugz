@@ -5,11 +5,11 @@ exports.up = function (knex, Promise) {
         table.string('name').notNull()
         table.string('email').notNull().unique()
         table.string('endereco').notNull()
-        table.string('cpfCnpj').notNull().unique()
+        table.string('cpf_cnpj').notNull().unique()
         table.string('password').notNull()
         table.boolean('admin').notNull().defaultTo(false)
         table.boolean('vegan').notNull().defaultTo(false)
-        table.boolean('isRestaurant').notNull().defaultTo(false)
+        table.boolean('is_restaurant').notNull().defaultTo(false)
     })
 };
 
