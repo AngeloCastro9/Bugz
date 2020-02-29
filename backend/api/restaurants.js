@@ -14,5 +14,12 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { get, getById }
+    const getVeganRestaurants = (req, res) => {
+        app.db('restaurants')
+            .where({ vegan: true })
+            .then(restaurants => res.json({ data: restaurants }))
+            .catch(err => res.status(500).send(err))
+    }
+
+    return { get, getVeganRestaurants }
 }
