@@ -6,6 +6,7 @@
       <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome" />
+      <input v-if="showSignup" v-model="user.description" type="text" placeholder="Descrição" />
       <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
       <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" />
       <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />

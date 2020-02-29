@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
         table.integer('productId').references('id')
             .inTable('products').notNull()
         table.integer('restaurantId').references('id')
-            .inTable('restaurants').notNull()
+            .inTable('users').notNull()
         table.integer('paymentId').references('id')
             .inTable('payment').notNull()
         table.integer('quantity').notNull()

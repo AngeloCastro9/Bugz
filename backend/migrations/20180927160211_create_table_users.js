@@ -4,6 +4,7 @@ exports.up = function (knex, Promise) {
         table.increments('id').primary()
         table.string('name').notNull()
         table.string('email').notNull().unique()
+        table.string('description')
         table.string('street').notNull()
         table.integer('number').notNull()
         table.string('neighborhood').notNull()

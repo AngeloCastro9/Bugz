@@ -50,4 +50,10 @@ module.exports = app => {
     app.route('/stats')
         .all(app.config.passport.authenticate())
         .get(app.api.stat.get)
+
+    app.route('/restaurants')
+        .get(app.api.restaurant.get)
+
+    app.route('/veganRestaurants')
+        .get(app.api.restaurant.getVeganRestaurants)
 }
