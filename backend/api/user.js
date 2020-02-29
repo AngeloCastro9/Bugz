@@ -71,6 +71,13 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getVeganUsers = (req, res) => {
+        app.db('users')
+            .where({ vegan: true })
+            .then(users => res.json({ data: users }))
+            .catch(err => res.status(500).send(err))
+    }
+
     const remove = async (req, res) => {
         try {
             const articles = await app.db('articles')
@@ -88,5 +95,5 @@ module.exports = app => {
         }
     }
 
-    return { save, get, getById, remove }
+    return { save, get, getById, getVeganUsers, remove }
 }
