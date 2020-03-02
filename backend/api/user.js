@@ -80,10 +80,6 @@ module.exports = app => {
 
     const remove = async (req, res) => {
         try {
-            const articles = await app.db('articles')
-                .where({ userId: req.params.id })
-            notExistsOrError(articles, 'Usuário possui artigos.')
-
             const rowsUpdated = await app.db('users')
                 .update({deletedAt: new Date()})
                 .where({ id: req.params.id })

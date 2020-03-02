@@ -8,7 +8,5 @@ module.exports = {
         )
         SELECT id FROM subcategories
     `,
-    isRestaurant: `
-    select name from users where is_restaurant = true
-    `
+
 }
