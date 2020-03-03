@@ -10,13 +10,13 @@
             img-top
             tag="article"
             style="max-width: 20rem; left: 10%"
-            class="mb-2"
+            class="mb-3"
           >
             <b-card-text>{{restaurant.name}}</b-card-text>
             <br />
             <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
             <br />
-            <b-button href="#" variant="primary">Explorar</b-button>
+            <b-button :href="restaurant.id" variant="primary">Explorar</b-button>
           </b-card>
         </div>
       </b-row>
