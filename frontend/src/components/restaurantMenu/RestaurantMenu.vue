@@ -2,6 +2,7 @@
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" />
     <b-container >
+      <h1>{{$route.params.id}}</h1>
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id" >
           <b-card
@@ -16,7 +17,7 @@
             <br />
             <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
             <br />
-            <b-button :href="'/restaurantMenu/' + restaurant.id" variant="primary">Explorar</b-button>
+            <b-button :href="restaurant.id" variant="primary">Explorar</b-button>
           </b-card>
         </div>
       </b-row>
@@ -34,7 +35,7 @@ export default {
   components: { PageTitle },
   data: function() {
     return {
-      restaurants: [],
+      restaurants: []
     };
   },
   methods: {

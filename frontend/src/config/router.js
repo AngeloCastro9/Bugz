@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
+import RestaurantMenu from '@/components/restaurantMenu/RestaurantMenu'
 import AdminPages from '@/components/admin/AdminPages'
 import Auth from '@/components/auth/Auth'
 import { userKey } from '@/global'
@@ -12,6 +13,10 @@ const routes = [{
     name: 'home',
     path: '/',
     component: Home
+}, {
+    name: 'restaurantMenu',
+    path: '/restaurantMenu/:id',
+    component: RestaurantMenu
 }, {
     name: 'adminPages',
     path: '/admin',

@@ -6,11 +6,11 @@
       <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome"/>
-      <input v-if="showSignup" v-model="user.description" type="text" placeholder="Descrição"/>
+      <input v-if="showSignup" v-model="user.description" type="text" placeholder="Descrição" />
       <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
-      <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" @keypress="isNumber($event)"/>
+      <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" />
       <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="user.cpf_cnpj  " type="text" placeholder="cpf/cnpj" @keypress="isNumber($event)"/>
+      <input v-if="showSignup" v-model="user.cpf_cnpj  " type="text" placeholder="cpf/cnpj"/>
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
@@ -54,7 +54,6 @@ export default {
   name: "Auth",
   data: function() {
     return {
-      isChecked: true,
       showSignup: false,
       user: {},
       vegan: false
@@ -80,15 +79,6 @@ export default {
           this.showSignup = false;
         })
         .catch(showError);
-    },
-    isNumber: function(evt) {
-      evt = (evt) ? evt : window.event;
-      var charCode = (evt.which) ? evt.which : evt.keyCode;
-      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-        evt.preventDefault()
-      } else {
-        return true;
-      }
     }
   }
 };
