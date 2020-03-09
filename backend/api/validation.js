@@ -21,8 +21,6 @@ module.exports = app => {
     function notInteger(value, msg) {
         if(value === String) 
             throw msg
-        console.log(value)
-        console.log("ihu")
     }
 
     return { existsOrError, notExistsOrError, equalsOrError, notInteger }
