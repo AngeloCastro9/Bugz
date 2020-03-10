@@ -4,7 +4,7 @@
     <b-container >
       <h1>{{$route.params.id}}</h1>
       <b-row>
-        <div v-for="restaurant in restaurants" v-bind:key="restaurant.id" >
+        <div v-for="product in products" v-bind:key="product.id" >
           <b-card
             img-src="https://picsum.photos/600/300/?image=25"
             img-alt="Image"
@@ -13,11 +13,11 @@
             style="max-width: 20rem; margin: 5%; left: 25%"
             class="mb-3"
           >
-            <b-card-text>{{restaurant.name}}</b-card-text>
+            <b-card-text>{{product.name}}</b-card-text>
             <br />
-            <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
+            <b-card-text>Descrição: {{product.description}}</b-card-text>
             <br />
-            <b-button :href="restaurant.id" variant="primary">Explorar</b-button>
+            <b-button :href="product.id" variant="primary">Explorar</b-button>
           </b-card>
         </div>
       </b-row>
@@ -35,19 +35,19 @@ export default {
   components: { PageTitle },
   data: function() {
     return {
-      restaurants: []
+      products: []
     };
   },
   methods: {
-    getRestaurants() {
-      const url = `${baseApiUrl}/restaurants`;
+    getProductByRestaurant(id) {
+      const url = `${baseApiUrl}/getProductByRestaurant/${this.$route.params.id}`;
       axios.get(url).then(res => {
-        this.restaurants = res.data.data;
+        this.products = res.data.data;
       });
     }
   },
   mounted() {
-    this.getRestaurants();
+    this.getProductByRestaurant();
   }
 };
 </script>

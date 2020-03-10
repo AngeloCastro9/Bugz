@@ -37,4 +37,7 @@ module.exports = app => {
 
     app.route('/veganRestaurants')
         .get(app.api.restaurant.getVeganRestaurants)
+
+    app.route('/getProductByRestaurant/:id')
+        .get(app.api.product.getProductByRestaurant)
 }
