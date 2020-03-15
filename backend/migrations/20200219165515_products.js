@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
         table.string('description').notNull()
         table.double('price').notNull()
         table.integer('restaurantId').references('id')
-            .inTable('users').notNull()
+            .inTable('restaurants').notNull()
         table.boolean('vegan').notNull().defaultTo(false)
         table.integer('rate').defaultTo(0)
         table.integer('numberOfVotes').defaultTo(0)
