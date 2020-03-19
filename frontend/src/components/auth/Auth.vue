@@ -6,11 +6,10 @@
       <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome"/>
-      <input v-if="showSignup" v-model="user.description" type="text" placeholder="Descrição" />
       <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
       <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" />
       <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="user.cpf_cnpj  " type="text" placeholder="cpf/cnpj"/>
+      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf"/>
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
@@ -23,16 +22,6 @@
           value="true"
           unchecked-value="false"
         >Você é vegano?</b-form-checkbox>
-      </div>
-
-      <div v-if="showSignup">
-        <b-form-checkbox 
-          id="rest"
-          v-model="user.is_restaurant"          
-          name="rest"
-          value="true"
-          unchecked-value="false"
-        >Cadastrar como restaurante</b-form-checkbox>
       </div>
 
       <button v-if="showSignup" @click="signup">Registrar</button>
