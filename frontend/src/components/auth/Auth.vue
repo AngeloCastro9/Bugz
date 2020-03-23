@@ -7,9 +7,11 @@
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
-      <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" />
+      <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" 
+      onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf"/>
+      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf"
+      onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
@@ -76,7 +78,7 @@ export default {
 
 <style>
 .auth-content {
-  background-color: rgb(85, 84, 84);
+  background-color: beige;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -84,7 +86,6 @@ export default {
 }
 
 .auth-modal {
-  background-color: gray;
   width: 350px;
   padding: 35px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);

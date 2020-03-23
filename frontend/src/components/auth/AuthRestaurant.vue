@@ -8,9 +8,11 @@
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
       <input v-if="showSignup" v-model="restaurant.street" type="text" placeholder="Rua" />
-      <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" />
+      <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" 
+      onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-if="showSignup" v-model="restaurant.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="cnpj"/>
+      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="cnpj"
+      onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
@@ -77,7 +79,7 @@ export default {
 
 <style>
 .auth-content {
-  background-color: rgb(85, 84, 84);
+  background-color: beige;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -85,7 +87,7 @@ export default {
 }
 
 .auth-modal {
-  background-color: gray;
+  background-color: beige;
   width: 350px;
   padding: 35px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
