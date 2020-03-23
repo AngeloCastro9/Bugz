@@ -68,7 +68,7 @@ export default {
           this.restaurant = {};
           this.showSignup = false;
         })
-        .catch(showError);
+        .catch(showError)
     }
   }
 };

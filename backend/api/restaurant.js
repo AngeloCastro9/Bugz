@@ -1,33 +1,42 @@
+const bcrypt = require('bcrypt-nodejs')
+
 module.exports = app => {
+    const { existsOrError, notExistsOrError, equalsOrError, notInteger } = app.api.validation
+
+    const encryptPassword = password => {
+        const salt = bcrypt.genSaltSync(10)
+        return bcrypt.hashSync(password, salt)
+    }
+
     const save = async (req, res) => {
         const restaurant = { ...req.body }
         if(req.params.id) restaurant.id = req.params.id
-
-        if(!req.originalUrl.startsWith('/restaurants')) restaurant.admin = false
-        if(!req.restaurant || !req.restaurant.admin) restaurant.admin = false
-
+        
         try {
             existsOrError(restaurant.name, 'Nome não informado')
             existsOrError(restaurant.email, 'E-mail não informado')
             existsOrError(restaurant.street, 'Rua não informado')
             existsOrError(restaurant.number, 'Número não informado')
-            notInteger(restaurant.number, "Númmero inválido")
+            // notInteger(restaurant.number, "Númmero inválido")
             existsOrError(restaurant.neighborhood, 'Bairro não informado')
             existsOrError(restaurant.description, 'Descrição não informada')
             existsOrError(restaurant.password, 'Senha não informada')
             existsOrError(restaurant.confirmPassword, 'Confirmação de Senha inválida')
             equalsOrError(restaurant.password, restaurant.confirmPassword,'Senhas não conferem')
-            existsOrError(restaurant.cnpj, 'CNPJ não informados')
-            notInteger(restaurant.cpf, "CNPJ inválido")
+            // existsOrError(restaurant.cnpj, 'CNPJ não informados')
+            // notInteger(restaurant.cpf, "CNPJ inválido")
 
             const restaurantFromDB = await app.db('restaurants')
                 .where({ email: restaurant.email }).first()
+            
             if(!restaurant.id) {
                 notExistsOrError(restaurantFromDB, 'Restaurante já cadastrado')
             }
         } catch(msg) {
+            console.log(msg)
             return res.status(400).send(msg)
         }
+
 
         restaurant.password = encryptPassword(restaurant.password)
         delete restaurant.confirmPassword
@@ -38,12 +47,12 @@ module.exports = app => {
                 .where({ id: restaurant.id })
                 .whereNull('deletedAt')
                 .then(_ => res.status(204).send())
-                .catch(err => res.status(500).send(err))
+                .catch(err => console.log(err))
         } else {
             app.db('restaurants')
                 .insert(restaurant)
                 .then(_ => res.status(204).send())
-                .catch(err => res.status(500).send(err))
+                .catch(err => console.log(err))
         }
     }
 
