@@ -3,7 +3,7 @@ const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
 
 module.exports = app => {
-    const signinRestaurant = async (req, res) => {
+    const signin = async (req, res) => {
         if (!req.body.email || !req.body.password) {
             return res.status(400).send('Informe usuário e senha!')
         }
@@ -26,7 +26,6 @@ module.exports = app => {
             email: restaurant.email,
             street: restaurant.street,
             cnpj: restaurant.cnpj,
-            admin: restaurant.admin,
             vegan: restaurant.vegan,
             iat: now,
             exp: now + (60 * 60 * 24 * 3)
@@ -38,7 +37,7 @@ module.exports = app => {
         })
     }
 
-    const validateTokenRestaurant = async (req, res) => {
+    const validateToken = async (req, res) => {
         const restaurantData = req.body || null
         try {
             if(restaurantData) {
@@ -54,5 +53,5 @@ module.exports = app => {
         res.send(false)
     }
 
-    return { signinRestaurant, validateTokenRestaurant }
+    return { signin, validateToken }
 }
