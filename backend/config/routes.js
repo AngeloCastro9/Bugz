@@ -33,6 +33,7 @@ module.exports = app => {
         .delete(admin(app.api.category.remove))
 
     app.route('/restaurants')
+        .post(app.api.user.save)
         .get(app.api.restaurant.get)
 
     app.route('/veganRestaurants')

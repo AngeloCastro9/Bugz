@@ -1,27 +1,25 @@
 module.exports = app => {
-    const { existsOrError } = app.api.validation
 
-    const limit = 10 // usado para paginação
+    const limit = 10
     const get = async (req, res) => {
 
-        const result = await app.db('users').where({ is_restaurant: true }).count('id').first()
+        const result = await app.db('restaurants').count('id').first()
         const count = parseInt(result.count)
 
-        app.db('users')
+        app.db('restaurants')
             .select('id', 'name', 'description')
-            .where({ is_restaurant: true })
             .limit(limit)
             .then(restaurants => res.json({ data: restaurants, count, limit }))
             .catch(err => res.status(500).send(err))
     }
 
     const getVeganRestaurants = async (req, res) => {
-        const result = await app.db('users').where({ is_restaurant: true, vegan: true }).count('id').first()
+        const result = await app.db('restaurants').where({ vegan: true }).count('id').first()
         const count = parseInt(result.count)
 
-        app.db('users')
-            .select('id', 'name', 'description')
-            .where({ is_restaurant: true, vegan: true })
+        app.db('restaurants')
+            .select('id', 'name', 'description', 'street', 'number', 'neighborhood', 'cnpj')
+            .where({ vegan: true })
             .limit(limit)
             .then(restaurants => res.json({ data: restaurants, count, limit }))
             .catch(err => res.status(500).send(err))
