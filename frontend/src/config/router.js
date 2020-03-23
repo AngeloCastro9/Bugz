@@ -5,6 +5,7 @@ import Home from '@/components/home/Home'
 import RestaurantMenu from '@/components/restaurantMenu/RestaurantMenu'
 import AdminPages from '@/components/admin/AdminPages'
 import Auth from '@/components/auth/Auth'
+import AuthRestaurant from '@/components/auth/AuthRestaurant'
 import { userKey } from '@/global'
 
 Vue.use(VueRouter)
@@ -26,7 +27,12 @@ const routes = [{
     name: 'auth',
     path: '/auth',
     component: Auth
-}]
+},{
+    name: 'authRestaurant',
+    path: '/authRestaurant',
+    component: AuthRestaurant
+}
+]
 
 const router = new VueRouter({
     mode: 'history',
