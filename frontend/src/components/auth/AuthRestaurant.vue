@@ -5,19 +5,19 @@
       <hr />
       <div class="auth-title">{{ showSignup ? 'Cadastro Cliente' : 'Login Cliente' }}</div>
 
-      <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome"/>
-      <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
-      <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" />
-      <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf"/>
-      <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
-      <input v-model="user.password" name="password" type="password" placeholder="Senha" />
-      <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
+      <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
+      <input v-if="showSignup" v-model="restaurant.street" type="text" placeholder="Rua" />
+      <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" />
+      <input v-if="showSignup" v-model="restaurant.neighborhood" type="text" placeholder="Bairro" />
+      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="cpf"/>
+      <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
+      <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
+      <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
       <div v-if="showSignup">
         <b-form-checkbox 
           id="vegan"
-          v-model="user.vegan"
+          v-model="restaurant.vegan"
           name="vegan"
           value="true"
           unchecked-value="false"
