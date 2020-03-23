@@ -10,7 +10,7 @@
       <input v-if="showSignup" v-model="restaurant.street" type="text" placeholder="Rua" />
       <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" />
       <input v-if="showSignup" v-model="restaurant.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="cpf"/>
+      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="cnpj"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
@@ -27,6 +27,7 @@
 
       <button v-if="showSignup" @click="signup">Registrar</button>
       <button v-else @click="signinRestaurant">Entrar</button>
+      <b-button v-if="!showSignup" :href="'/authRestaurant'" variant="primary">Área do cliente</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
