@@ -3,9 +3,10 @@
     <div class="auth-modal">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
-      <div class="auth-title">{{ showSignup ? 'Cadastro Cliente' : 'Login Cliente' }}</div>
+      <div class="auth-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login Restaurante' }}</div>
 
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
+      <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
       <input v-if="showSignup" v-model="restaurant.street" type="text" placeholder="Rua" />
       <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" />
       <input v-if="showSignup" v-model="restaurant.neighborhood" type="text" placeholder="Bairro" />
@@ -25,7 +26,7 @@
       </div>
 
       <button v-if="showSignup" @click="signup">Registrar</button>
-      <button v-else @click="signin">Entrar</button>
+      <button v-else @click="signinRestaurant">Entrar</button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import { baseApiUrl, showError, userKey } from "@/global";
+import { baseApiUrl, showError, restaurantKey } from "@/global";
 import axios from "axios";
 
 export default {
@@ -44,27 +45,27 @@ export default {
   data: function() {
     return {
       showSignup: false,
-      user: {},
+      restaurant: {},
       vegan: false
     };
   },
   methods: {
-    signin() {
+    signinRestaurant() {
       axios
-        .post(`${baseApiUrl}/signin`, this.user)
+        .post(`${baseApiUrl}/signinRestaurant`, this.restaurant)
         .then(res => {
-          this.$store.commit("setUser", res.data);
-          localStorage.setItem(userKey, JSON.stringify(res.data));
+          this.$store.commit("setRestaurant", res.data);
+          localStorage.setItem(restaurantKey, JSON.stringify(res.data));
           this.$router.push({ path: "/" });
         })
         .catch(showError);
     },
     signup() {
       axios
-        .post(`${baseApiUrl}/signup`, this.user)
+        .post(`${baseApiUrl}/signupRestaurant`, this.restaurant)
         .then(() => {
           this.$toasted.global.defaultSuccess();
-          this.user = {};
+          this.restaurant = {};
           this.showSignup = false;
         })
         .catch(showError);
