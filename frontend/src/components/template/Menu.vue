@@ -26,13 +26,13 @@ export default {
             treeData: this.getTreeData(),
             treeOptions: {
                 propertyNames: { 'text': 'name' },
-                filter: { emptyText: 'Categoria não encontrada' }
+                filter: { emptyText: 'Restaurante não encontrado' }
             }
         }
     },
     methods: {
         getTreeData() {
-            const url = `${baseApiUrl}/categories/tree`
+            const url = `${baseApiUrl}/users`
             return axios.get(url).then(res => res.data)
         },
     },

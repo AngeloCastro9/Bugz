@@ -32,8 +32,8 @@
       <b-button v-if="!showSignup" @click="redirectUser" variant="primary">Área do cliente</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
-        <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
-        <span v-else>Não tem cadastro? Registre-se aqui!</span>
+        <span v-if="showSignup" style="color: red">Já tem cadastro? Acesse o Login!</span>
+        <span v-else style="color: red">Não tem cadastro? Registre-se aqui!</span>
       </a>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
         .then(res => {
           this.$store.commit("setRestaurant", res.data);
           localStorage.setItem(restaurantKey, JSON.stringify(res.data));
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/homeRestaurant" });
         })
         .catch(showError);
     },
