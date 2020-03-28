@@ -56,7 +56,7 @@ import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
 
 export default {
-    name: 'UserAdmin',
+    name: 'HomeRestaurant',
     data: function() {
         return {
             mode: 'save',
@@ -108,7 +108,7 @@ export default {
         }
     },
     mounted() {
-        this.loadUsers()
+        // this.loadUsers()
     }
 }
 </script>
