@@ -1,6 +1,6 @@
 <template>
-  <div class="auth-content">
-    <div class="auth-modal">
+  <div class="auth-content" style="background-color: rgb(83, 80, 80)">
+    <div class="auth-modal" style="background-color: rgb(143, 136, 136)">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
       <div class="auth-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login Restaurante' }}</div>

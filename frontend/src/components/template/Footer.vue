@@ -13,8 +13,8 @@ export default {
 <style>
     .footer {
         grid-area: footer;
-        background-color: #DDD;
-        color: #333;
+        background-color:  rgb(83, 80, 80);
+        color: black;
 
         display: flex;
         align-items: center;
