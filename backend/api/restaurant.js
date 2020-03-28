@@ -11,24 +11,24 @@ module.exports = app => {
     const save = async (req, res) => {
         const restaurant = { ...req.body }
         if(req.params.id) restaurant.id = req.params.id
-        
+
         try {
             existsOrError(restaurant.name, 'Nome não informado')
             existsOrError(restaurant.email, 'E-mail não informado')
             existsOrError(restaurant.street, 'Rua não informado')
             existsOrError(restaurant.number, 'Número não informado')
-            // notInteger(restaurant.number, "Númmero inválido")
+            notInteger(restaurant.number, "Númmero inválido")
             existsOrError(restaurant.neighborhood, 'Bairro não informado')
             existsOrError(restaurant.description, 'Descrição não informada')
             existsOrError(restaurant.password, 'Senha não informada')
             existsOrError(restaurant.confirmPassword, 'Confirmação de Senha inválida')
             equalsOrError(restaurant.password, restaurant.confirmPassword,'Senhas não conferem')
-            // existsOrError(restaurant.cnpj, 'CNPJ não informados')
-            // notInteger(restaurant.cpf, "CNPJ inválido")
+            existsOrError(restaurant.cnpj, 'CNPJ não informados')
+            notInteger(restaurant.cpf, "CNPJ inválido")
 
             const restaurantFromDB = await app.db('restaurants')
                 .where({ email: restaurant.email }).first()
-            
+
             if(!restaurant.id) {
                 notExistsOrError(restaurantFromDB, 'Restaurante já cadastrado')
             }
