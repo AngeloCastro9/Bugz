@@ -2,7 +2,6 @@
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" />
     <b-container >
-      <h1>{{$route.params.id}}</h1>
       <b-row>
         <div v-for="product in products" v-bind:key="product.id" >
           <b-card
@@ -39,15 +38,15 @@ export default {
     };
   },
   methods: {
-    getProductByRestaurant(id) {
-      const url = `${baseApiUrl}/getProductByRestaurant/${this.$route.params.id}`;
+    getProductsByRestaurant(id) {
+      const url = `${baseApiUrl}/getProductsByRestaurant/${this.$route.params.id}`;
       axios.get(url).then(res => {
         this.products = res.data.data;
       });
     }
   },
   mounted() {
-    this.getProductByRestaurant();
+    this.getProductsByRestaurant();
   }
 };
 </script>
