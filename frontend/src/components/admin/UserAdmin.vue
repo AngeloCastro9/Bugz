@@ -3,41 +3,27 @@
         <b-form>
             <input id="user-id" type="hidden" v-model="user.id" />
             <b-row>
-                <b-col md="6" sm="12">
-                    <b-form-group label="Nome:" label-for="user-name">
+                <b-col md="4" sm="12">
+                    <b-form-group label="Nome do produto:" label-for="user-name">
                         <b-form-input id="user-name" type="text"
                             v-model="user.name" required
                             :readonly="mode === 'remove'"
-                            placeholder="Informe o Nome do Usuário..." />
+                            placeholder="Informe o Nome do Produto..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group label="E-mail:" label-for="user-email">
+                    <b-form-group label="Descrição" label-for="user-email">
                         <b-form-input id="user-email" type="text"
                             v-model="user.email" required
                             :readonly="mode === 'remove'"
-                            placeholder="Informe o E-mail do Usuário..." />
+                            placeholder="Informe a descrição do produto..." />
                     </b-form-group>
                 </b-col>
-            </b-row>
-            <b-form-checkbox id="user-admin" v-show="mode === 'save'"
-                v-model="user.admin" class="mt-3 mb-3">
-                Administrador?
-            </b-form-checkbox>
-            <b-row v-show="mode === 'save'">
-                <b-col md="6" sm="12">
-                    <b-form-group label="Senha:" label-for="user-password">
+                 <b-col md="1" sm="12">
+                    <b-form-group label="Preço:" label-for="user-password">
                         <b-form-input id="user-password" type="password"
                             v-model="user.password" required
-                            placeholder="Informe a Senha do Usuário..." />
-                    </b-form-group>
-                </b-col>
-                <b-col md="6" sm="12">
-                    <b-form-group label="Confirmação de Senha:" 
-                        label-for="user-confirm-password">
-                        <b-form-input id="user-confirm-password" type="password"
-                            v-model="user.confirmPassword" required
-                            placeholder="Confirme a Senha do Usuário..." />
+                            placeholder="Preço" />
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -77,10 +63,9 @@ export default {
             user: {},
             users: [],
             fields: [
-                { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Nome', sortable: true },
-                { key: 'email', label: 'E-mail', sortable: true },
-                { key: 'admin', label: 'Administrador', sortable: true,
+                { key: 'descriprion', label: 'Descrição', sortable: true },
+                { key: 'price', label: 'Preço', sortable: true,
                     formatter: value => value ? 'Sim' : 'Não' },
                 { key: 'actions', label: 'Ações' }
             ]

@@ -16,7 +16,7 @@
             <br />
             <b-card-text>Descrição: {{product.description}}</b-card-text>
             <br />
-            <b-button :href="product.id" variant="primary">Explorar</b-button>
+            <b-button variant="primary">Adicionar ao carrinho</b-button>
           </b-card>
         </div>
       </b-row>
