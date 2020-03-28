@@ -1,6 +1,6 @@
 <template >
   <div class="home">
-    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" />
+    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white"/>
     <b-container >
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id" >
