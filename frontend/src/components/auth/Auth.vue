@@ -1,6 +1,6 @@
 <template>
-  <div class="auth-content">
-    <div class="auth-modal">
+  <div class="auth-content" style="background-color: rgb(83, 80, 80)">
+    <div class="auth-modal" style="background-color: rgb(143, 136, 136)">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
       <div class="auth-title">{{ showSignup ? 'Cadastro Cliente' : 'Login Cliente' }}</div>
@@ -26,9 +26,9 @@
         >Você é vegano?</b-form-checkbox>
       </div>
 
-      <button v-if="showSignup" @click="signup">Registrar</button>
-      <button v-else @click="signin">Entrar</button>
-      <b-button v-if="!showSignup" :href="'/authRestaurant'" variant="primary">Área do restaurante</b-button>
+      <b-button v-if="showSignup" @click="signup" variant="primary">Registrar</b-button>
+      <b-button v-else @click="signin" variant="primary">Entrar</b-button>
+      <b-button v-if="!showSignup" @click="redirectRestaurant" variant="primary">Área do restaurante</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
@@ -71,6 +71,9 @@ export default {
           this.showSignup = false;
         })
         .catch(showError);
+    },
+      redirectRestaurant() {
+        this.$router.push({name: 'authRestaurant'})
     }
   }
 };
@@ -78,7 +81,6 @@ export default {
 
 <style>
 .auth-content {
-  background-color: beige;
   height: 100%;
   display: flex;
   justify-content: center;

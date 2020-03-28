@@ -37,11 +37,10 @@ export default {
 			const userData = JSON.parse(json)
 			this.$store.commit('setUser', null)
 
-			// if(!userData) {
-			// 	this.validatingToken = false
-			// 	this.$router.push({ name: 'auth' })
-			// 	return
-			// }
+			if(!userData) {
+				this.validatingToken = false
+				this.$router.push({ name: 'auth' })
+			} 
 
 			const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
 
