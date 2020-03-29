@@ -4,7 +4,7 @@
             <input id="user-id" type="hidden" v-model="user.id" />
             <b-row>
                 <b-col md="4" sm="12">
-                    <b-form-group label="Nome do produto:" label-for="user-name">
+                    <b-form-group label="Nome do produto:" label-for="user-name" style="color: white">
                         <b-form-input id="user-name" type="text"
                             v-model="user.name" required
                             :readonly="mode === 'remove'"
@@ -12,7 +12,7 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group label="Descrição" label-for="user-email">
+                    <b-form-group label="Descrição" label-for="user-email" style="color: white">
                         <b-form-input id="user-email" type="text"
                             v-model="user.email" required
                             :readonly="mode === 'remove'"
@@ -20,7 +20,7 @@
                     </b-form-group>
                 </b-col>
                  <b-col md="1" sm="12">
-                    <b-form-group label="Preço:" label-for="user-password">
+                    <b-form-group label="Preço:" label-for="user-password" style="color: white">
                         <b-form-input id="user-password" type="password"
                             v-model="user.password" required
                             placeholder="Preço" />
@@ -64,7 +64,7 @@ export default {
             users: [],
             fields: [
                 { key: 'name', label: 'Nome', sortable: true },
-                { key: 'descriprion', label: 'Descrição', sortable: true },
+                { key: 'descriprion', label: 'Descrição', sortable: true},
                 { key: 'price', label: 'Preço', sortable: true,
                     formatter: value => value ? 'Sim' : 'Não' },
                 { key: 'actions', label: 'Ações' }
