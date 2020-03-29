@@ -3,10 +3,9 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
 import RestaurantMenu from '@/components/restaurantMenu/RestaurantMenu'
-import AdminPages from '@/components/admin/AdminPages'
 import Auth from '@/components/auth/Auth'
 import AuthRestaurant from '@/components/auth/AuthRestaurant'
-import HomeRestaurant from '@/components/admin/HomeRestaurant'
+import HomeRestaurant from '@/components/restaurant/HomeRestaurant'
 import { userKey } from '@/global'
 
 Vue.use(VueRouter)
@@ -19,12 +18,14 @@ const routes = [{
     name: 'restaurantMenu',
     path: '/restaurantMenu/:id',
     component: RestaurantMenu
-}, {
-    name: 'adminPages',
-    path: '/admin',
-    component: AdminPages,
-    meta: { requiresAdmin: true }
-}, {
+},
+// {
+//     name: 'adminPages',
+//     path: '/admin',
+//     component: AdminPages,
+//     meta: { requiresAdmin: true }
+// },
+{
     name: 'auth',
     path: '/auth',
     component: Auth

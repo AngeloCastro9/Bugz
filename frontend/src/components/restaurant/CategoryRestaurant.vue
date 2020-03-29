@@ -42,7 +42,7 @@ import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
 
 export default {
-    name: 'CategoryAdmin',
+    name: 'CategoryRestaurant',
     data: function() {
         return {
             mode: 'save',
@@ -96,7 +96,7 @@ export default {
         }
     },
     mounted() {
-        this.loadCategories()
+        // this.loadCategories()
     }
 }
 </script>
