@@ -1,28 +1,35 @@
 <template>
-    <div class="user-admin">
+    <div class="product-admin">
         <b-form>
-            <input id="user-id" type="hidden" v-model="user.id" />
+            <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
                 <b-col md="4" sm="12">
-                    <b-form-group label="Nome do produto:" label-for="user-name" style="color: white">
-                        <b-form-input id="user-name" type="text"
-                            v-model="user.name" required
+                    <b-form-group label="Nome do produto:" label-for="product-name" style="color: white">
+                        <b-form-input id="product-name" type="text"
+                            v-model="product.name" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe o Nome do Produto..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group label="Descrição" label-for="user-email" style="color: white">
-                        <b-form-input id="user-email" type="text"
-                            v-model="user.email" required
+                    <b-form-group label="Descrição" label-for="product-description" style="color: white">
+                        <b-form-input id="product-description" type="text"
+                            v-model="product.description" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe a descrição do produto..." />
                     </b-form-group>
                 </b-col>
-                 <b-col md="1" sm="12">
-                    <b-form-group label="Preço:" label-for="user-password" style="color: white">
-                        <b-form-input id="user-password" type="password"
-                            v-model="user.password" required
+                <b-col md="1" sm="12">
+                    <b-form-group label="Vegano:" label-for="product-vegan" style="color: white">
+                        <b-form-input id="product-vegan" type="text"
+                            v-model="product.vegan" required
+                            placeholder="Vegano" />
+                    </b-form-group>
+                </b-col>
+                <b-col md="1" sm="12">
+                    <b-form-group label="Preço:" label-for="product-price" style="color: white">
+                        <b-form-input id="product-price" type="text"
+                            v-model="product.price" required
                             placeholder="Preço" />
                     </b-form-group>
                 </b-col>
@@ -38,12 +45,12 @@
             </b-row>
         </b-form>
         <hr>
-        <b-table hover striped :items="users" :fields="fields">
+        <b-table hover striped :items="products" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
+                <b-button variant="warning" @click="loadProduct(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="danger" @click="loadUser(data.item, 'remove')">
+                <b-button variant="danger" @click="loadProduct(data.item, 'remove')">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -60,33 +67,34 @@ export default {
     data: function() {
         return {
             mode: 'save',
-            user: {},
-            users: [],
+            product: {},
+            products: [],
             fields: [
                 { key: 'name', label: 'Nome', sortable: true },
                 { key: 'descriprion', label: 'Descrição', sortable: true},
-                { key: 'price', label: 'Preço', sortable: true,
+                { key: 'price', label: 'Preço', sortable: true},
+                { key: 'vegan', label: 'Vegano', sortable: true,
                     formatter: value => value ? 'Sim' : 'Não' },
                 { key: 'actions', label: 'Ações' }
             ]
         }
     },
     methods: {
-        loadUsers() {
-            const url = `${baseApiUrl}/users`
+        loadProducts() {
+            const url = `${baseApiUrl}/products`
             axios.get(url).then(res => {
-                this.users = res.data
+                this.products = res.data
             })
         },
         reset() {
             this.mode = 'save'
-            this.user = {}
-            this.loadUsers()
+            this.product = {}
+            this.loadProducts()
         },
         save() {
-            const method = this.user.id ? 'put' : 'post'
-            const id = this.user.id ? `/${this.user.id}` : ''
-            axios[method](`${baseApiUrl}/users${id}`, this.user)
+            const method = this.product.id ? 'put' : 'post'
+            const id = this.product.id ? `/${this.product.id}` : ''
+            axios[method](`${baseApiUrl}/products${id}`, this.product)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
@@ -94,21 +102,21 @@ export default {
                 .catch(showError)
         },
         remove() {
-            const id = this.user.id
-            axios.delete(`${baseApiUrl}/users/${id}`)
+            const id = this.product.id
+            axios.delete(`${baseApiUrl}/products/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
                 })
                 .catch(showError)
         },
-        loadUser(user, mode = 'save') {
+        loadProduct(product, mode = 'save') {
             this.mode = mode
-            this.user = { ...user }
+            this.product = { ...product }
         }
     },
     mounted() {
-        // this.loadUsers()
+        this.loadProducts()
     }
 }
 </script>
