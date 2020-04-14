@@ -3,11 +3,11 @@ const admin = require('./admin')
 module.exports = app => {
     app.post('/signup', app.api.user.save)
     app.post('/signin', app.api.auth.signin)
-    app.post('/validateToken', app.api.auth.validateToken)
     
     app.post('/signupRestaurant', app.api.restaurant.save)
     app.post('/signinRestaurant', app.api.authRestaurant.signin)
-    app.post('/validateTokenRestaurant', app.api.authRestaurant.validateToken)
+    
+    app.post('/validateToken', app.api.auth.validateToken)
 
     app.route('/users')
         .all(app.config.passport.authenticate())
