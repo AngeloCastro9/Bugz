@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
 export const userKey = '__knowledge_user'
-export const restaurantKey = '__knowledge_restaurant'
 export const baseApiUrl = 'http://localhost:4000'
 
 export function showError(e) {
@@ -14,4 +13,4 @@ export function showError(e) {
     }
 }
 
-export default { baseApiUrl, showError, restaurantKey }
+export default { baseApiUrl, showError, userKey }

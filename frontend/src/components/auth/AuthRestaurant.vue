@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { baseApiUrl, showError, restaurantKey } from "@/global";
+import { baseApiUrl, showError, userKey } from "@/global";
 import axios from "axios";
 
 export default {
@@ -57,8 +57,8 @@ export default {
       axios
         .post(`${baseApiUrl}/signinRestaurant`, this.restaurant)
         .then(res => {
-          this.$store.commit("setRestaurant", res.data);
-          localStorage.setItem(restaurantKey, JSON.stringify(res.data));
+          this.$store.commit("setUser", res.data);
+          localStorage.setItem(userKey, JSON.stringify(res.data));
           this.$router.push({ path: "/homeRestaurant" });
         })
         .catch(showError);
