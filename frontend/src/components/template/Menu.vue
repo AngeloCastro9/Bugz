@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         getTreeData() {
-            const url = `${baseApiUrl}/users`
+            const url = `${baseApiUrl}/categories/tree`
             return axios.get(url).then(res => res.data)
         },
     },
