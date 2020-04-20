@@ -33,7 +33,6 @@ module.exports = app => {
                 notExistsOrError(restaurantFromDB, 'Restaurante já cadastrado')
             }
         } catch(msg) {
-            console.log(msg)
             return res.status(400).send(msg)
         }
 
@@ -47,12 +46,12 @@ module.exports = app => {
                 .where({ id: restaurant.id })
                 .whereNull('deletedAt')
                 .then(_ => res.status(204).send())
-                .catch(err => console.log(err))
+                .catch(err => res.status(500).send(err))
         } else {
             app.db('restaurants')
                 .insert(restaurant)
                 .then(_ => res.status(204).send())
-                .catch(err => console.log(err))
+                .catch(err => res.status(500).send(err))
         }
     }
 

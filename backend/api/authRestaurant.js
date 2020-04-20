@@ -37,21 +37,5 @@ module.exports = app => {
         })
     }
 
-    const validateToken = async (req, res) => {
-        const restaurantData = req.body || null
-        try {
-            if(restaurantData) {
-                const token = jwt.decode(restaurantData.token, authSecret)
-                if(new Date(token.exp * 1000) > new Date()) {
-                    return res.send(true)
-                }
-            }
-        } catch(e) {
-            // problema com o token
-        }
-
-        res.send(false)
-    }
-
-    return { signin, validateToken }
+    return { signin }
 }

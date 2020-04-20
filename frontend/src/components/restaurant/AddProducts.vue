@@ -20,19 +20,25 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
-                    <b-form-group label="Vegano:" label-for="product-vegan" style="color: white">
-                        <b-form-input id="product-vegan" type="text"
-                            v-model="product.vegan" required
-                            placeholder="Vegano" />
-                    </b-form-group>
-                </b-col>
-                <b-col md="1" sm="12">
                     <b-form-group label="Preço:" label-for="product-price" style="color: white">
                         <b-form-input id="product-price" type="text"
                             v-model="product.price" required
                             placeholder="Preço" />
                     </b-form-group>
                 </b-col>
+                <b-col md="1" sm="12">
+                    <b-form-group label="Vegano:" label-for="product-vegan" style="color: white">
+                        <b-form-checkbox
+                            id="vegan"
+                            class="vegan"
+                            v-model="product.vegan"
+                            name="vegan"
+                            unchecked-value="false">
+                            Vegano
+                        </b-form-checkbox>
+                    </b-form-group>
+                </b-col>
+
             </b-row>
             <b-row>
                 <b-col xs="12">
@@ -61,9 +67,11 @@
 <script>
 import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
     name: 'AddProducts',
+    computed: mapState(['user']),
     data: function() {
         return {
             mode: 'save',
@@ -71,7 +79,7 @@ export default {
             products: [],
             fields: [
                 { key: 'name', label: 'Nome', sortable: true },
-                { key: 'descriprion', label: 'Descrição', sortable: true},
+                { key: 'description', label: 'Descrição', sortable: true},
                 { key: 'price', label: 'Preço', sortable: true},
                 { key: 'vegan', label: 'Vegano', sortable: true,
                     formatter: value => value ? 'Sim' : 'Não' },
@@ -94,7 +102,7 @@ export default {
         save() {
             const method = this.product.id ? 'put' : 'post'
             const id = this.product.id ? `/${this.product.id}` : ''
-            axios[method](`${baseApiUrl}/products${id}`, this.product)
+            axios[method](`${baseApiUrl}/products${id}`, {...this.product, restaurantId: this.user.id})
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
@@ -122,5 +130,8 @@ export default {
 </script>
 
 <style>
-
+    .vegan {
+        color: black;
+        vertical-align: sub;
+    }
 </style>
