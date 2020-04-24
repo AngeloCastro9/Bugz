@@ -3,7 +3,7 @@ const consign = require('consign')
 const db = require('./config/db')
 
 app.db = db
-
+app.use(cors())
 consign()
     .include('./config/passport.js')
     .then('./config/middlewares.js')
@@ -11,7 +11,6 @@ consign()
     .then('./api')
     .then('./config/routes.js')
     .into(app)
-    app.use(cors())
 
 app.listen(4000, () => {
     console.log('Backend executando...')
