@@ -11,6 +11,7 @@ consign()
     .then('./api')
     .then('./config/routes.js')
     .into(app)
+    app.use(cors())
 
 app.listen(4000, () => {
     console.log('Backend executando...')
