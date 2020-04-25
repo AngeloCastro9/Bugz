@@ -1,6 +1,6 @@
 const app = require('express')()
-const consign = require('consign')
-const db = require('./config/db')
+//const consign = require('consign')
+//const db = require('./config/db')
 const cors = require('cors');
 
 //app.db = db
