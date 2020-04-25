@@ -16,6 +16,6 @@ app.get('/teste', (req, res) => {
     return res.send('testado');
 })
 
-app.listen( () => {
+app.listen(3333, () => {
     console.log('Backend executando...')
 })
