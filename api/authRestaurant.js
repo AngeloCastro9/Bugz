@@ -1,4 +1,4 @@
-const { authSecret } = require('../.env')
+require('dotenv').config();
 const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
 
@@ -33,7 +33,7 @@ module.exports = app => {
 
         res.json({
             ...payload,
-            token: jwt.encode(payload, authSecret)
+            token: jwt.encode(payload, process.env.secret)
         })
     }
 
@@ -41,7 +41,7 @@ module.exports = app => {
         const restaurantData = req.body || null
         try {
             if(restaurantData) {
-                const token = jwt.decode(restaurantData.token, authSecret)
+                const token = jwt.decode(restaurantData.token, process.env.secret)
                 if(new Date(token.exp * 1000) > new Date()) {
                     return res.send(true)
                 }
