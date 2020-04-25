@@ -1,4 +1,3 @@
-//const { DATABASE_URL } = require('./.env')
 require('dotenv').config();
 
 module.exports = {
