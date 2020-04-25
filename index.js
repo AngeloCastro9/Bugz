@@ -12,6 +12,9 @@ consign()
     .then('./api')
     .then('./config/routes.js')
     .into(app)
+app.get('/teste', (req, res) => {
+    return res.send('testado');
+})
 
 app.listen( () => {
     console.log('Backend executando...')
