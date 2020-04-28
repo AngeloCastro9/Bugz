@@ -21,7 +21,7 @@
             </b-card>
           </div>
           <div v-else>
-            <p>IHU</p>
+            <p>Nenhum restaurante disponível :(</p>
           </div>
         </div>
       </b-row>
