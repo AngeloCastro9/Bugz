@@ -1,23 +1,28 @@
 <template >
   <div class="home">
-    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white"/>
-    <b-container >
+    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white" />
+    <b-container>
       <b-row>
-        <div v-for="restaurant in restaurants" v-bind:key="restaurant.id" >
-          <b-card
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 20rem; margin: 5%; left: 25%"
-            class="mb-3"
-          >
-            <b-card-text>{{restaurant.name}}</b-card-text>
-            <br />
-            <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
-            <br />
-            <b-button :href="'/restaurantMenu/' + restaurant.id" variant="primary">Explorar</b-button>
-          </b-card>
+        <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
+          <div v-if="restaurant > 1">
+            <b-card
+              img-src="https://picsum.photos/600/300/?image=25"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="max-width: 20rem; margin: 5%; left: 25%"
+              class="mb-3"
+            >
+              <b-card-text>{{restaurant.name}}</b-card-text>
+              <br />
+              <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
+              <br />
+              <b-button :href="'/restaurantMenu/' + restaurant.id" variant="primary">Explorar</b-button>
+            </b-card>
+          </div>
+          <div v-else>
+            <p>IHU</p>
+          </div>
         </div>
       </b-row>
     </b-container>
@@ -34,7 +39,7 @@ export default {
   components: { PageTitle },
   data: function() {
     return {
-      restaurants: [],
+      restaurants: []
     };
   },
   methods: {
