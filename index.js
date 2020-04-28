@@ -7,4 +7,4 @@ app.get('/teste', (req, res) =>{
     return res.send('Funcionando');
 })
 
-app.listen('3333');
+app.listen(process.env.PORT || 3001)
