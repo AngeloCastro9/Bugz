@@ -12,13 +12,7 @@ module.exports = app => {
             existsOrError(product.description, 'Descrição não informada')
             existsOrError(product.price, 'Preço não informado')
             existsOrError(product.restaurantId, 'Restaurante inválido')
-            existsOrError(product.vegan, 'É preciso informar se o produto é ou não vegano')
 
-            const productFromDB = await app.db('products')
-                .where({ id: product.id }).first()
-            if(!product.id) {
-                notExistsOrError(productFromDB, 'Produto já cadastrado')
-            }
         } catch(msg) {
             return res.status(400).send(msg)
         }
