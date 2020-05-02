@@ -68,7 +68,6 @@
 import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
 import { mapState } from 'vuex'
-
 export default {
     name: 'AddProducts',
     computed: mapState(['user']),

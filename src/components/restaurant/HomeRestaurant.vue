@@ -22,7 +22,6 @@ import PageTitle from '../template/PageTitle'
 import CategoryRestaurant from './CategoryRestaurant'
 import AddProducts from './AddProducts'
 import { mapState } from 'vuex'
-
 export default {
     name: 'HomeRestaurant',
     components: { PageTitle, CategoryRestaurant, AddProducts },
@@ -31,5 +30,4 @@ export default {
 </script>
 
 <style>
-
 </style>
