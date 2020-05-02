@@ -4,7 +4,7 @@
     <b-container>
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
-          <div v-if="restaurant > 1">
+          <!-- <div v-if="restaurant > 1"> -->
             <b-card
               img-src="https://picsum.photos/600/300/?image=25"
               img-alt="Image"
@@ -19,10 +19,10 @@
               <br />
               <b-button :href="'/restaurantMenu/' + restaurant.id" variant="primary">Explorar</b-button>
             </b-card>
-          </div>
-          <div v-else>
+          <!-- </div> -->
+          <!-- <div v-else>
             <p>Nenhum restaurante disponível :(</p>
-          </div>
+          </div> -->
         </div>
       </b-row>
     </b-container>
