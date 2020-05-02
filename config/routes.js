@@ -27,7 +27,7 @@ module.exports = app => {
 
     // Cuidado com ordem! Tem que vir antes de /categories/:id
     app.route('/categories/tree')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.category.getTree)
 
     app.route('/categories/:id')
