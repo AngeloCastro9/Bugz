@@ -6,27 +6,55 @@
         <h1 class="title">
             <router-link to="/">{{ title }}</router-link>
         </h1>
+        <div id="app">
+    <button
+      type="button"
+      class="btn"
+      @click="showModal"
+    >
+      Open Modal!
+    </button>
+
+    <modal
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
+  </div>
         <UserDropdown v-if="!hideUserDropdown" />
     </header>
 </template>
 
+
 <script>
 import UserDropdown from './UserDropdown'
+import Shop from './Shop'
 
 export default {
     name: 'Header',
-    components: { UserDropdown },
+    components: { UserDropdown, Shop },
     props: {
         title: String,
         hideToggle: Boolean,
-        hideUserDropdown: Boolean
+        hideUserDropdown: Boolean,
+        
     },
     computed: {
         icon() {
             return this.$store.state.isMenuVisible ? "fa-angle-left" : "fa-angle-down"
         }
     },
+    data () {
+      return {
+        isModalVisible: false,
+      }
+    },
     methods: {
+        showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      },
         toggleMenu() {
             this.$store.commit('toggleMenu')
         }

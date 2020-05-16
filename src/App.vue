@@ -1,12 +1,12 @@
 <template>
 	<div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
-		<Header title="Bugz" 
+		<Header title="Bugz"
 			:hideToggle="!user"
 			:hideUserDropdown="!user" />
 		<Menu v-if="user" />
 		<Loading v-if="validatingToken" />
 		<Content v-else />
-		<Footer />
+		<Footer />		
 	</div>
 </template>
 
@@ -63,7 +63,6 @@ export default {
 	}
 }
 </script>
-
 <style>
 	* {
 		font-family: "Lato", sans-serif;
