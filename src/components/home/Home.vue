@@ -2,8 +2,8 @@
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white" />
     <b-container>
+      <Product/>
       <b-row>
-        <Product>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
           <!-- <div v-if="restaurant > 1"> -->
             <b-card
