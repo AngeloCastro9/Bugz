@@ -16,7 +16,7 @@
             >
               <b-card-text>{{restaurant.name}}</b-card-text>
               <br />
-              <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
+              <b-card-text>Descriçã: {{restaurant.description}}</b-card-text>
               <br />
               <b-button :href="'/restaurantMenu/' + restaurant.id" variant="primary">Explorar</b-button>
             </b-card>
