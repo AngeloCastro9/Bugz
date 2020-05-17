@@ -17,7 +17,7 @@
             <td>{{product.description}}</td>
             <td>${{product.price}}</td>
             <td><button @click='addToCart(product)' class='button is-info'>Add to cart</button></td>
-          <!-- </tr> -->
+          </tr>
         </tbody>
     </table>
   </div>
