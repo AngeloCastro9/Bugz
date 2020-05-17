@@ -3,6 +3,7 @@
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white" />
     <b-container>
       <b-row>
+        <Product>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
           <!-- <div v-if="restaurant > 1"> -->
             <b-card
@@ -32,6 +33,7 @@
 <script>
 import axios from "axios";
 import PageTitle from "../template/PageTitle";
+import Product from "../template/Product";
 import { baseApiUrl } from "@/global";
 
 export default {
