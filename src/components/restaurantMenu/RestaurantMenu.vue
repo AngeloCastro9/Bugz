@@ -1,9 +1,9 @@
 <template >
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" />
-    <b-container >
+    <b-container>
       <b-row>
-        <div v-for="product in products" v-bind:key="product.id" >
+        <div v-for="product in products" v-bind:key="product.id">
           <b-card
             img-src="https://picsum.photos/600/300/?image=25"
             img-alt="Image"
@@ -16,7 +16,7 @@
             <br />
             <b-card-text>Descrição: {{product.description}}</b-card-text>
             <br />
-            <b-button variant="primary">Adicionar ao carrinho</b-button>
+            <b-button @click="addToCart(product)" variant="primary">Adicionar ao carrinho</b-button>
           </b-card>
         </div>
       </b-row>
@@ -27,6 +27,7 @@
 <script>
 import axios from "axios";
 import PageTitle from "../template/PageTitle";
+import { mapMutations } from "vuex";
 import { baseApiUrl } from "@/global";
 
 export default {
@@ -38,7 +39,8 @@ export default {
     };
   },
   methods: {
-    getProductsByRestaurant(id) {
+    ...mapMutations(["addToCart"]),
+    getProductsByRestaurant() {
       const url = `${baseApiUrl}/getProductsByRestaurant/${this.$route.params.id}`;
       axios.get(url).then(res => {
         this.products = res.data.data;

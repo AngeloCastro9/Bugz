@@ -6,6 +6,7 @@ import RestaurantMenu from '@/components/restaurantMenu/RestaurantMenu'
 import Auth from '@/components/auth/Auth'
 import AuthRestaurant from '@/components/auth/AuthRestaurant'
 import HomeRestaurant from '@/components/restaurant/HomeRestaurant'
+import Cart from '@/components/template/Cart'
 import { userKey } from '@/global'
 
 Vue.use(VueRouter)
@@ -37,7 +38,11 @@ const routes = [{
     name: 'homeRestaurant',
     path: '/homeRestaurant',
     component: HomeRestaurant
-}
+},
+  { 
+    name: 'cart',
+    path: '/cart',
+    component: Cart }
 ]
 
 const router = new VueRouter({
