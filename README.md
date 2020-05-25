@@ -10,4 +10,4 @@ Look the branch backend and frontend.
 
 ## how to access the site?
 
-https://bugzfrontend.herokuapp.com/auth
+https://bugzfood.herokuapp.com/auth
