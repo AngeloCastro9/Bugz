@@ -7,7 +7,7 @@
       <br />
       <router-link to="/">Voltar às compras.</router-link>
     </p>
-    <table class="table is-striped" v-show="products.length" style="color: white">4
+    <table class="table is-striped" v-show="products.length" style="color: white">
       <thead>
         <tr>
           <td>Nome</td>
@@ -33,7 +33,7 @@
       </tbody>
     </table>
     <p>
-      <b-button v-show="products.length" class="button is-primary" variant="primary" @click="checkout">Checkout</b-button>
+      <b-button v-show="products.length" class="button is-primary" variant="primary" @click="checkout">Finalizar Pedido </b-button>
     </p>
   </div>
 </template>

@@ -10,7 +10,7 @@
       <input v-if="showSignup" v-model="user.number" type="text" placeholder="Número" 
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="cpf"
+      <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="CPF"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
