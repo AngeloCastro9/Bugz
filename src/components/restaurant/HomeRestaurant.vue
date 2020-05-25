@@ -1,7 +1,7 @@
 <template>
     <div class="admin-pages">
         <PageTitle icon="fa fa-cogs" v-bind:main="'Administração do Restaurante ' + user.name"
-            sub="Cadastros & Cia" />
+            sub="Cadastros & Cia" style="color: white" />
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>

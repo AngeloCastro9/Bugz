@@ -1,11 +1,11 @@
 <template >
   <div class="home">
-    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" />
+    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color : white" />
     <b-container>
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">
           <b-card
-            img-src="https://picsum.photos/600/300/?image=25"
+            img-src="https://cdn.pixabay.com/photo/2017/12/10/14/47/piza-3010062_960_720.jpg"
             img-alt="Image"
             img-top
             tag="article"
