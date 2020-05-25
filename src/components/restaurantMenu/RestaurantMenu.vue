@@ -16,6 +16,8 @@
             <br />
             <b-card-text>Descrição: {{product.description}}</b-card-text>
             <br />
+            <b-card-text>Preço: {{product.price}}</b-card-text>
+            <br />
             <b-button @click="addToCart(product)" variant="primary">Adicionar ao carrinho</b-button>
           </b-card>
         </div>
