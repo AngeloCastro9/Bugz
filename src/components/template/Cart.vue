@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     checkout() {
-      alert("Pague-nos R$" + this.total);
+      alert("Quando o pedido chegar, pague R$" + this.total);
     }
   }
 };
