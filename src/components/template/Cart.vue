@@ -1,12 +1,12 @@
 <template>
-  <div class="cart">
+  <div class="cart" style="color: white">
     <h1>Seu carrinho</h1>
     <p v-show="!products.length">
       <i>Seu carrinho está vazio!</i>
       <br />
       <router-link to="/">Voltar às compras.</router-link>
     </p>
-    <table class="table is-striped" v-show="products.length">
+    <table class="table is-striped" v-show="products.length" style="color: white">
       <thead>
         <tr>
           <td>Nome</td>
@@ -32,7 +32,7 @@
       </tbody>
     </table>
     <p>
-      <button v-show="products.length" class="button is-primary" @click="checkout">Checkout</button>
+      <b-button v-show="products.length" class="button is-primary" variant="primary" @click="checkout">Checkout</b-button>
     </p>
   </div>
 </template>
