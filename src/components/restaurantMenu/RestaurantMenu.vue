@@ -2,6 +2,7 @@
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color : white" />
     <b-container>
+      <b-button to="/" variant="primary" style="left : 50px">Voltar</b-button>
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">
           <b-card
