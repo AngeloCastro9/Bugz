@@ -1,12 +1,10 @@
 <template>
-  <div class="cart">
+  <div class="cart" style="color: white">
     <h1>Seu carrinho</h1>
     <p v-show="!products.length">
       <i>Seu carrinho está vazio!</i>
-      <br />
-      <router-link to="/">Voltar às compras.</router-link>
     </p>
-    <table class="table is-striped" v-show="products.length">
+    <table class="table is-striped" v-show="products.length" style="color: white">
       <thead>
         <tr>
           <td>Nome</td>
@@ -32,8 +30,14 @@
       </tbody>
     </table>
     <p>
-      <button v-show="products.length" class="button is-primary" @click="checkout">Checkout</button>
+      <b-button
+        v-show="products.length"
+        class="button is-primary"
+        variant="primary"
+        @click="checkout"
+      >Finalizar Pedido</b-button>
     </p>
+    <b-button to="/" variant="primary">Voltar</b-button>
   </div>
 </template>
 
@@ -52,7 +56,7 @@ export default {
   },
   methods: {
     checkout() {
-      alert("Pague-nos R$" + this.total);
+      alert("Quando o pedido chegar, pague R$" + this.total);
     }
   }
 };

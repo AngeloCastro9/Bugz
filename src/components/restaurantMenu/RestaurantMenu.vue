@@ -1,11 +1,12 @@
 <template >
   <div class="home">
-    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" />
+    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color : white" />
     <b-container>
+      <b-button to="/" variant="primary" style="left : 50px">Voltar</b-button>
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">
           <b-card
-            img-src="https://picsum.photos/600/300/?image=25"
+            img-src="https://cdn.pixabay.com/photo/2017/12/10/14/47/piza-3010062_960_720.jpg"
             img-alt="Image"
             img-top
             tag="article"
@@ -15,6 +16,8 @@
             <b-card-text>{{product.name}}</b-card-text>
             <br />
             <b-card-text>Descrição: {{product.description}}</b-card-text>
+            <br />
+            <b-card-text>Preço: {{product.price}}</b-card-text>
             <br />
             <b-button @click="addToCart(product)" variant="primary">Adicionar ao carrinho</b-button>
           </b-card>

@@ -11,7 +11,7 @@
       <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" 
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-if="showSignup" v-model="restaurant.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="cnpj"
+      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
