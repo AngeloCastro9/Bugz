@@ -29,7 +29,7 @@
                 <b-col md="1" sm="12">
                     <b-form-group label="Url Da imagem:" label-for="product-url" style="color: white">
                         <b-form-input id="product-url" type="text"
-                            v-model="product.urlImage" required
+                            v-model="product.urlimage" required
                             placeholder="Url da imagem do produto" />
                     </b-form-group>
                 </b-col>

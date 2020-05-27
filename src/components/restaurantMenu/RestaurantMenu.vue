@@ -6,7 +6,7 @@
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">
           <b-card
-            :img-src="product.urlImage"
+            :img-src="product.urlimage"
             img-alt="Image"
             img-top
             tag="article"
