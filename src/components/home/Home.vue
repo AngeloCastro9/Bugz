@@ -5,7 +5,7 @@
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
             <b-card
-              :src="restaurant.urlImage"
+              :img-src="restaurant.urlImage"
               img-alt="Image"
               img-top
               tag="article"
