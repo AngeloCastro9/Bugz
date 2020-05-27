@@ -24,6 +24,7 @@ module.exports = app => {
             existsOrError(restaurant.confirmPassword, 'Confirmação de Senha inválida')
             equalsOrError(restaurant.password, restaurant.confirmPassword,'Senhas não conferem')
             existsOrError(restaurant.cnpj, 'CNPJ não informados')
+            existsOrError(restaurant.urlImage, 'Url da imagem não informada.')
             notInteger(restaurant.cpf, "CNPJ inválido")
 
             const restaurantFromDB = await app.db('restaurants')
@@ -73,7 +74,7 @@ module.exports = app => {
         const count = parseInt(result.count)
 
         app.db('restaurants')
-            .select('id', 'name', 'description', 'street', 'number', 'neighborhood', 'cnpj')
+            .select('id', 'name', 'description', 'street', 'number', 'neighborhood', 'cnpj', 'urlImage')
             .where({ vegan: true })
             .limit(limit)
             .then(restaurants => res.json({ data: restaurants, count, limit }))
