@@ -16,7 +16,11 @@
         <tr v-for="product in products" v-bind:key="product.id">
           <td>{{product.name}}</td>
           <td>R${{product.price}}</td>
-          <td>{{product.quantity}}</td>
+          <td>
+            <i class="increase-decrease fa fa-minus-circle" @click="removeFromCart(product)"></i>
+            {{product.quantity}}
+            <i class="increase-decrease fa fa-plus-circle" @click="addToCart(product)"></i>
+          </td>
         </tr>
         <tr>
           <td>
@@ -42,7 +46,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   computed: {
     ...mapGetters({
@@ -55,9 +59,17 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["addToCart", "removeFromCart"]),
     checkout() {
       alert("Quando o pedido chegar, pague R$" + this.total);
     }
   }
 };
 </script>
+
+<style>
+  .increase-decrease {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+</style>
