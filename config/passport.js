@@ -10,7 +10,9 @@ module.exports = app => {
     }
 
     const strategy = new Strategy(params, (payload, done) => {
-        app.db('users')
+        let typeOfUser = payload.hasOwnProperty("cpf") ? "users" : "restaurants"
+
+        app.db(typeOfUser)
             .where({ id: payload.id })
             .first()
             .then(user => done(null, user ? { ...payload } : false))

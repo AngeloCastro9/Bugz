@@ -1,7 +1,13 @@
 # Bugz
 
-Características:
-Bugs é uma aplicação web de compra e venda de comidas
-Dispõe de um espaço para o consumidor e um outro para os restaurantes!
+Project setup
 
-a
+>npm install
+
+Compiles and hot-reloads for development
+
+>npm start
+
+Compiles and minifies for production
+
+>npm run build
