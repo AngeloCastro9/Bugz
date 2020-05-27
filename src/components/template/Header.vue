@@ -6,11 +6,6 @@
     <h1 class="title">
       <router-link to="/">{{title}}</router-link>
     </h1>
-    <!-- <div id="app">
-      <button type="button" class="btn" @click="showModal">Open Modal!</button>
-
-      <modal v-show="isModalVisible" @close="closeModal" />
-    </div>-->
 
     <template v-if="user && user.hasOwnProperty('cpf')">
       <div class="cart-option">
@@ -33,11 +28,10 @@
 <script>
 import { mapState } from 'vuex'
 import UserDropdown from "./UserDropdown";
-import Shop from "./Shop";
 
 export default {
   name: "Header",
-  components: { UserDropdown, Shop },
+  components: { UserDropdown },
   props: {
     title: String,
     hideToggle: Boolean,

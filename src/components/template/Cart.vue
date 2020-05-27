@@ -17,9 +17,9 @@
           <td>{{product.name}}</td>
           <td>R${{product.price}}</td>
           <td>
-            <button class=" fa fa-minus-circle" @click="removeFromCart(product)"/>
-            <span class="quantity">{{product.quantity}}</span>
-            <button class="fa fa-plus-circle" v-on:click="addToCart(product)"/>
+            <b-button class="increase-decrease-button fa fa-minus-circle" @click="removeFromCart(product)"/>
+            {{product.quantity}}
+            <b-button class="increase-decrease-button fa fa-plus-circle" v-on:click="addToCart(product)"/>
           </td>
         </tr>
         <tr>
@@ -33,20 +33,36 @@
         </tr>
       </tbody>
     </table>
+
     <p>
       <b-button
         v-show="products.length"
         class="button is-primary"
-        variant="primary"
-        @click="checkout"
+        variant="success"
+        v-b-modal.modal-2
       >Finalizar pedido</b-button>
     </p>
+
     <b-button to="/" variant="primary">Voltar</b-button>
+
+    <div>
+      <b-modal id="modal-2" ref='modalConfirmation' size="lg" centered hide-footer scrollable title="Estamos quase lá! Só confirma abaixo :)">
+        <p class="my-4">Testando dados</p>
+        <b-button class="mt-2" variant="outline-success" block v-b-modal.modal-multi-receipt>Confirmar</b-button>
+        <b-button class="mt-3" variant="outline-danger" block @click="hide('modalConfirmation')">Cancelar</b-button>
+      </b-modal>
+
+      <b-modal id="modal-multi-receipt" centered title="Tudo pronto! 😁" ok-only>
+        <p class="my-2">Tudo pronto</p>
+      </b-modal>
+    </div>
+
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+
 export default {
   computed: {
     ...mapGetters({
@@ -60,20 +76,15 @@ export default {
   },
   methods: {
     ...mapMutations(["addToCart", "removeFromCart"]),
-    checkout() {
-      alert("Quando o pedido chegar, pague R$" + this.total);
+    hide(modalName) {
+      this.$refs[modalName].hide()
     }
   }
 };
 </script>
 
 <style>
-  .quantity {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
-
-  button {
+  .increase-decrease-button {
     color: white;
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -81,5 +92,13 @@ export default {
     cursor:pointer;
     overflow: hidden;
     outline:none;
+  }
+
+  .modal-header {
+    color: #4AAE9B;
+  }
+
+  .modal-body {
+    color: black;
   }
 </style>
