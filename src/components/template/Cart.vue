@@ -9,7 +9,7 @@
         <tr>
           <td>Nome</td>
           <td>Preço</td>
-          <td>quantidade</td>
+          <td>Quantidade</td>
         </tr>
       </thead>
       <tbody>
@@ -17,9 +17,9 @@
           <td>{{product.name}}</td>
           <td>R${{product.price}}</td>
           <td>
-            <i class="increase-decrease fa fa-minus-circle" @click="removeFromCart(product)"></i>
-            {{product.quantity}}
-            <i class="increase-decrease fa fa-plus-circle" @click="addToCart(product)"></i>
+            <button class=" fa fa-minus-circle" @click="removeFromCart(product)"/>
+            <span class="quantity">{{product.quantity}}</span>
+            <button class="fa fa-plus-circle" v-on:click="addToCart(product)"/>
           </td>
         </tr>
         <tr>
@@ -39,7 +39,7 @@
         class="button is-primary"
         variant="primary"
         @click="checkout"
-      >Finalizar Pedido</b-button>
+      >Finalizar pedido</b-button>
     </p>
     <b-button to="/" variant="primary">Voltar</b-button>
   </div>
@@ -68,8 +68,18 @@ export default {
 </script>
 
 <style>
-  .increase-decrease {
+  .quantity {
     margin-left: 8px;
     margin-right: 8px;
+  }
+
+  button {
+    color: white;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
   }
 </style>
