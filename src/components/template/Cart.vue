@@ -9,14 +9,18 @@
         <tr>
           <td>Nome</td>
           <td>Preço</td>
-          <td>quantidade</td>
+          <td>Quantidade</td>
         </tr>
       </thead>
       <tbody>
         <tr v-for="product in products" v-bind:key="product.id">
           <td>{{product.name}}</td>
           <td>R${{product.price}}</td>
-          <td>{{product.quantity}}</td>
+          <td>
+            <button class=" fa fa-minus-circle" @click="removeFromCart(product)"/>
+            <span class="quantity">{{product.quantity}}</span>
+            <button class="fa fa-plus-circle" v-on:click="addToCart(product)"/>
+          </td>
         </tr>
         <tr>
           <td>
@@ -35,14 +39,14 @@
         class="button is-primary"
         variant="primary"
         @click="checkout"
-      >Finalizar Pedido</b-button>
+      >Finalizar pedido</b-button>
     </p>
     <b-button to="/" variant="primary">Voltar</b-button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   computed: {
     ...mapGetters({
@@ -55,9 +59,27 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["addToCart", "removeFromCart"]),
     checkout() {
       alert("Quando o pedido chegar, pague R$" + this.total);
     }
   }
 };
 </script>
+
+<style>
+  .quantity {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  button {
+    color: white;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+  }
+</style>

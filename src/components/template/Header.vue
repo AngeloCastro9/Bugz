@@ -12,16 +12,18 @@
       <modal v-show="isModalVisible" @close="closeModal" />
     </div>-->
 
-    <div class="cart-option">
-      <div :class="{ 'active-bottom-border': $route.name === 'cart' }">
-        <router-link to="/cart">
-          <span>
-            <i class="cart-icon fa fa-shopping-cart"></i>
-          </span>
-          <span class="cart-title">Meu carrinho ({{itemsInCart}})</span>
-        </router-link>
+    <template v-if="user && user.hasOwnProperty('cpf')">
+      <div class="cart-option">
+        <div :class="{ 'active-bottom-border': $route.name === 'cart' }">
+          <router-link to="/cart">
+            <span>
+              <i class="cart-icon fa fa-shopping-cart"></i>
+            </span>
+            <span class="cart-title">Meu carrinho ({{itemsInCart}})</span>
+          </router-link>
+        </div>
       </div>
-    </div>
+    </template>
 
     <UserDropdown v-if="!hideUserDropdown" />
   </header>
@@ -29,6 +31,7 @@
 
 
 <script>
+import { mapState } from 'vuex'
 import UserDropdown from "./UserDropdown";
 import Shop from "./Shop";
 
@@ -41,6 +44,7 @@ export default {
     hideUserDropdown: Boolean
   },
   computed: {
+    ...mapState(['user']),
     icon() {
       return this.$store.state.isMenuVisible
         ? "fa-angle-left"

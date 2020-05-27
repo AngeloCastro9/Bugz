@@ -16,6 +16,7 @@ export default new Vuex.Store({
         cartProducts: state => {
             const productsResult = state.savedCartProducts.map(product => {
                 return {
+                    id: product.id,
                     name: product.name,
                     description: product.description,
                     price: product.price,
@@ -48,15 +49,26 @@ export default new Vuex.Store({
                 // state.isMenuVisible = false
             }
         },
-        addToCart(state, product) {
-            const record = state.savedCartProducts.find(newProduct => newProduct.id === product.id)
+        addToCart(state, newProduct) {
+            const record = state.savedCartProducts.find(product => product.id === newProduct.id)
             if (!record) {
                 state.savedCartProducts.push({
-                ...product,
+                ...newProduct,
                 quantity: 1
                 })
             } else {
                 record.quantity++
+            }
+        },
+        removeFromCart(state, existingProduct) {
+            const record = state.savedCartProducts.find(product => product.id === existingProduct.id)
+            if (record) {
+                if( record.quantity > 1)
+                    record.quantity--
+                else {
+                    const index = state.savedCartProducts.indexOf(record)
+                    state.savedCartProducts.splice(index, 1)
+                }
             }
         }
     }
