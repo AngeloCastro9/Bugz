@@ -14,6 +14,7 @@
       <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
+      <input v-if="showSignup" v-model="restaurant.urlimage" name="urlimage" type="text" placeholder="Url da imagem do seu restaurante" />
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
@@ -29,7 +30,7 @@
 
       <b-button v-if="showSignup" @click="signup" variant="primary">Registrar</b-button>
       <b-button v-else @click="signinRestaurant" variant="primary">Entrar</b-button>
-      <b-button v-if="!showSignup" @click="redirectUser" variant="primary">Área do cliente</b-button>
+      <b-button v-if="!showSignup" @click="redirectUser" variant="primary" style="margin-top : 10px">Área do cliente</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup" style="color: red">Já tem cadastro? Acesse o Login!</span>

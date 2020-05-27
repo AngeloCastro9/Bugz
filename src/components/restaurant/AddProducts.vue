@@ -11,7 +11,7 @@
                             placeholder="Informe o Nome do Produto..." />
                     </b-form-group>
                 </b-col>
-                <b-col md="6" sm="12">
+                <b-col md="5" sm="12">
                     <b-form-group label="Descrição" label-for="product-description" style="color: white">
                         <b-form-input id="product-description" type="text"
                             v-model="product.description" required
@@ -24,6 +24,13 @@
                         <b-form-input id="product-price" type="text"
                             v-model="product.price" required
                             placeholder="Preço" />
+                    </b-form-group>
+                </b-col>
+                <b-col md="1" sm="12">
+                    <b-form-group label="Url Da imagem:" label-for="product-url" style="color: white">
+                        <b-form-input id="product-url" type="text"
+                            v-model="product.urlimage" required
+                            placeholder="Url da imagem do produto" />
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
