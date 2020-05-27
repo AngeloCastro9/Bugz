@@ -12,6 +12,7 @@ module.exports = app => {
             existsOrError(product.description, 'Descrição não informada')
             existsOrError(product.price, 'Preço não informado')
             existsOrError(product.restaurantId, 'Restaurante inválido')
+            existsOrError(product.urlImage, 'Url da imagem inválido')
 
         } catch(msg) {
             return res.status(400).send(msg)
