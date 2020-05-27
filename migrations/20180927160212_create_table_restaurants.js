@@ -11,7 +11,7 @@ exports.up = function (knex, Promise) {
         table.string('cnpj').notNull().unique()
         table.string('password').notNull()
         table.boolean('vegan').notNull().defaultTo(false)
-        table.string('urlImage').notNull()
+        table.string('urlimage').notNull()
     })
 };
 
