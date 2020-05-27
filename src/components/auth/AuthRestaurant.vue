@@ -14,6 +14,7 @@
       <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
+      <input v-if="showSignup" v-model="restaurant.urlImage" name="urlImage" type="text" placeholder="Url da imagem do seu restaurante" />
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 

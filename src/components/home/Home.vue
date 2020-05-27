@@ -6,7 +6,7 @@
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
           <!-- <div v-if="restaurant > 1"> -->
             <b-card
-              img-src="https://cdn.pixabay.com/photo/2017/12/10/14/47/piza-3010062_960_720.jpg"
+              :src="restaurant.urlImage"
               img-alt="Image"
               img-top
               tag="article"
