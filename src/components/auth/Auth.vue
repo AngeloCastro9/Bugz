@@ -28,7 +28,8 @@
 
       <b-button v-if="showSignup" @click="signup" variant="primary">Registrar</b-button>
       <b-button v-else @click="signin" variant="primary">Entrar</b-button>
-      <b-button v-if="!showSignup" @click="redirectRestaurant" variant="primary">Área do restaurante</b-button>
+      
+      <b-button v-if="!showSignup" @click="redirectRestaurant" variant="primary" style="margin-top : 10px">Área do restaurante</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup" style="color: red">Já tem cadastro? Acesse o Login!</span>
