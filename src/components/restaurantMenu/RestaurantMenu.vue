@@ -6,11 +6,11 @@
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">
           <b-card
-            :img-src="product.urlimage"
-            img-alt="Image"
+            :img-src="product.urlimage"            
+            :img-alt="product.name"
             img-top
-            tag="article"
-            style="max-width: 20rem; margin: 5%; left: 25%"
+            img-height="210px"
+            style="max-width: 20rem; margin: 5%; left: 25%;" 
             class="mb-3"
           >
             <b-card-text>{{product.name}}</b-card-text>

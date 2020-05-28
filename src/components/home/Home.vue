@@ -8,8 +8,9 @@
               :img-src="restaurant.urlimage"
               img-alt="Image"
               img-top
+              img-height="210px"
               tag="article"
-              style="max-width: 20rem; margin: 5%; left: 25%"
+              style="max-width: 20rem; margin: 5%; left: 25%; max-height: 50rem"
               class="mb-3"
             >
               <b-card-text>{{restaurant.name}}</b-card-text>
