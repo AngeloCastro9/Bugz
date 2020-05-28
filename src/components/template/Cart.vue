@@ -40,23 +40,25 @@
         v-show="products.length"
         class="button is-primary"
         variant="success"
-        v-b-modal.modal-2
+        v-b-modal.modal-mult-confirmation
       >Finalizar pedido</b-button>
     </p>
 
     <div>
-      <b-modal id="modal-2" ref='modalConfirmation' size="lg" centered hide-footer
+      <b-modal id="modal-mult-confirmation" size="lg" centered hide-footer
+        no-stacking
         scrollable
         title="Estamos quase lá! Só confirme abaixo :)">
         <b-table hover :items="products" :fields="fields"></b-table>
         <b>O total da sua compra é R$ {{total}}</b>
         <b-button class="mt-2" variant="outline-success" block v-b-modal.modal-multi-receipt>Confirmar</b-button>
-        <b-button class="mt-3" variant="outline-danger" block @click="hide('modalConfirmation')">Cancelar</b-button>
+        <b-button class="mt-3" variant="outline-danger" block>Cancelar</b-button>
       </b-modal>
 
       <b-modal id="modal-multi-receipt" ref="receiptModal" size="lg" centered 
         title="Tudo pronto! Abaixo está o resumo da sua compra 😁"
-        ok-only @ok="handleOk">
+        ok-only
+        @ok="handleOk"> 
         <b>Logo você receberá em casa os seguintes produtos:</b>
         <b-table striped hover :items="resumeProductList"></b-table>
       </b-modal>
@@ -85,9 +87,10 @@ export default {
       products: "cartProducts"
     }),
     total() {
-      return this.products.reduce((total, product) => {
-        return (total + product.price * product.quantity).toFixed(2);
+      const result = this.products.reduce((total, product) => {
+        return total + product.price * product.quantity;
       }, 0);
+      return result.toFixed(2) 
     }
   },
   methods: {
