@@ -12,9 +12,9 @@
             style="max-width: 20rem; margin: 5%; left: 25%;" 
             class="mb-3"
           >
-            <b-card-text>{{product.name}}</b-card-text>
+            <b-card-text><b>{{product.name}}</b></b-card-text>
             <br />
-            <b-card-text>{{product.description}}</b-card-text>
+            <b-card-text><b>Descrição:</b> {{product.description}}</b-card-text>
             <br />
             <b-card-text>R$ {{product.price.toFixed(2)}}</b-card-text>
             <br />

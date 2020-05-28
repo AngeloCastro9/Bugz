@@ -13,9 +13,9 @@
               style="max-width: 20rem; margin: 5%; left: 25%; max-height: 50rem"
               class="mb-3"
             >
-              <b-card-text>{{restaurant.name}}</b-card-text>
+              <b-card-text><b>{{restaurant.name}}</b></b-card-text>
               <br />
-              <b-card-text>Descrição: {{restaurant.description}}</b-card-text>
+              <b-card-text><b>Descrição:</b> {{restaurant.description}}</b-card-text>
               <br />
               <b-button :href="'/restaurantMenu/' + restaurant.id" variant="primary">Explorar</b-button>
             </b-card>
