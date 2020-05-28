@@ -13,11 +13,8 @@
             class="mb-3"
           >
             <b-card-text><b>{{product.name}}</b></b-card-text>
-            <br />
             <b-card-text><b>Descrição:</b> {{product.description}}</b-card-text>
-            <br />
             <b-card-text>R$ {{product.price.toFixed(2)}}</b-card-text>
-            <br />
             <b-button @click="addToCart(product)" variant="primary">Adicionar ao carrinho</b-button>
           </b-card>
         </div>
