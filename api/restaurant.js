@@ -10,7 +10,7 @@ module.exports = app => {
 
     const save = async (req, res) => {
         const restaurant = { ...req.body }
-        if(req.params.id) restaurant.id = req.params.id
+        if (req.params.id) restaurant.id = req.params.id
 
         try {
             existsOrError(restaurant.name, 'Nome não informado')
@@ -22,7 +22,7 @@ module.exports = app => {
             existsOrError(restaurant.description, 'Descrição não informada')
             existsOrError(restaurant.password, 'Senha não informada')
             existsOrError(restaurant.confirmPassword, 'Confirmação de Senha inválida')
-            equalsOrError(restaurant.password, restaurant.confirmPassword,'Senhas não conferem')
+            equalsOrError(restaurant.password, restaurant.confirmPassword, 'Senhas não conferem')
             existsOrError(restaurant.cnpj, 'CNPJ não informados')
             existsOrError(restaurant.urlimage, 'Url da imagem não informada.')
             notInteger(restaurant.cpf, "CNPJ inválido")
@@ -30,10 +30,10 @@ module.exports = app => {
             const restaurantFromDB = await app.db('restaurants')
                 .where({ email: restaurant.email }).first()
 
-            if(!restaurant.id) {
+            if (!restaurant.id) {
                 notExistsOrError(restaurantFromDB, 'Restaurante já cadastrado')
             }
-        } catch(msg) {
+        } catch (msg) {
             return res.status(400).send(msg)
         }
 
@@ -41,7 +41,7 @@ module.exports = app => {
         restaurant.password = encryptPassword(restaurant.password)
         delete restaurant.confirmPassword
 
-        if(restaurant.id) {
+        if (restaurant.id) {
             app.db('restaurants')
                 .update(restaurant)
                 .where({ id: restaurant.id })
@@ -63,7 +63,7 @@ module.exports = app => {
         const count = parseInt(result.count)
 
         app.db('restaurants')
-            .select('id', 'name', 'description')
+            .select('id', 'name', 'description', 'street', 'number', 'neighborhood', 'cnpj', 'urlimage')
             .limit(limit)
             .then(restaurants => res.json({ data: restaurants, count, limit }))
             .catch(err => res.status(500).send(err))

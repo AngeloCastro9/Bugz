@@ -5,13 +5,13 @@ exports.up = function (knex, Promise) {
         table.string('name').notNull()
         table.string('email').notNull().unique()
         table.string('description')
+        table.string('urlimage').notNull()
         table.string('street').notNull()
         table.integer('number').notNull()
         table.string('neighborhood').notNull()
         table.string('cnpj').notNull().unique()
         table.string('password').notNull()
-        table.boolean('vegan').notNull().defaultTo(false)
-        table.string('urlimage').notNull()
+        table.boolean('vegan').notNull().defaultTo(false)        
     })
 };
 
