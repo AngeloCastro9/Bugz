@@ -95,9 +95,10 @@ export default {
     },
     methods: {
         loadProducts() {
-            const url = `${baseApiUrl}/products`
+            const id = this.user.id
+            const url = `${baseApiUrl}/getProductsByRestaurant/${id}`
             axios.get(url).then(res => {
-                this.products = res.data
+                this.products = res.data.data
             })
         },
         reset() {

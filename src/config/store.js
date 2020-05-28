@@ -60,6 +60,10 @@ export default new Vuex.Store({
                 record.quantity++
             }
         },
+        cleanCart(state) {
+            state.savedCartProducts = []
+        }
+        ,
         removeFromCart(state, existingProduct) {
             const record = state.savedCartProducts.find(product => product.id === existingProduct.id)
             if (record) {

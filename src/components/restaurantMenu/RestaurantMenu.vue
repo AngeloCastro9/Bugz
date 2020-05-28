@@ -2,7 +2,6 @@
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color : white" />
     <b-container>
-      <b-button to="/" variant="primary" style="left : 50px">Voltar</b-button>
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">
           <b-card
@@ -15,9 +14,9 @@
           >
             <b-card-text>{{product.name}}</b-card-text>
             <br />
-            <b-card-text>Descrição: {{product.description}}</b-card-text>
+            <b-card-text>{{product.description}}</b-card-text>
             <br />
-            <b-card-text>Preço: {{product.price}}</b-card-text>
+            <b-card-text>R$ {{product.price.toFixed(2)}}</b-card-text>
             <br />
             <b-button @click="addToCart(product)" variant="primary">Adicionar ao carrinho</b-button>
           </b-card>
