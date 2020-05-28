@@ -1,8 +1,11 @@
 <template>
   <header class="header">
-    <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
-      <i class="fa fa-lg" :class="icon"></i>
+    <a class="toggle" @click="$router.go(-1)">
+      <i class="fa fa-lg fa-angle-left"></i>
     </a>
+    <!-- <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
+      <i class="fa fa-lg" :class="icon"></i>
+    </a> -->
     <h1 class="title">
       <router-link to="/">{{title}}</router-link>
     </h1>
