@@ -9,7 +9,7 @@
             :img-alt="product.name"
             img-top
             img-height="210px"
-            style="max-width: 20rem; margin: 5%; left: 25%;" 
+            style="max-width: 20rem; margin: 5%; left: 30%; min-width: 17rem" 
             class="mb-3"
           >
             <b-card-text><b>{{product.name}}</b></b-card-text>

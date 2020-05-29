@@ -10,7 +10,7 @@
               img-top
               img-height="210px"
               tag="article"
-              style="max-width: 20rem; margin: 5%; left: 25%; max-height: 50rem"
+              style="max-width: 20rem; margin: 5%; left: 25%; max-height: 50rem; min-width: 17rem"
               class="mb-3"
             >
               <b-card-text><b>{{restaurant.name}}</b></b-card-text>
