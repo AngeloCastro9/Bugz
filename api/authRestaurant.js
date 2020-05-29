@@ -27,7 +27,7 @@ module.exports = app => {
             street: restaurant.street,
             cnpj: restaurant.cnpj,
             vegan: restaurant.vegan,
-            url: restaurant.urlImage,
+            url: restaurant.urlimage,
             iat: now,
             exp: now + (60 * 60 * 24 * 3)
         }
