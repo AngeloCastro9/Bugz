@@ -3,7 +3,7 @@
         <b-form>
             <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
-                <b-col md="4" sm="12">
+                <b-col md="3" sm="12">
                     <b-form-group label="Nome do produto:" label-for="product-name" style="color: white">
                         <b-form-input id="product-name" type="text"
                             v-model="product.name" required
@@ -26,11 +26,11 @@
                             placeholder="Preço" />
                     </b-form-group>
                 </b-col>
-                <b-col md="1" sm="12">
-                    <b-form-group label="Url Da imagem:" label-for="product-url" style="color: white">
+                <b-col md="2" sm="12">
+                    <b-form-group label="Selecione a imagem do seu produto:" label-for="product-url" style="color: black">
                         <!-- <b-form-input id="product-url" type="text"
                             v-model="product.urlimage" required
-                            placeholder="Url da imagem do produto" /> -->
+                            placeholder="Url da imagem do produto" /> -->                        
                         <input type="file" @change="onFileSelected" name="bugzUploadedFile" accept="image/*">
                         <!-- <button @click="onUpload">Enviar</button> -->
                     </b-form-group>

@@ -4,7 +4,7 @@
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
       <div class="auth-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login Restaurante' }}</div>
-
+      <b v-if="showSignup">Selecione abaixo a imagem do seu restaurante:</b>
       <input v-if="showSignup" type="file" @change="onFileSelected" name="bugzUploadedFile" placeholder="Url da imagem do seu restaurante" accept="image/*">
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>

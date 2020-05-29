@@ -8,9 +8,6 @@
                     <b-tab title="Produtos">
                         <AddProducts />
                     </b-tab>
-                    <b-tab title="Categorias">
-                        <CategoryRestaurant />
-                    </b-tab>
                 </b-tabs>
             </b-card>
         </div>
