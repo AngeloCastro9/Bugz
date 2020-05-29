@@ -54,4 +54,7 @@ module.exports = app => {
 
     app.route('/getProductsByRestaurant/:id')
         .get(app.api.product.getProductsByRestaurant)
+
+    app.route('/uploadFile')
+        .post(app.api.utils.uploadFile)
 }
