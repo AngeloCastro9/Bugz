@@ -58,7 +58,7 @@
       <b-modal id="modal-multi-receipt" ref="receiptModal" size="lg" centered 
         title="Tudo pronto! Abaixo está o resumo da sua compra 😁"
         ok-only
-        @ok="handleOk"> 
+        @ok="cleanCart"> 
         <b>Logo você receberá em casa os seguintes produtos:</b>
         <b-table striped hover :items="resumeProductList"></b-table>
       </b-modal>
@@ -105,10 +105,7 @@ export default {
           valor: `R$ ${product.price}`
         }
       })
-    },
-    handleOk() {
-        this.cleanCart()
-    },
+    }
   }
 };
 </script>

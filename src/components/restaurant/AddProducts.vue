@@ -28,9 +28,11 @@
                 </b-col>
                 <b-col md="1" sm="12">
                     <b-form-group label="Url Da imagem:" label-for="product-url" style="color: white">
-                        <b-form-input id="product-url" type="text"
+                        <!-- <b-form-input id="product-url" type="text"
                             v-model="product.urlimage" required
-                            placeholder="Url da imagem do produto" />
+                            placeholder="Url da imagem do produto" /> -->
+                        <input type="file" @change="onFileSelected" name="bugzUploadedFile" accept="image/*">
+                        <!-- <button @click="onUpload">Enviar</button> -->
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
@@ -72,7 +74,7 @@
 </template>
 
 <script>
-import { baseApiUrl, showError } from '@/global'
+import { baseApiUrl, showError, uploadFile } from '@/global'
 import axios from 'axios'
 import { mapState } from 'vuex'
 export default {
@@ -128,6 +130,16 @@ export default {
         loadProduct(product, mode = 'save') {
             this.mode = mode
             this.product = { ...product }
+        },
+        onFileSelected(event) {
+            const selectedImage = event.target.files[0]
+
+            const selectedImageFormData = new FormData() 
+            selectedImageFormData.append('bugzUploadedFile', selectedImage, selectedImage.name)
+
+            uploadFile(selectedImageFormData).then( nameOfSavedImage => {
+                this.product.urlimage = `${baseApiUrl}/${nameOfSavedImage}`
+            })
         }
     },
     mounted() {

@@ -5,6 +5,7 @@
       <hr />
       <div class="auth-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login Restaurante' }}</div>
 
+      <input v-if="showSignup" type="file" @change="onFileSelected" name="bugzUploadedFile" placeholder="Url da imagem do seu restaurante" accept="image/*">
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
       <input v-if="showSignup" v-model="restaurant.street" type="text" placeholder="Rua" />
@@ -14,7 +15,6 @@
       <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
-      <input v-if="showSignup" v-model="restaurant.urlimage" name="urlimage" type="text" placeholder="Url da imagem do seu restaurante" />
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { baseApiUrl, showError, userKey } from "@/global";
+import { baseApiUrl, showError, userKey, uploadFile } from "@/global";
 import axios from "axios";
 
 export default {
@@ -76,6 +76,16 @@ export default {
     },
     redirectUser() {
         this.$router.push({name: 'auth'})
+    },
+    onFileSelected(event) {
+      const selectedImage = event.target.files[0]
+
+      const selectedImageFormData = new FormData()
+      selectedImageFormData.append('bugzUploadedFile', selectedImage, selectedImage.name)
+
+      uploadFile(selectedImageFormData).then( nameOfSavedImage => {
+        this.restaurant.urlimage = `${baseApiUrl}/${nameOfSavedImage}`
+      })
     }
   }
 };
