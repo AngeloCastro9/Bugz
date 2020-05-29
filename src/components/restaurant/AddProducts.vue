@@ -3,7 +3,7 @@
         <b-form>
             <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
-                <b-col md="3" sm="12">
+                <b-col md="4" sm="12">
                     <b-form-group label="Nome do produto:" label-for="product-name" style="color: white">
                         <b-form-input id="product-name" type="text"
                             v-model="product.name" required
@@ -26,13 +26,11 @@
                             placeholder="Preço" />
                     </b-form-group>
                 </b-col>
-                <b-col md="2" sm="12">
-                    <b-form-group label="Selecione a imagem do seu produto:" label-for="product-url" style="color: black">
-                        <!-- <b-form-input id="product-url" type="text"
+                <b-col md="1" sm="12">
+                    <b-form-group label="Url Da imagem:" label-for="product-url" style="color: white">
+                        <b-form-input id="product-url" type="text"
                             v-model="product.urlimage" required
-                            placeholder="Url da imagem do produto" /> -->                        
-                        <input type="file" @change="onFileSelected" name="bugzUploadedFile" accept="image/*">
-                        <!-- <button @click="onUpload">Enviar</button> -->
+                            placeholder="Url da imagem do produto" />
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
@@ -74,7 +72,7 @@
 </template>
 
 <script>
-import { baseApiUrl, showError, uploadFile } from '@/global'
+import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
 import { mapState } from 'vuex'
 export default {
@@ -130,16 +128,6 @@ export default {
         loadProduct(product, mode = 'save') {
             this.mode = mode
             this.product = { ...product }
-        },
-        onFileSelected(event) {
-            const selectedImage = event.target.files[0]
-
-            const selectedImageFormData = new FormData() 
-            selectedImageFormData.append('bugzUploadedFile', selectedImage, selectedImage.name)
-
-            uploadFile(selectedImageFormData).then( nameOfSavedImage => {
-                this.product.urlimage = `${baseApiUrl}/${nameOfSavedImage}`
-            })
         }
     },
     mounted() {

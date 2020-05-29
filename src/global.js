@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import axios from 'axios'
 
 export const userKey = '__knowledge_user'
 export const baseApiUrl = 'https://bugzbackend.herokuapp.com'
@@ -14,11 +13,4 @@ export function showError(e) {
     }
 }
 
-export async function uploadFile(selectedFileFormData) {
-    const fileSavedName = axios.post(`${baseApiUrl}/uploadFile`, selectedFileFormData).then( res => {
-        return res.data
-    })
-    return fileSavedName
-}
-
-export default { baseApiUrl, showError, userKey, uploadFile }
+export default { baseApiUrl, showError, userKey }
