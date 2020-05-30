@@ -1,7 +1,7 @@
 <template >
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white" />
-    <b-container>
+    <b-container fluid>
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
             <b-card
