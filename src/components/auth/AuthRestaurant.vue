@@ -10,7 +10,7 @@
 
       <form v-if="showSignup" enctype="multipart/form-data">
         <label id="image-label" for="image-input">
-          <i id="uploadPicture-restaurant" class="fa fa-image"></i>
+          <i id="uploadPicture" class="fa fa-image"></i>
         </label>
         <input
           id="image-input"
@@ -18,7 +18,8 @@
           v-if="showSignup"
           @change="onFileSubmited"
           ref="imageFile"
-          name="urlimage"/>
+          name="urlimage"
+          placeholder="Url da imagem do seu restaurante"/>
       </form>
       <p id="upload-text" v-if="showSignup">Carregar imagem do restaurante</p>
 
@@ -89,7 +90,7 @@ export default {
     },
     onFileSubmited() {
       const file = this.$refs.imageFile.files[0]
-      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']
+      const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
       const MAX_SIZE = 10000000
       const tooLarge = file.size > MAX_SIZE
 
@@ -185,12 +186,12 @@ export default {
     margin-bottom: 0px;
 }
 
-#uploadPicture-restaurant {
+#uploadPicture {
     font-size:500%;
     color: rgb(226, 226, 226);
 }
 
-#uploadPicture-restaurant:hover {
+#uploadPicture:hover {
     color: rgb(255, 253, 253);
 }
 

@@ -27,39 +27,10 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
-<<<<<<< HEAD
                     <b-form-group label="URL da imagem:" label-for="product-url" style="color: white">
                         <b-form-input id="product-url" type="text"
                             v-model="product.urlimage" required
                             placeholder="Url da imagem do produto" />
-=======
-                    <b-form-group id="vegano-group" label="Vegano" label-for="product-vegan" style="color: white">
-                        <b-form-checkbox
-                            id="product-vegan"
-                            class="vegan"
-                            v-model="product.vegan"
-                            name="vegan"
-                            value="true"
-                            unchecked-value="false">
-                            <span/>
-                        </b-form-checkbox>
-                    </b-form-group>
-                </b-col>
-                <b-col md="1" sm="12">
-                    <b-form-group  label-for="product-image" style="color: white">
-                        <form enctype="multipart/form-data">
-                            <label id="image-label-product" for="image-input-product">
-                                <i id="uploadPicture-product" class="fa fa-image"></i>
-                            </label>
-                            <input
-                            id="image-input-product"
-                            type="file"
-                            @change="onFileSubmited"
-                            ref="imageFileProduct"
-                            name="urlimage"/>
-                        </form>
-                        <p id="upload-text-product">Carregar...</p>
->>>>>>> cf83b4b6eb9a8a0d9542f1aff33ae7d259ff2c3f
                     </b-form-group>
                 </b-col>
             </b-row>
