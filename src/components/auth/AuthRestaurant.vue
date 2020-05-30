@@ -3,7 +3,25 @@
     <div class="auth-modal" style="background-color: rgb(143, 136, 136)">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
-      <div class="auth-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
+
+      <form v-if="showSignup" enctype="multipart/form-data">
+        <label id="image-label" for="image-input">
+          <i id="uploadPicture" class="fa fa-image"></i>
+        </label>
+        <input
+          id="image-input"
+          type="file"
+          v-if="showSignup"
+          @change="onFileSubmited"
+          ref="imageFile"
+          name="urlimage"
+          placeholder="Url da imagem do seu restaurante"/>
+      </form>
+      <p id="upload-text" v-if="showSignup">Carregar imagem...</p>
+
+      <md-card-header>
+        <div class="md-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
+      </md-card-header>
 
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
@@ -14,23 +32,11 @@
       <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
-      <!-- <input v-if="showSignup" v-model="restaurant.urlimage" name="urlimage" type="text" placeholder="Url da imagem do seu restaurante" /> -->
 
-      <div v-if="message"
+      <!-- <div v-if="message"
         :class="`${error} ? 'is-danger': 'is-prymary'`">
         <div class="message-body">{{message}}</div>
-      </div>
-      
-      <form enctype="multipart/form-data">
-        <input
-          type="file"
-          v-if="showSignup"
-          @change="onFileSubmited"
-          ref="imageFile"
-          name="urlimage"
-          placeholder="Url da imagem do seu restaurante"/>
-      </form>
-
+      </div> -->
 
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
@@ -109,15 +115,16 @@ export default {
         return
       }
 
-
       this.file = file
 
       const formData = new FormData();
       formData.append('bugzUploadedFile', this.file)
 
       axios.post(`${baseApiUrl}/uploadFile`, formData)
-        .then(() => {
-          this.message = "Imagem enviada com sucesso!"
+        .then(res => {
+          this.restaurant.urlimage = res.data.file
+
+          this.message = "Imagem salva com sucesso!"
           this.error = false
         })
         .catch(err => {
@@ -183,5 +190,27 @@ export default {
     rgba(120, 120, 120, 0.75),
     rgba(120, 120, 120, 0)
   );
+}
+
+#image-input {
+    display: none;
+    margin-bottom: 0px;
+}
+
+#image-label {
+    margin-bottom: 0px;
+}
+
+#uploadPicture {
+    font-size:500%;
+    color: rgb(226, 226, 226);
+}
+
+#uploadPicture:hover {
+    color: rgb(255, 253, 253);
+}
+
+#upload-text {
+  color: #83591b
 }
 </style>
