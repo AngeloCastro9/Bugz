@@ -9,19 +9,19 @@
                 :img-src="product.urlimage"
               :img-alt="product.name"
               img-top
-              style="max-width: 20rem; margin: 5%; left: 30%; min-width: 17rem;"
+              style="max-width: 20rem; margin: 5%; left: 6%; min-width: 17rem;"
               class="mb-3"
               bg-variant="dark"
               text-variant="white"
               :header="product.name"
             >
               <b-card-text>
-                <b>Descrição:</b>
+                <!-- <b>Descrição:</b> -->
                 {{product.description}}
               </b-card-text>
               <br />
               <b-card-text>
-                <b>Preço:</b>
+                <!-- <b>Preço:</b> -->
                 R$ {{product.price.toFixed(2)}}
               </b-card-text>
               <br />

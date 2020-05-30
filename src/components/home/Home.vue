@@ -10,16 +10,18 @@
               img-alt="Image"
               img-top
               tag="article"
-              style="max-width: 20rem; margin: 5%; left: 25%; max-height: 50rem; min-width: 17rem"
+              style="max-width: 20rem; margin: 5%; left: 6%; max-height: 50rem; min-width: 17rem"
               class="mb-3"
               bg-variant="dark"
               text-variant="white"
               :header="restaurant.name"
             >
               <b-card-text>
-                <b>Descrição:</b>
+                <!-- <b>Descrição:</b> -->
                 {{restaurant.description}}
               </b-card-text>
+              <br>
+              <br>
               <router-link :to="'/restaurantMenu/' + restaurant.id">
                 <b-button variant="info">Explorar</b-button>
               </router-link>
