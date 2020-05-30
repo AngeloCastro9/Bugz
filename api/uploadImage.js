@@ -62,7 +62,7 @@ module.exports = () => {
 
             sharp(req.file.path)
                 .resize({
-                    height: 300, // a largura vai proporcional
+                    height: 600, // a largura vai proporcional
                     fit: 'contain',
                     background: {
                         r: 0,
