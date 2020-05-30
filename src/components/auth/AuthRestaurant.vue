@@ -14,7 +14,24 @@
       <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
-      <input v-if="showSignup" v-model="restaurant.urlimage" name="urlimage" type="text" placeholder="Url da imagem do seu restaurante" />
+      <!-- <input v-if="showSignup" v-model="restaurant.urlimage" name="urlimage" type="text" placeholder="Url da imagem do seu restaurante" /> -->
+
+      <div v-if="message"
+        :class="`${error} ? 'is-danger': 'is-prymary'`">
+        <div class="message-body">{{message}}</div>
+      </div>
+      
+      <form enctype="multipart/form-data">
+        <input
+          type="file"
+          v-if="showSignup"
+          @change="onFileSubmited"
+          ref="imageFile"
+          name="urlimage"
+          placeholder="Url da imagem do seu restaurante"/>
+      </form>
+
+
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
@@ -50,7 +67,10 @@ export default {
     return {
       showSignup: false,
       restaurant: {},
-      vegan: false
+      vegan: false,
+      file: "",
+      message: "",
+      error: false
     };
   },
   methods: {
@@ -76,6 +96,34 @@ export default {
     },
     redirectUser() {
         this.$router.push({name: 'auth'})
+    },
+    onFileSubmited() {
+      const file = this.$refs.imageFile.files[0]
+      const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+      const MAX_SIZE = 10000000
+      const tooLarge = file.size > MAX_SIZE
+
+      if(!allowedTypes.includes(file.type) || tooLarge) {
+        this.error = true
+        this.message = tooLarge ? `Imagem excedeu limite de ${MAX_SIZE/1000000}MB` : "Somente imagens são permitidas"
+        return
+      }
+
+
+      this.file = file
+
+      const formData = new FormData();
+      formData.append('bugzUploadedFile', this.file)
+
+      axios.post(`${baseApiUrl}/uploadFile`, formData)
+        .then(() => {
+          this.message = "Imagem enviada com sucesso!"
+          this.error = false
+        })
+        .catch(err => {
+            this.message = err.response.data.error
+            this.error = true
+        })
     }
   }
 };
