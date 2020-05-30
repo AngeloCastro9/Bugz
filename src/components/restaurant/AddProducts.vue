@@ -3,7 +3,7 @@
         <b-form>
             <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
-                <b-col md="5" sm="12">
+                <b-col md="4" sm="12">
                     <b-form-group label="Nome do produto:" label-for="product-name" style="color: white">
                         <b-form-input id="product-name" type="text"
                             v-model="product.name" required
@@ -27,7 +27,7 @@
                     </b-form-group>
                 </b-col>
             
-                <b-col md="1" sm="12">
+                <b-col md="2" sm="12">
                     <b-form-group  label-for="product-image" style="color: white">
                         <form enctype="multipart/form-data">
                             <label id="image-label-product" for="image-input-product">
@@ -40,7 +40,7 @@
                             ref="imageFileProduct"
                             name="urlimage"/>
                         </form>
-                        <p id="upload-text-product">Carregar...</p>
+                        <p id="upload-text-product">Carregar imagem do produto</p>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -172,9 +172,10 @@ export default {
     margin-bottom: 0px;
     }
     #image-label-product {
+        margin-left: 35%;
         margin-bottom: 0px;
     }
-    #uploadPicture-product {
+    #uploadPicture-product {        
         font-size:500%;
         color: rgb(226, 226, 226);
     }
@@ -182,7 +183,8 @@ export default {
         color: rgb(255, 253, 253);
     }
     #upload-text-product {
-    color: #ffffff
+        margin-left: 15%;
+        color: #ffffff
     }
     #vegano-group {
         margin-left: 30px;
