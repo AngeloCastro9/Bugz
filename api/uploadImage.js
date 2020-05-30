@@ -13,7 +13,7 @@ module.exports = () => {
         const s3 = new aws.S3()
 
         fileFilter = (req, file, cb) => {
-            const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']
             if(!allowedTypes.includes(file.mimetype)) {
                 const error = new Error("Formato inválido")
                 error.code = 'LIMIT_FILE_TYPES'
