@@ -16,16 +16,6 @@
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
-      <div v-if="showSignup">
-        <b-form-checkbox 
-          id="vegan"
-          v-model="user.vegan"
-          name="vegan"
-          value="true"
-          unchecked-value="false"
-        >Você é vegano?</b-form-checkbox>
-      </div>
-
       <b-button class="auth-buttons" v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
       <b-button class="auth-buttons" v-else @click="signin" variant="info">Entrar</b-button>
       
