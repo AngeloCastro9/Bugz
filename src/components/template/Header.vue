@@ -1,6 +1,6 @@
 <template>
-  <header class="header">
-    <a class="toggle" @click="$router.go(-1)">
+  <md-toolbar class="md-elevation-7 header">
+    <a v-if="user" class="toggle" @click="$router.go(-1)">
       <i class="fa fa-lg fa-angle-left"></i>
     </a>
     <!-- <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
@@ -24,7 +24,7 @@
     </template>
 
     <UserDropdown v-if="!hideUserDropdown" />
-  </header>
+  </md-toolbar>
 </template>
 
 
@@ -74,7 +74,7 @@ export default {
 <style>
 .header {
   grid-area: header;
-  background: linear-gradient(to right, #1e469a, #49a7c1);
+  background: linear-gradient(to right, #545f76, #33b3d7);
 
   display: flex;
   justify-content: center;
@@ -133,5 +133,9 @@ header.header > a.toggle:hover {
 .cart-title {
   color: #fff;
   margin-left: 5px;
+}
+
+.fa-angle-left {
+  color:rgb(233, 232, 232)
 }
 </style>

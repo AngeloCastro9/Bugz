@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <span>Copyright <strong>Bugz</strong> © 2020</span>
+        <span class="copyright">Copyright <strong>Bugz</strong> © 2020</span>
     </footer>
 </template>
 
@@ -13,12 +13,17 @@ export default {
 <style>
     .footer {
         grid-area: footer;
-        background-color:  rgb(83, 80, 80);
-        color: black;
+        background: linear-gradient(to right, #303c55, #306c7d);
+
+        color: rgb(233, 232, 232);
 
         display: flex;
         align-items: center;
         justify-content: flex-end;
         padding-right: 10px;
+    }
+
+    .copyright {
+        margin-right: 25px;
     }
 </style>

@@ -11,6 +11,11 @@ import './config/mq'
 import store from './config/store'
 import router from './config/router'
 
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
+
+Vue.use(VueMaterial)
+
 Vue.config.productionTip = false
 
 new Vue({

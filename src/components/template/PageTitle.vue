@@ -19,8 +19,12 @@ export default {
     }
 
     .page-title h2 {
-        color: #777;
+        color: rgb(194, 194, 194);
         margin-top: 5px;
         font-size: 1.3rem;
+    }
+
+    hr {
+        color: #ffffff2b;
     }
 </style>

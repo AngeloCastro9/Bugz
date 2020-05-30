@@ -27,21 +27,21 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
-                    <b-form-group label="Url Da imagem:" label-for="product-url" style="color: white">
+                    <b-form-group label="URL da imagem:" label-for="product-url" style="color: white">
                         <b-form-input id="product-url" type="text"
                             v-model="product.urlimage" required
                             placeholder="Url da imagem do produto" />
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
-                    <b-form-group label="Vegano:" label-for="product-vegan" style="color: white">
+                    <b-form-group label="Vegano?" label-for="product-vegan" style="color: white">
                         <b-form-checkbox
                             id="vegan"
                             class="vegan"
                             v-model="product.vegan"
                             name="vegan"
                             unchecked-value="false">
-                            Vegano
+                            <span>Sim</span>
                         </b-form-checkbox>
                     </b-form-group>
                 </b-col>
@@ -49,7 +49,7 @@
             </b-row>
             <b-row>
                 <b-col xs="12">
-                    <b-button variant="primary" v-if="mode === 'save'"
+                    <b-button variant="info" v-if="mode === 'save'"
                         @click="save">Salvar</b-button>
                     <b-button variant="danger" v-if="mode === 'remove'"
                         @click="remove">Excluir</b-button>
@@ -138,7 +138,7 @@ export default {
 
 <style>
     .vegan {
-        color: black;
+        color: rgb(233, 232, 232);
         vertical-align: sub;
     }
 </style>

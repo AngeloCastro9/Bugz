@@ -1,5 +1,6 @@
 <template>
 	<div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
+		<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 		<Header title="Bugz"
 			:hideToggle="!user"
 			:hideUserDropdown="!user" />

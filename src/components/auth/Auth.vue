@@ -1,9 +1,9 @@
 <template>
-  <div class="auth-content" style="background-color: rgb(83, 80, 80)">
+  <div class="auth-content">
     <div class="auth-modal" style="background-color: rgb(143, 136, 136)">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
-      <div class="auth-title">{{ showSignup ? 'Cadastro Cliente' : 'Login Cliente' }}</div>
+      <div class="auth-title">{{ showSignup ? 'Cadastro Cliente' : 'Login do cliente' }}</div>
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
@@ -26,14 +26,14 @@
         >Você é vegano?</b-form-checkbox>
       </div>
 
-      <b-button v-if="showSignup" @click="signup" variant="primary">Registrar</b-button>
-      <b-button v-else @click="signin" variant="primary">Entrar</b-button>
+      <b-button class="auth-buttons" v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
+      <b-button class="auth-buttons" v-else @click="signin" variant="info">Entrar</b-button>
       
-      <b-button v-if="!showSignup" @click="redirectRestaurant" variant="primary" style="margin-top : 10px">Área do restaurante</b-button>
+      <b-button v-if="!showSignup" @click="redirectRestaurant" variant="info" style="margin-top : 10px">Área do restaurante</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup" style="color: red">Já tem cadastro? Acesse o Login!</span>
-        <span v-else style="color: red">Não tem cadastro? Registre-se aqui!</span>
+        <span v-else class="new-user">Não tem cadastro ainda? Registre-se aqui!</span>
       </a>
     </div>
   </div>
@@ -134,5 +134,13 @@ export default {
     rgba(120, 120, 120, 0.75),
     rgba(120, 120, 120, 0)
   );
+}
+
+.new-user {
+  color: #232e30;
+}
+
+.auth-buttons {
+  display: inline;
 }
 </style>

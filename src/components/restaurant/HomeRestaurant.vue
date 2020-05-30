@@ -3,31 +3,29 @@
         <PageTitle icon="fa fa-cogs" v-bind:main="'Administração do Restaurante ' + user.name"
             sub="Cadastros & Cia" style="color: white" />
         <div class="admin-pages-tabs">
-            <b-card no-body>
-                <b-tabs card>
-                    <b-tab title="Produtos">
-                        <AddProducts />
-                    </b-tab>
-                    <b-tab title="Categorias">
-                        <CategoryRestaurant />
-                    </b-tab>
-                </b-tabs>
-            </b-card>
+            <b-jumbotron class="b-card-products">
+                <b-card bg-variant="dark" no-body>
+                    <AddProducts />
+                </b-card>
+            </b-jumbotron>
         </div>
     </div>
 </template>
 
 <script>
 import PageTitle from '../template/PageTitle'
-import CategoryRestaurant from './CategoryRestaurant'
 import AddProducts from './AddProducts'
 import { mapState } from 'vuex'
 export default {
     name: 'HomeRestaurant',
-    components: { PageTitle, CategoryRestaurant, AddProducts },
+    components: { PageTitle, AddProducts },
     computed: mapState(['user']),
 }
 </script>
 
 <style>
+    div.b-card-products {
+        background-color: #343a40;
+        padding: 15px;
+    }
 </style>
