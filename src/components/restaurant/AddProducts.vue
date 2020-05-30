@@ -27,22 +27,32 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="1" sm="12">
-                    <b-form-group label="URL da imagem:" label-for="product-url" style="color: white">
-                        <b-form-input id="product-url" type="text"
-                            v-model="product.urlimage" required
-                            placeholder="Url da imagem do produto" />
-                    </b-form-group>
-                </b-col>
-                <b-col md="1" sm="12">
-                    <b-form-group label="Vegano?" label-for="product-vegan" style="color: white">
+                    <b-form-group id="vegano-group" label="Vegano" label-for="product-vegan" style="color: white">
                         <b-form-checkbox
-                            id="vegan"
+                            id="product-vegan"
                             class="vegan"
                             v-model="product.vegan"
                             name="vegan"
+                            value="true"
                             unchecked-value="false">
-                            <span>Sim</span>
+                            <span/>
                         </b-form-checkbox>
+                    </b-form-group>
+                </b-col>
+                <b-col md="1" sm="12">
+                    <b-form-group  label-for="product-image" style="color: white">
+                        <form enctype="multipart/form-data">
+                            <label id="image-label-product" for="image-input-product">
+                                <i id="uploadPicture-product" class="fa fa-image"></i>
+                            </label>
+                            <input
+                            id="image-input-product"
+                            type="file"
+                            @change="onFileSubmited"
+                            ref="imageFileProduct"
+                            name="urlimage"/>
+                        </form>
+                        <p id="upload-text-product">Carregar...</p>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -89,7 +99,10 @@ export default {
                 { key: 'vegan', label: 'Vegano', sortable: true,
                     formatter: value => value ? 'Sim' : 'Não' },
                 { key: 'actions', label: 'Ações' }
-            ]
+            ],
+            file: "",
+            message: "",
+            error: false
         }
     },
     methods: {
@@ -110,6 +123,7 @@ export default {
             const id = this.product.id ? `/${this.product.id}` : ''
             axios[method](`${baseApiUrl}/products${id}`, {...this.product, restaurantId: this.user.id})
                 .then(() => {
+                    console.log(this.product.vegan)
                     this.$toasted.global.defaultSuccess()
                     this.reset()
                 })
@@ -127,6 +141,34 @@ export default {
         loadProduct(product, mode = 'save') {
             this.mode = mode
             this.product = { ...product }
+        },
+        onFileSubmited() {
+            const file = this.$refs.imageFileProduct.files[0]
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']
+            const MAX_SIZE = 10000000
+            const tooLarge = file.size > MAX_SIZE
+            if(!allowedTypes.includes(file.type) || tooLarge) {
+                this.error = true
+                this.message = tooLarge ? `Imagem excedeu limite de ${MAX_SIZE/1000000}MB` : "Somente imagens são permitidas"
+                return
+            }
+
+            this.file = file
+
+            const formData = new FormData();
+            formData.append('bugzUploadedFile', this.file)
+
+            axios.post(`${baseApiUrl}/uploadFile`, formData)
+                .then(res => {
+                this.product.urlimage = res.data.file
+
+                this.message = "Imagem salva com sucesso!"
+                this.error = false
+                })
+                .catch(err => {
+                    this.message = err.response.data.error
+                    this.error = true
+                })
         }
     },
     mounted() {
@@ -139,5 +181,34 @@ export default {
     .vegan {
         color: rgb(233, 232, 232);
         vertical-align: sub;
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+
+    #image-input-product {
+    display: none;
+    margin-bottom: 0px;
+    }
+
+    #image-label-product {
+        margin-bottom: 0px;
+    }
+
+    #uploadPicture-product {
+        font-size:500%;
+        color: rgb(226, 226, 226);
+    }
+
+    #uploadPicture-product:hover {
+        color: rgb(255, 253, 253);
+    }
+
+    #upload-text-product {
+    color: #ffffff
+    }
+
+    #vegano-group {
+        margin-left: 30px;
+        /* Margin-top: 15px; */
     }
 </style>
