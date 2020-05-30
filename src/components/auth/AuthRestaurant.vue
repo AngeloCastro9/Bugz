@@ -33,11 +33,6 @@
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
 
-      <!-- <div v-if="message"
-        :class="`${error} ? 'is-danger': 'is-prymary'`">
-        <div class="message-body">{{message}}</div>
-      </div> -->
-
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
