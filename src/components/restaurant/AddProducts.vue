@@ -26,11 +26,21 @@
                             placeholder="Preço" />
                     </b-form-group>
                 </b-col>
+            
                 <b-col md="1" sm="12">
-                    <b-form-group label="URL da imagem:" label-for="product-url" style="color: white">
-                        <b-form-input id="product-url" type="text"
-                            v-model="product.urlimage" required
-                            placeholder="Url da imagem do produto" />
+                    <b-form-group  label-for="product-image" style="color: white">
+                        <form enctype="multipart/form-data">
+                            <label id="image-label-product" for="image-input-product">
+                                <i id="uploadPicture-product" class="fa fa-image"></i>
+                            </label>
+                            <input
+                            id="image-input-product"
+                            type="file"
+                            @change="onFileSubmited"
+                            ref="imageFileProduct"
+                            name="urlimage"/>
+                        </form>
+                        <p id="upload-text-product">Carregar...</p>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -129,16 +139,12 @@ export default {
                 this.message = tooLarge ? `Imagem excedeu limite de ${MAX_SIZE/1000000}MB` : "Somente imagens são permitidas"
                 return
             }
-
             this.file = file
-
             const formData = new FormData();
             formData.append('bugzUploadedFile', this.file)
-
             axios.post(`${baseApiUrl}/uploadFile`, formData)
                 .then(res => {
                 this.product.urlimage = res.data.file
-
                 this.message = "Imagem salva com sucesso!"
                 this.error = false
                 })
@@ -161,29 +167,23 @@ export default {
         margin-top: 15px;
         margin-left: 15px;
     }
-
     #image-input-product {
     display: none;
     margin-bottom: 0px;
     }
-
     #image-label-product {
         margin-bottom: 0px;
     }
-
     #uploadPicture-product {
         font-size:500%;
         color: rgb(226, 226, 226);
     }
-
     #uploadPicture-product:hover {
         color: rgb(255, 253, 253);
     }
-
     #upload-text-product {
     color: #ffffff
     }
-
     #vegano-group {
         margin-left: 30px;
         /* Margin-top: 15px; */
