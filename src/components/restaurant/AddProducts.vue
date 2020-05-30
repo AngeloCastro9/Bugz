@@ -45,7 +45,6 @@
                         </b-form-checkbox>
                     </b-form-group>
                 </b-col>
-
             </b-row>
             <b-row>
                 <b-col xs="12">

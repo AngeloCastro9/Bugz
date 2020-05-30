@@ -50,8 +50,8 @@
       <b-button v-if="!showSignup" @click="redirectUser" variant="info" style="margin-top : 10px">Área do cliente</b-button>
 
       <a href @click.prevent="showSignup = !showSignup">
-        <span v-if="showSignup" style="color: red">Já tem cadastro? Acesse o Login!</span>
-        <span v-else class="new-user">Não tem cadastro ainda? Registre-se aqui!</span>
+        <span v-if="showSignup" style="color: red; font-size: 15px;">Já tem cadastro? Acesse o Login!</span>
+        <span v-else class="new-user" style="color: red; font-size: 15px;">Não tem cadastro ainda? Registre-se aqui!</span>
       </a>
     </div>
   </div>

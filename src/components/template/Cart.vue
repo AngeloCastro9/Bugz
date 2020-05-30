@@ -14,9 +14,9 @@
 
         <md-table md-card class="table is-striped" v-show="products.length" style="color: white">
           <md-table-row>
-                <md-table-head>Nome</md-table-head>
-                <md-table-head>Quantidade</md-table-head>
-                <md-table-head>Preço</md-table-head>
+                <md-table-head style="font-size: 17px">Nome</md-table-head>
+                <md-table-head style="font-size: 17px">Quantidade</md-table-head>
+                <md-table-head style="font-size: 17px">Preço</md-table-head>
           </md-table-row>
           
           <md-table-row v-for="product in products" v-bind:key="product.id">
@@ -118,8 +118,8 @@ export default {
     resumeProductList() {
       return this.products.map( product => {
         return {
-          nome: product.name,
-          valor: `R$ ${product.price}`
+          nome: `${product.name}  ( ${product.quantity} )` ,
+          valor: `R$ ${product.price * product.quantity}`
         }
       })
     },
