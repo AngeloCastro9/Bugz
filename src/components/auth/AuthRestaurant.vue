@@ -4,6 +4,10 @@
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
 
+      <md-card-header>
+        <div class="md-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
+      </md-card-header>
+
       <form v-if="showSignup" enctype="multipart/form-data">
         <label id="image-label" for="image-input">
           <i id="uploadPicture-restaurant" class="fa fa-image"></i>
@@ -16,11 +20,7 @@
           ref="imageFile"
           name="urlimage"/>
       </form>
-      <p id="upload-text" v-if="showSignup">Carregar imagem...</p>
-
-      <md-card-header>
-        <div class="md-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
-      </md-card-header>
+      <p id="upload-text" v-if="showSignup">Carregar imagem do restaurante</p>
 
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
@@ -32,23 +32,8 @@
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
       <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
 
-      <!-- <div v-if="message"
-        :class="`${error} ? 'is-danger': 'is-prymary'`">
-        <div class="message-body">{{message}}</div>
-      </div> -->
-
       <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
       <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
-
-      <div v-if="showSignup">
-        <b-form-checkbox 
-          id="vegan"
-          v-model="restaurant.vegan"
-          name="vegan"
-          value="true"
-          unchecked-value="false"
-        >Você é vegano?</b-form-checkbox>
-      </div>
 
       <b-button v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
       <b-button v-else @click="signinRestaurant" variant="info ">Entrar</b-button>
@@ -210,6 +195,7 @@ export default {
 }
 
 #upload-text {
-  color: #83591b
+  color: #83591b;
+  font-size: 130%;
 }
 </style>
