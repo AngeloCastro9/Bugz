@@ -123,7 +123,6 @@ export default {
             const id = this.product.id ? `/${this.product.id}` : ''
             axios[method](`${baseApiUrl}/products${id}`, {...this.product, restaurantId: this.user.id})
                 .then(() => {
-                    console.log(this.product.vegan)
                     this.$toasted.global.defaultSuccess()
                     this.reset()
                 })
