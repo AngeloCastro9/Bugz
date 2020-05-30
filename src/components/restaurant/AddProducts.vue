@@ -3,7 +3,7 @@
         <b-form>
             <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
-                <b-col md="4" sm="12">
+                <b-col md="5" sm="12">
                     <b-form-group label="Nome do produto:" label-for="product-name" style="color: white">
                         <b-form-input id="product-name" type="text"
                             v-model="product.name" required
@@ -31,18 +31,6 @@
                         <b-form-input id="product-url" type="text"
                             v-model="product.urlimage" required
                             placeholder="Url da imagem do produto" />
-                    </b-form-group>
-                </b-col>
-                <b-col md="1" sm="12">
-                    <b-form-group label="Vegano?" label-for="product-vegan" style="color: white">
-                        <b-form-checkbox
-                            id="vegan"
-                            class="vegan"
-                            v-model="product.vegan"
-                            name="vegan"
-                            unchecked-value="false">
-                            <span>Sim</span>
-                        </b-form-checkbox>
                     </b-form-group>
                 </b-col>
             </b-row>
