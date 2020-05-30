@@ -4,6 +4,10 @@
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
 
+      <md-card-header>
+        <div class="md-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
+      </md-card-header>
+
       <form v-if="showSignup" enctype="multipart/form-data">
         <label id="image-label" for="image-input">
           <i id="uploadPicture" class="fa fa-image"></i>
@@ -17,11 +21,7 @@
           name="urlimage"
           placeholder="Url da imagem do seu restaurante"/>
       </form>
-      <p id="upload-text" v-if="showSignup">Carregar imagem...</p>
-
-      <md-card-header>
-        <div class="md-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
-      </md-card-header>
+      <p id="upload-text" v-if="showSignup">Carregar imagem do restaurante</p>
 
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
@@ -211,6 +211,7 @@ export default {
 }
 
 #upload-text {
-  color: #83591b
+  color: #83591b;
+  font-size: 130%;
 }
 </style>
