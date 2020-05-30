@@ -56,5 +56,5 @@ module.exports = app => {
         .get(app.api.product.getProductsByRestaurant)
 
     app.route('/uploadFile')
-        .post(app.api.utils.uploadFile)
+        .post(app.api.uploadImage.uploadFile)
 }

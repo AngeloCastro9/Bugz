@@ -9,8 +9,6 @@ app.db = db
 
 app.use(cors())
 
-app.use(express.static('./uploadedFiles'));
-
 consign()
     .include('./config/passport.js')
     .then('./config/middlewares.js')
@@ -18,10 +16,6 @@ consign()
     .then('./api')
     .then('./config/routes.js')
     .into(app)
-
-app.get('/teste', (req, res) => {
-    return res.send('testado');
-})
 
 app.listen(process.env.PORT || 3001, () => {
     console.log('Backend executando...')
