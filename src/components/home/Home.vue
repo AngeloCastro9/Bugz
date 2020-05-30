@@ -4,6 +4,7 @@
     <b-container fluid>
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
+          <b-col>
             <b-card
               :img-src="restaurant.urlimage"
               img-alt="Image"
@@ -15,11 +16,15 @@
               text-variant="white"
               :header="restaurant.name"
             >
-              <b-card-text><b>Descrição:</b> {{restaurant.description}}</b-card-text>
+              <b-card-text>
+                <b>Descrição:</b>
+                {{restaurant.description}}
+              </b-card-text>
               <router-link :to="'/restaurantMenu/' + restaurant.id">
                 <b-button variant="info">Explorar</b-button>
               </router-link>
             </b-card>
+          </b-col>
         </div>
       </b-row>
     </b-container>
@@ -54,23 +59,23 @@ export default {
 </script>
 
 <style>
-  img.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-  }
+img.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
 
-  .card-header {
-    font-size: 15px;
-  }
+.card-header {
+  font-size: 15px;
+}
 
-  .card-body {
-    color: rgb(194, 194, 194)
-  }
+.card-body {
+  color: rgb(194, 194, 194);
+}
 
-  .btn-info {
-    background-color: #137e8f;
-    border-color: #178c9e;
-    color: rgb(233, 232, 232)
-  }
+.btn-info {
+  background-color: #137e8f;
+  border-color: #178c9e;
+  color: rgb(233, 232, 232);
+}
 </style>
