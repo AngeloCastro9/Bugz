@@ -56,7 +56,7 @@ module.exports = app => {
         }
     }
 
-    const limit = 10
+    // const limit = 10
     const get = async (req, res) => {
 
         const result = await app.db('restaurants').count('id').first()
@@ -64,8 +64,9 @@ module.exports = app => {
 
         app.db('restaurants')
             .select('id', 'name', 'description', 'street', 'number', 'neighborhood', 'cnpj', 'urlimage')
-            .limit(limit)
-            .then(restaurants => res.json({ data: restaurants, count, limit }))
+            // .limit(limit)
+            // .then(restaurants => res.json({ data: restaurants, count, limit }))
+            .then(restaurants => res.json({ data: restaurants, count }))
             .catch(err => res.status(500).send(err))
     }
 
@@ -76,8 +77,9 @@ module.exports = app => {
         app.db('restaurants')
             .select('id', 'name', 'description', 'street', 'number', 'neighborhood', 'cnpj', 'urlimage')
             .where({ vegan: true })
-            .limit(limit)
-            .then(restaurants => res.json({ data: restaurants, count, limit }))
+            // .limit(limit)
+            // .then(restaurants => res.json({ data: restaurants, count, limit }))
+            .then(restaurants => res.json({ data: restaurants, count }))
             .catch(err => res.status(500).send(err))
     }
 

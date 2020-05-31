@@ -1,7 +1,7 @@
 module.exports = app => {
     const { existsOrError, notExistsOrError } = app.api.validation
 
-    const limit = 10
+    // const limit = 10
 
     const save = async (req, res) => {
         const product = { ...req.body }
@@ -55,8 +55,9 @@ module.exports = app => {
 
         app.db('products')
             .where({ restaurantId: req.params.id })
-            .limit(limit)
-            .then(products => res.json({ data: products, count, limit }))
+            // .limit(limit)
+            // .then(products => res.json({ data: products, count, limit }))
+            .then(products => res.json({ data: products, count }))
             .catch(err => res.status(500).send(err))
 
     }
