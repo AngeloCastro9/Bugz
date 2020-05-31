@@ -5,7 +5,7 @@
       <hr />
 
       <md-card-header>
-        <div class="md-title">{{ showSignup ? 'Cadastro Restaurante' : 'Login do restaurante' }}</div>
+        <div class="md-title">{{ showSignup ? 'Cadastro do restaurante' : 'Login do restaurante' }}</div>
       </md-card-header>
 
       <form v-if="showSignup" enctype="multipart/form-data">
@@ -90,7 +90,7 @@ export default {
     },
     onFileSubmited() {
       const file = this.$refs.imageFile.files[0]
-      const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']
       const MAX_SIZE = 10000000
       const tooLarge = file.size > MAX_SIZE
 

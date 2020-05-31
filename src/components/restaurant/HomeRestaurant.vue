@@ -5,7 +5,7 @@
         <div class="admin-pages-tabs">
             <b-jumbotron class="b-card-products">
                 <b-card bg-variant="dark" no-body>
-                    <AddProducts />
+                    <CrudProducts />
                 </b-card>
             </b-jumbotron>
         </div>
@@ -14,11 +14,11 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import AddProducts from './AddProducts'
+import CrudProducts from './CrudProducts'
 import { mapState } from 'vuex'
 export default {
     name: 'HomeRestaurant',
-    components: { PageTitle, AddProducts },
+    components: { PageTitle, CrudProducts },
     computed: mapState(['user']),
 }
 </script>

@@ -37,10 +37,12 @@
 import axios from "axios";
 import PageTitle from "../template/PageTitle";
 import { baseApiUrl } from "@/global";
+import { mapState } from 'vuex'
 
 export default {
   name: "Home",
   components: { PageTitle },
+  computed: mapState(['user']),
   data: function() {
     return {
       restaurants: []
@@ -48,7 +50,9 @@ export default {
   },
   methods: {
     getRestaurants() {
-      const url = `${baseApiUrl}/restaurants`;
+      const reqType = this.user.vegan?'veganRestaurants':'restaurants'
+      const url = `${baseApiUrl}/${reqType}`;
+      console.log(url)
       axios.get(url).then(res => {
         this.restaurants = res.data.data;
       });
