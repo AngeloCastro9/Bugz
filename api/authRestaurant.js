@@ -22,12 +22,13 @@ module.exports = app => {
         const payload = {
             id: restaurant.id,
             name: restaurant.name,
-            description: restaurant.description,
             email: restaurant.email,
+            description: restaurant.description,
+            urlimage: restaurant.urlimage,
             street: restaurant.street,
+            number: restaurant.number,
             cnpj: restaurant.cnpj,
             vegan: restaurant.vegan,
-            url: restaurant.urlimage,
             iat: now,
             exp: now + (60 * 60 * 24 * 3)
         }
