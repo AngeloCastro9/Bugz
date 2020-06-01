@@ -15,11 +15,24 @@
 <script>
 import PageTitle from '../template/PageTitle'
 import CrudProducts from './CrudProducts'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
     name: 'HomeRestaurant',
     components: { PageTitle, CrudProducts },
-    computed: mapState(['user']),
+    computed: {
+        ...mapState(['user']),
+        ...mapGetters({isRestaurant: 'isRestaurant'}),
+    },
+    methods: {
+        validateRestaurant() {
+            if(!this.isRestaurant){
+                this.$router.push({ name: 'home' })
+            } 
+        }
+    },
+    mounted() {
+        this.validateRestaurant()
+    }
 }
 </script>
 

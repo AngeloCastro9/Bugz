@@ -37,12 +37,18 @@
 import axios from "axios";
 import PageTitle from "../template/PageTitle";
 import { baseApiUrl } from "@/global";
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: "Home",
   components: { PageTitle },
-  computed: mapState(['user']),
+  computed: {
+    ...mapState(['user']),
+    ...mapGetters([
+        "isClient",
+        "isRestaurant"
+      ])
+  },
   data: function() {
     return {
       restaurants: []
@@ -50,14 +56,24 @@ export default {
   },
   methods: {
     getRestaurants() {
-      const reqType = this.user.vegan?'veganRestaurants':'restaurants'
+      const reqType = this.user && this.user.vegan?'veganRestaurants':'restaurants'
       const url = `${baseApiUrl}/${reqType}`;
       axios.get(url).then(res => {
         this.restaurants = res.data.data;
       });
+    },
+    validateClient() {
+      if(!this.isClient) {
+        if(this.isRestaurant) {
+          this.$router.push({ name: 'homeRestaurant' })
+        } else {
+          this.$router.push({ name: 'auth' })
+        }
+      }
     }
   },
   mounted() {
+    this.validateClient();
     this.getRestaurants();
   }
 };

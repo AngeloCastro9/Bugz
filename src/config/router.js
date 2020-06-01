@@ -20,12 +20,6 @@ const routes = [{
     path: '/restaurantMenu/:id',
     component: RestaurantMenu
 },
-// {
-//     name: 'adminPages',
-//     path: '/admin',
-//     component: AdminPages,
-//     meta: { requiresAdmin: true }
-// },
 {
     name: 'auth',
     path: '/auth',
