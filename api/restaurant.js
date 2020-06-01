@@ -56,6 +56,22 @@ module.exports = app => {
         }
     }
 
+    const update = async (req, res) => {
+        const restaurant = { ...req.body }
+
+        restaurant.password = encryptPassword(restaurant.password)
+        delete restaurant.confirmPassword
+
+        if (restaurant.id) {
+            app.db('restaurants')
+                .update(restaurant)
+                .where({ id: restaurant.id })
+                // .whereNull('deletedAt')
+                .then(_ => res.status(204).send())
+                .catch(err => res.status(500).send(err))
+        }
+    }
+
     // const limit = 10
     const get = async (req, res) => {
 
@@ -83,5 +99,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get, getVeganRestaurants }
+    return { save, get, getVeganRestaurants, update }
 }

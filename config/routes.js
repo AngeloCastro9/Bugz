@@ -5,6 +5,7 @@ module.exports = app => {
     app.post('/signin', app.api.auth.signin)
     
     app.post('/signupRestaurant', app.api.restaurant.save)
+    app.post('/updateRestaurant', app.api.restaurant.update)
     app.post('/signinRestaurant', app.api.authRestaurant.signin)
     
     app.post('/validateToken', app.api.auth.validateToken)
