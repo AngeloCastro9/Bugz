@@ -24,7 +24,9 @@ export default new Vuex.Store({
                 }
             })
             return productsResult
-        }
+        },
+        isRestaurant: state => state.user && state.user.hasOwnProperty('cnpj'),
+        isClient: state => state.user && state.user.hasOwnProperty('cpf')
     },
     mutations: {
         toggleMenu(state, isVisible) {

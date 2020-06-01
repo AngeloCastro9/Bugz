@@ -10,7 +10,7 @@
       <router-link to="/">{{title}}</router-link>
     </h1>
 
-    <template v-if="user && user.hasOwnProperty('cpf')">
+    <template v-if="isClient">
       <div class="cart-option">
         <div :class="{ 'active-bottom-border': $route.name === 'cart' }">
           <router-link to="/cart">
@@ -29,7 +29,7 @@
 
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import UserDropdown from "./UserDropdown";
 
 export default {
@@ -42,6 +42,7 @@ export default {
   },
   computed: {
     ...mapState(['user']),
+    ...mapGetters({isClient: 'isClient'}),
     icon() {
       return this.$store.state.isMenuVisible
         ? "fa-angle-left"
@@ -99,7 +100,8 @@ export default {
   text-decoration: none;
 }
 
-header.header > a.toggle {
+a.toggle {
+  margin-left: -16px;
   width: 60px;
   height: 100%;
   color: #fff;
@@ -111,7 +113,7 @@ header.header > a.toggle {
   align-items: center;
 }
 
-header.header > a.toggle:hover {
+a.toggle:hover {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
 }
