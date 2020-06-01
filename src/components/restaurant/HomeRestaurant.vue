@@ -1,6 +1,6 @@
 <template>
     <div class="admin-pages">
-        <PageTitle icon="fa fa-cogs" v-bind:main="'Administração do Restaurante ' + user.name"
+        <PageTitle icon="fa fa-cogs" v-bind:main="'Administração: ' + user.name"
             sub="Cadastros & Cia" style="color: white" />
         <div class="admin-pages-tabs">
             <b-jumbotron class="b-card-products">
