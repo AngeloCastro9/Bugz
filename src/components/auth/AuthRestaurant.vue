@@ -5,44 +5,79 @@
       <hr />
 
       <md-card-header>
-        <div class="md-title">{{ showSignup ? 'Cadastro do restaurante' : 'Login do restaurante' }}</div>
+        <div
+          class="auth-title"
+        >{{ showSignup ? 'Cadastro do restaurante' : 'Login do restaurante' }}</div>
       </md-card-header>
 
-      <form v-if="showSignup" enctype="multipart/form-data">
-        <label id="image-label" for="image-input">
-          <i id="uploadPicture" class="fa fa-image"></i>
-        </label>
-        <input
-          id="image-input"
-          type="file"
-          v-if="showSignup"
-          @change="onFileSubmited"
-          ref="imageFile"
-          name="urlimage"
-          placeholder="Url da imagem do seu restaurante"/>
-      </form>
-      <p id="upload-text" v-if="showSignup">Carregar imagem do restaurante</p>
+      <div class="image-upload">
+        <form v-if="showSignup" enctype="multipart/form-data">
+          <label class="image-upload-label" for="image-input-restaurant">
+            <i class="upload-picture fa fa-image"></i>
+          </label>
+          <input
+            id="image-input-restaurant"
+            v-if="showSignup"
+            type="file"
+            ref="imageFile"
+            name="urlimage"
+            @change="onFileSubmited"
+          />
+        </form>
+        <label v-if="showSignup" for="image-input-restaurant">Carregar imagem...</label>
+      </div>
 
-      <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome"/>
-      <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição"/>
+      <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome" />
+      <input v-if="showSignup" v-model="restaurant.description" type="text" placeholder="Descrição" />
       <input v-if="showSignup" v-model="restaurant.street" type="text" placeholder="Rua" />
-      <input v-if="showSignup" v-model="restaurant.number" type="text" placeholder="Número" 
-      onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+      <input
+        v-if="showSignup"
+        v-model="restaurant.number"
+        type="text"
+        placeholder="Número"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      />
       <input v-if="showSignup" v-model="restaurant.neighborhood" type="text" placeholder="Bairro" />
-      <input v-if="showSignup" v-model="restaurant.cnpj" type="text" placeholder="CNPJ"
-      onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
-      <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
+      <input
+        v-if="showSignup"
+        v-model="restaurant.cnpj"
+        type="text"
+        placeholder="CNPJ"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      />
 
-      <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
-      <input v-if="showSignup" v-model="restaurant.confirmPassword" type="password" placeholder="Confirme a Senha"/>
+      <form v-on:keyup.enter="showSignup?signup():signinRestaurant()">
+        <input v-model="restaurant.email" name="email" type="text" placeholder="E-mail" />
+        <input v-model="restaurant.password" name="password" type="password" placeholder="Senha" />
+      </form>
 
-      <b-button v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
-      <b-button v-else @click="signinRestaurant" variant="info ">Entrar</b-button>
-      <b-button v-if="!showSignup" @click="redirectUser" variant="info" style="margin-top : 10px">Área do cliente</b-button>
+      <input
+        v-if="showSignup"
+        v-model="restaurant.confirmPassword"
+        type="password"
+        placeholder="Confirme a Senha"
+      />
 
-      <a href @click.prevent="showSignup = !showSignup">
-        <span v-if="showSignup" style="color: red; font-size: 15px;">Já tem cadastro? Acesse o Login!</span>
-        <span v-else class="new-user" style="color: red; font-size: 15px;">Não tem cadastro ainda? Registre-se aqui!</span>
+      <b-form-group id="vegan-group" v-if="showSignup">
+        <label id="vegan-label" for="vegan-checkbox">Vegano</label>
+        <b-form-checkbox id="vegan-checkbox" v-model="restaurant.vegan" name="vegan" />
+      </b-form-group>
+
+      <div class="btn-group">
+        <b-button pill v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
+        <b-button pill v-else @click="signinRestaurant" variant="info ">Entrar</b-button>
+        <b-button
+          class="btn-toggle-area"
+          pill
+          v-if="!showSignup"
+          @click="redirectUser"
+          variant="info"
+        >Área do cliente</b-button>
+      </div>
+
+      <a class="link-toggle" href @click.prevent="showSignup = !showSignup">
+        <span v-if="showSignup">Fazer login</span>
+        <span v-else>Fazer cadastro</span>
       </a>
     </div>
   </div>
@@ -57,8 +92,9 @@ export default {
   data: function() {
     return {
       showSignup: false,
-      restaurant: {},
-      vegan: false,
+      restaurant: {
+        vegan: false
+      },
       file: "",
       message: "",
       error: false
@@ -83,39 +119,43 @@ export default {
           this.restaurant = {};
           this.showSignup = false;
         })
-        .catch(showError)
+        .catch(showError);
     },
     redirectUser() {
-        this.$router.push({name: 'auth'})
+      this.$router.push({ name: "auth" });
     },
     onFileSubmited() {
-      const file = this.$refs.imageFile.files[0]
-      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']
-      const MAX_SIZE = 10000000
-      const tooLarge = file.size > MAX_SIZE
+      const file = this.$refs.imageFile.files[0];
+      if (!file) return;
+      const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+      const MAX_SIZE = 10000000;
+      const tooLarge = file.size > MAX_SIZE;
 
-      if(!allowedTypes.includes(file.type) || tooLarge) {
-        this.error = true
-        this.message = tooLarge ? `Imagem excedeu limite de ${MAX_SIZE/1000000}MB` : "Somente imagens são permitidas"
-        return
+      if (!allowedTypes.includes(file.type) || tooLarge) {
+        this.error = true;
+        this.message = tooLarge
+          ? `Imagem excedeu limite de ${MAX_SIZE / 1000000}MB`
+          : "Somente imagens são permitidas";
+        return;
       }
 
-      this.file = file
+      this.file = file;
 
       const formData = new FormData();
-      formData.append('bugzUploadedFile', this.file)
+      formData.append("bugzUploadedFile", this.file);
 
-      axios.post(`${baseApiUrl}/uploadFile`, formData)
+      axios
+        .post(`${baseApiUrl}/uploadFile`, formData)
         .then(res => {
-          this.restaurant.urlimage = res.data.file
+          this.restaurant.urlimage = res.data.file;
 
-          this.message = "Imagem salva com sucesso!"
-          this.error = false
+          this.message = "Imagem salva com sucesso!";
+          this.error = false;
         })
         .catch(err => {
-            this.message = err.response.data.error
-            this.error = true
-        })
+          this.message = err.response.data.error;
+          this.error = true;
+        });
     }
   }
 };
@@ -177,26 +217,54 @@ export default {
   );
 }
 
-#image-input {
-    display: none;
-    margin-bottom: 0px;
+.link-toggle {
+  color: #764f15 !important;
 }
 
-#image-label {
-    margin-bottom: 0px;
+.image-upload-label {
+  margin-bottom: 0px;
+  /* font-size: 500%; */
+  color: rgb(226, 226, 226);
 }
 
-#uploadPicture {
-    font-size:500%;
-    color: rgb(226, 226, 226);
+.btn-info {
+  background-color: #137e8f !important;
+  border-color: #178c9e !important;
+  color: rgb(233, 232, 232) !important;
 }
 
-#uploadPicture:hover {
-    color: rgb(255, 253, 253);
+#image-input-restaurant {
+  display: none;
+  margin-bottom: 0px;
 }
 
 #upload-text {
-  color: #83591b;
-  font-size: 130%;
+  /* color: #764f15; */
+  font-size: 90%;
+}
+
+#vegan-group {
+  position: relative;
+  width: 280px;
+  float: left;
+}
+
+#vegan-label {
+  margin-bottom: 50px;
+  margin-right: 10px;
+}
+
+div.custom-checkbox {
+  position: absolute;
+  left: 20;
+  top: -2px;
+}
+
+body {
+  color: #523811;
+}
+
+#btn-toggle-area {
+  margin-left: 10px;
 }
 </style>

@@ -52,7 +52,6 @@ export default {
     getRestaurants() {
       const reqType = this.user.vegan?'veganRestaurants':'restaurants'
       const url = `${baseApiUrl}/${reqType}`;
-      console.log(url)
       axios.get(url).then(res => {
         this.restaurants = res.data.data;
       });

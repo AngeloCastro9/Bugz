@@ -4,46 +4,61 @@
             <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
                 <b-col md="4" sm="12">
-                    <b-form-group label="Nome do produto:" label-for="product-name" style="color: white">
+                    <b-form-group class="item-form" label="Nome do produto:" label-for="product-name" >
                         <b-form-input id="product-name" type="text"
                             v-model="product.name" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe o Nome do Produto..." />
                     </b-form-group>
                 </b-col>
+
                 <b-col md="5" sm="12">
-                    <b-form-group label="Descrição" label-for="product-description" style="color: white">
+                    <b-form-group class="item-form" label="Descrição" label-for="product-description" >
                         <b-form-input id="product-description" type="text"
                             v-model="product.description" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe a descrição do produto..." />
                     </b-form-group>
                 </b-col>
+
                 <b-col md="1" sm="12">
-                    <b-form-group label="Preço:" label-for="product-price" style="color: white">
+                    <b-form-group class="item-form" label="Preço:" label-for="product-price" >
                         <b-form-input id="product-price" type="text"
                             v-model="product.price" required
                             placeholder="Preço" />
                     </b-form-group>
                 </b-col>
+
+                <b-col id="vegan-col" md="1" sm="12">
+                    <b-form-group class="item-form" label-for="product-vegan" >
+                        <b-form-checkbox
+                            id="vegan"
+                            class="vegan"
+                            v-model="product.vegan"
+                            name="vegan">
+                            <span label-for="vegan">Vegano</span>
+                        </b-form-checkbox>
+                    </b-form-group>
+                </b-col>
             
-                <b-col md="2" sm="12">
-                    <b-form-group  label-for="product-image" style="color: white">
-                        <form enctype="multipart/form-data">
-                            <label id="image-label-product" for="image-input-product">
-                                <i id="uploadPicture-product" class="fa fa-image"></i>
+                <b-col md="1" sm="12">
+                    <b-form-group class="item-form">
+                        <form class="image-upload" enctype="multipart/form-data">
+                            <label for="image-input-product">
+                                <i class="upload-picture fa fa-image"></i>
                             </label>
                             <input
-                            id="image-input-product"
-                            type="file"
-                            @change="onFileSubmited"
-                            ref="imageFileProduct"
-                            name="urlimage"/>
+                                id="image-input-product"
+                                type="file"
+                                @change="onFileSubmited"
+                                ref="imageFileProduct"
+                                name="urlimage"/>
+                            <label id="image-label" for="image-input-product">Carregar imagem...</label>
                         </form>
-                        <p id="upload-text-product">Carregar imagem do produto</p>
                     </b-form-group>
                 </b-col>
             </b-row>
+
             <b-row>
                 <b-col xs="12">
                     <b-button variant="info" v-if="mode === 'save'"
@@ -57,10 +72,10 @@
         <hr>
         <b-table hover striped :items="products" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="warning" @click="loadProduct(data.item)" class="mr-2">
+                <b-button id="edit-button" variant="warning" @click="loadProduct(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="danger" @click="loadProduct(data.item, 'remove')">
+                <b-button id="remove-button" variant="danger" @click="loadProduct(data.item, 'remove')">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -78,7 +93,9 @@ export default {
     data: function() {
         return {
             mode: 'save',
-            product: {},
+            product: {
+                vegan: false
+            },
             products: [],
             fields: [
                 { key: 'name', label: 'Nome', sortable: true },
@@ -131,6 +148,7 @@ export default {
         },
         onFileSubmited() {
             const file = this.$refs.imageFileProduct.files[0]
+            if(!file) return
             const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']
             const MAX_SIZE = 10000000
             const tooLarge = file.size > MAX_SIZE
@@ -164,30 +182,34 @@ export default {
     .vegan {
         color: rgb(233, 232, 232);
         vertical-align: sub;
-        margin-top: 15px;
-        margin-left: 15px;
+        margin-top: 35px;
+        margin-right: 0;
+    }
+    .upload-picture {
+        color: rgb(226, 226, 226);
+        font-size:500%;
+        margin-top: 10px;
+        margin-left: 25%;
+    }
+    .image-upload:hover {
+        filter: brightness(150%);
+    }
+    #image-label {
+        color:rgb(226, 226, 226)
     }
     #image-input-product {
-    display: none;
-    margin-bottom: 0px;
-    }
-    #image-label-product {
-        margin-left: 35%;
+        display: none;
         margin-bottom: 0px;
     }
-    #uploadPicture-product {        
-        font-size:500%;
-        color: rgb(226, 226, 226);
+    #vegan-col {
+        max-width: 6% !important;
     }
-    #uploadPicture-product:hover {
-        color: rgb(255, 253, 253);
+    #edit-button {
+        background-color: #39a3c4;
+        border-color: #39a3c5;
     }
-    #upload-text-product {
-        margin-left: 15%;
-        color: #ffffff
-    }
-    #vegano-group {
-        margin-left: 30px;
-        /* Margin-top: 15px; */
+    #remove-button {
+        background-color: #ba4113;
+        border-color: #b6471d;
     }
 </style>

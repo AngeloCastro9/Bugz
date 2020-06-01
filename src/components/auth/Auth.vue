@@ -3,7 +3,10 @@
     <div class="auth-modal" style="background-color: rgb(143, 136, 136)">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
-      <div class="auth-title">{{ showSignup ? 'Cadastro do cliente' : 'Login do cliente' }}</div>
+
+      <md-card-header>
+        <div class="auth-title">{{ showSignup ? 'Cadastro do cliente' : 'Login do cliente' }}</div>
+      </md-card-header>
 
       <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome"/>
       <input v-if="showSignup" v-model="user.street" type="text" placeholder="Rua" />
@@ -12,19 +15,25 @@
       <input v-if="showSignup" v-model="user.neighborhood" type="text" placeholder="Bairro" />
       <input v-if="showSignup" v-model="user.cpf" type="text" placeholder="CPF"
       onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
-      <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
-      <input v-model="user.password" name="password" type="password" placeholder="Senha" />
+
+      <form v-on:keyup.enter="showSignup?signup():signin()">
+        <input v-model="user.email" name="email" type="text" placeholder="E-mail" />
+        <input  v-model="user.password" name="password" type="password" placeholder="Senha" />
+      </form>
+      
       <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
-      <b-button class="auth-buttons" v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
-      <b-button class="auth-buttons" v-else @click="signin" variant="info">Entrar</b-button>
-      
-      <b-button v-if="!showSignup" @click="redirectRestaurant" variant="info" style="margin-top : 10px">Área do restaurante</b-button>
+      <div class="btn-group">
+        <b-button v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
+        <b-button v-else @click="signin" variant="info">Entrar</b-button>
+        
+        <b-button class="btn-toggle-area" v-if="!showSignup" @click="redirectRestaurant" variant="info">Área do restaurante</b-button>
+      </div>
 
-      <a href @click.prevent="showSignup = !showSignup">
-        <span v-if="showSignup" style="color: red; font-size: 15px;">Já tem cadastro? Acesse o Login!</span>
-        <span v-else class="new-user" style="color: red; font-size: 15px;">Não tem cadastro ainda? Registre-se aqui!</span>
-      </a>
+        <a class="link-toggle" href @click.prevent="showSignup = !showSignup">
+          <span v-if="showSignup">Fazer login</span>
+          <span v-else>Fazer cadastro</span>
+        </a>
     </div>
   </div>
 </template>
@@ -126,11 +135,7 @@ export default {
   );
 }
 
-.new-user {
-  color: #232e30;
-}
-
-.auth-buttons {
-  display: inline;
+.btn-toggle-area {
+  margin-left: 10px !important;
 }
 </style>
