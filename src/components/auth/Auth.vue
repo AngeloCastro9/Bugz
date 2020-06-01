@@ -23,6 +23,11 @@
       
       <input v-if="showSignup" v-model="user.confirmPassword" type="password" placeholder="Confirme a Senha"/>
 
+      <b-form-group id="vegan-group" v-if="showSignup">
+        <label id="vegan-label" for="vegan-checkbox">Vegano</label>
+        <b-form-checkbox id="vegan-checkbox" v-model="user.vegan" name="vegan" />
+      </b-form-group>
+
       <div class="btn-group">
         <b-button v-if="showSignup" @click="signup" variant="info">Registrar</b-button>
         <b-button v-else @click="signin" variant="info">Entrar</b-button>
@@ -47,8 +52,9 @@ export default {
   data: function() {
     return {
       showSignup: false,
-      user: {},
-      vegan: false
+      user: {
+        vegan: false
+      },
     };
   },
   methods: {
