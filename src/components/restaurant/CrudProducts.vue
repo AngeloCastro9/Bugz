@@ -1,6 +1,6 @@
 <template>
     <div class="product-admin">
-        <b-form>
+        <b-form id="crud-form">
             <input id="product-id" type="hidden" v-model="product.id" />
             <b-row>
                 <b-col md="4" sm="12">
@@ -53,7 +53,10 @@
                                 @change="onFileSubmited"
                                 ref="imageFileProduct"
                                 name="urlimage"/>
-                            <label id="image-label" for="image-input-product">Carregar imagem...</label>
+                            <label id="image-label" for="image-input-product">
+                                Carregar imagem...
+                                <br><small>(jpg, png ou gif)</small>
+                            </label>
                         </form>
                     </b-form-group>
                 </b-col>
@@ -182,7 +185,7 @@ export default {
     .vegan {
         color: rgb(233, 232, 232);
         vertical-align: sub;
-        margin-top: 35px;
+        margin-top: 55px;
         margin-right: 0;
     }
     .upload-picture {
@@ -194,8 +197,18 @@ export default {
     .image-upload:hover {
         filter: brightness(150%);
     }
+    .item-form {
+        color:rgb(226, 226, 226);
+        margin-top: 20px;
+    }
+    .col-sm-12 {
+        height: 130px;
+    }
     #image-label {
-        color:rgb(226, 226, 226)
+        color:rgb(226, 226, 226);
+        text-align: center;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
     #image-input-product {
         display: none;
@@ -211,5 +224,8 @@ export default {
     #remove-button {
         background-color: #ba4113;
         border-color: #b6471d;
+    }
+    #crud-form {
+        margin: 10px;
     }
 </style>

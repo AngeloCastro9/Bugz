@@ -24,7 +24,11 @@
             @change="onFileSubmited"
           />
         </form>
-        <label v-if="showSignup" for="image-input-restaurant">Carregar imagem...</label>
+        <label id="image-label-restaurant" v-if="showSignup" for="image-input-restaurant">
+          Carregar imagem...
+          <br>
+          <small>(jpg, png ou gif)</small>
+        </label>
       </div>
 
       <input v-if="showSignup" v-model="restaurant.name" type="text" placeholder="Nome" />
@@ -219,11 +223,11 @@ export default {
 
 .link-toggle {
   color: #764f15 !important;
+  margin-top: 15px !important;
 }
 
 .image-upload-label {
   margin-bottom: 0px;
-  /* font-size: 500%; */
   color: rgb(226, 226, 226);
 }
 
@@ -233,19 +237,24 @@ export default {
   color: rgb(233, 232, 232) !important;
 }
 
+.md-card-header {
+  padding: 0 !important;
+}
+
 #image-input-restaurant {
   display: none;
   margin-bottom: 0px;
 }
 
-#upload-text {
-  /* color: #764f15; */
-  font-size: 90%;
+#image-label-restaurant {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 #vegan-group {
   position: relative;
   width: 280px;
+  height: 30px;
   float: left;
 }
 
@@ -267,4 +276,5 @@ body {
 #btn-toggle-area {
   margin-left: 10px;
 }
+
 </style>
