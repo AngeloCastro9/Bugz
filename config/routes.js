@@ -4,7 +4,7 @@ module.exports = app => {
     app.post('/signup', app.api.user.save)
     app.post('/signin', app.api.auth.signin)
     
-    app.post('/signupRestaurant', app.api.restaurant.save)
+    app.post('/signupRestaurant/:id', app.api.restaurant.save)
     app.post('/signinRestaurant', app.api.authRestaurant.signin)
     
     app.post('/validateToken', app.api.auth.validateToken)
