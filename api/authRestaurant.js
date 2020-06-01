@@ -27,6 +27,7 @@ module.exports = app => {
             urlimage: restaurant.urlimage,
             street: restaurant.street,
             number: restaurant.number,
+            neighborhood: restaurant.neighborhood,
             cnpj: restaurant.cnpj,
             vegan: restaurant.vegan,
             iat: now,
