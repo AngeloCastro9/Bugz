@@ -1,6 +1,11 @@
 <template >
   <div class="home">
     <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color: white" />
+    <nav class="mb-5">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Home</li>
+      </ol>
+    </nav>
     <b-container fluid>
       <b-row>
         <div v-for="restaurant in restaurants" v-bind:key="restaurant.id">
@@ -98,5 +103,19 @@ img.card-img-top {
   background-color: #137e8f;
   border-color: #178c9e;
   color: rgb(233, 232, 232);
+}
+
+.breadcrumb {
+  background: linear-gradient(to right, #176975, #0f97ac);
+  padding-top: 5px;
+  height: 30px;
+}
+
+.breadcrumb-item > a.router-link-active {
+  color: #683e00;
+}
+
+.breadcrumb-item {
+  color:rgb(194, 194, 194) !important;
 }
 </style>

@@ -1,6 +1,14 @@
 <template >
   <div class="home">
-    <PageTitle icon="fa fa-home" main="Bem vindo!" sub="Bugz" style="color : white" />
+    <PageTitle icon="fa fa-shopping-bag" main="Cardápio do restaurante" sub="Bugz" style="color : white" />
+    <nav class="mb-5">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <router-link to="/">Home</router-link>
+        </li>
+        <li class="breadcrumb-item active">Cardápio</li>
+      </ol>
+    </nav>
     <b-container fluid>
       <b-row>
         <div v-for="product in products" v-bind:key="product.id">

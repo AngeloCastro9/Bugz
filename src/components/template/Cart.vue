@@ -1,18 +1,20 @@
 <template>
   <div class="cart" style="color: white">
-
+    <PageTitle icon="fa fa-cart-arrow-down" main="Seu carrinho" :sub="`${!products.length?'Seu carrinho está vazio':''}`" style="color : white" />
+    <nav class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <router-link to="/">Home</router-link>
+        </li>
+        <li class="breadcrumb-item active">Carrinho</li>
+      </ol>
+    </nav>
+    <router-link v-show="!products.length" to="/">
+      <b-button variant="info">Voltar às compras</b-button>
+    </router-link>
+    
     <div>
-      <h1>Seu carrinho</h1>
-        <div v-show="!products.length">
-          <p>
-            <i>Seu carrinho está vazio!</i>
-          </p>
-          <router-link to="/">
-            <b-button variant="info">Shopping</b-button>
-          </router-link>
-        </div>
-
-        <md-table md-card class="table is-striped" v-show="products.length" style="color: white">
+        <md-table id="cart-table" md-card class="table is-striped" v-show="products.length" style="color: white">
           <md-table-row>
                 <md-table-head style="font-size: 17px">Nome</md-table-head>
                 <md-table-head style="font-size: 17px">Quantidade</md-table-head>
@@ -85,8 +87,11 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import PageTitle from "./PageTitle";
 
 export default {
+  name: "Cart",
+  components: { PageTitle },
   data() {
     return {
       fields: [
@@ -182,5 +187,11 @@ export default {
 
   .close {
     color: rgb(233, 232, 232);
+  }
+  #cart-table {
+    background: linear-gradient(to right, #1a4c53, #0e8fa3);
+    border-radius: 25px;
+    padding: 20px;
+    color: #cfcbc2 !important;
   }
 </style>

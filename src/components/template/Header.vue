@@ -13,7 +13,7 @@
     <template v-if="isClient">
       <div class="cart-option">
         <div :class="{ 'active-bottom-border': $route.name === 'cart' }">
-          <router-link to="/cart">
+          <router-link id="cart-link" to="/cart">
             <span>
               <i class="cart-icon fa fa-shopping-cart"></i>
             </span>
@@ -92,12 +92,12 @@ export default {
 
 .title a {
   color: #fff;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .title a:hover {
   color: #fff;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a.toggle {
@@ -139,5 +139,9 @@ a.toggle:hover {
 
 .fa-angle-left {
   color:rgb(233, 232, 232)
+}
+
+#cart-link {
+  text-decoration: none !important;
 }
 </style>
