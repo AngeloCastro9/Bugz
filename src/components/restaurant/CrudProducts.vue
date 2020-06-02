@@ -148,6 +148,7 @@ export default {
         loadProduct(product, mode = 'save') {
             this.mode = mode
             this.product = { ...product }
+            console.log(product)
         },
         onFileSubmited() {
             const file = this.$refs.imageFileProduct.files[0]
