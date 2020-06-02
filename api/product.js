@@ -55,6 +55,7 @@ module.exports = app => {
 
         app.db('products')
             .where({ restaurantId: req.params.id })
+            .whereNull('deletedAt')
             // .limit(limit)
             // .then(products => res.json({ data: products, count, limit }))
             .then(products => res.json({ data: products, count }))
