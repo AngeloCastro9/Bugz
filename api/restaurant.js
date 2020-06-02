@@ -24,7 +24,7 @@ module.exports = app => {
             existsOrError(restaurant.confirmPassword, 'Confirmação de Senha inválida')
             equalsOrError(restaurant.password, restaurant.confirmPassword, 'Senhas não conferem')
             existsOrError(restaurant.cnpj, 'CNPJ não informados')
-            existsOrError(restaurant.urlimage, 'Url da imagem não informada.')
+            existsOrError(restaurant.urlimage, 'Imagem não carregada')
             notInteger(restaurant.cpf, "CNPJ inválido")
 
             const restaurantFromDB = await app.db('restaurants')
